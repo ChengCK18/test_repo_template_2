@@ -1,11 +1,46 @@
+import { useState, useEffect } from "react";
+
 import NavItem from "./NavItem";
 
 import { SiTwitter, SiDiscord, SiSpotify } from "react-icons/si";
 import { RiInstagramFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 const NavBar = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [previousScroll, setPreviousScroll] = useState(0);
+  const [lastScrollAction, setLastScrollAction] = useState(true); //true = up, false = down
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const getLastScrollAction = () => {
+    if (previousScroll !== window.pageYOffset) {
+      const difference = previousScroll - window.pageYOffset;
+      if (difference < 0) {
+        setLastScrollAction(false);
+      } else {
+        setLastScrollAction(true);
+      }
+      setPreviousScroll(window.pageYOffset);
+    }
+  };
+  getLastScrollAction();
+
   return (
-    <div className="fixed z-10 h-screen w-screen">
+    <div
+      className={` ${
+        lastScrollAction ? "visible" : "invisible"
+      } fixed z-10 h-screen w-screen `}
+    >
       <div className="flex h-[5.5%] flex-grow justify-center bg-black ">
         <div className="font-anton text-5xl text-white">LAZYNAIRE</div>
       </div>
