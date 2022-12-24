@@ -1,6 +1,6 @@
 const NavItem = ({ text, textLink }) => {
   return (
-    <div className="font-neueHaas font-semibold text-xl  text-white  ">
+    <div className="font-neueHaas text-xl font-semibold  text-white  ">
       <a href={textLink}>{text}</a>
     </div>
   );

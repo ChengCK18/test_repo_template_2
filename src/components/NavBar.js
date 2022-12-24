@@ -6,12 +6,30 @@ import { SiTwitter, SiDiscord, SiSpotify } from "react-icons/si";
 import { RiInstagramFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 const NavBar = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [previousScroll, setPreviousScroll] = useState(0);
+  const [previousScroll, setPreviousScroll] = useState(-1);
   const [lastScrollAction, setLastScrollAction] = useState(true); //true = up, false = down
+  const [scrollInfo, setScrollInfo] = useState({
+    scrollUp: false,
+    previousScroll: 0,
+  });
+
   const handleScroll = () => {
     const position = window.pageYOffset;
-    setScrollPosition(position);
+
+    if (scrollInfo.previousScroll !== position) {
+      const difference = scrollInfo.previousScroll - position;
+      if (difference < 0) {
+        setScrollInfo({
+          scrollUp: false,
+          previousScroll: position,
+        });
+      } else {
+        setScrollInfo({
+          scrollUp: true,
+          previousScroll: position,
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -20,26 +38,13 @@ const NavBar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  const getLastScrollAction = () => {
-    if (previousScroll !== window.pageYOffset) {
-      const difference = previousScroll - window.pageYOffset;
-      if (difference < 0) {
-        setLastScrollAction(false);
-      } else {
-        setLastScrollAction(true);
-      }
-      setPreviousScroll(window.pageYOffset);
-    }
-  };
-  getLastScrollAction();
+  }, [scrollInfo]);
 
   return (
     <div
       className={` ${
-        lastScrollAction ? "visible" : "invisible"
-      } fixed z-10 h-screen w-screen `}
+        scrollInfo.scrollUp ? "opacity-100" : "opacity-0"
+      } fixed z-10 h-screen w-screen opacity-100 transition-opacity duration-200 ease-in `}
     >
       <div className="flex h-[5.5%] flex-grow justify-center bg-black ">
         <div className="font-anton text-5xl text-white">LAZYNAIRE</div>
