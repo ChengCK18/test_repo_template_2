@@ -69,28 +69,32 @@ const AboutIntro = () => {
           ></div>
 
           <div className="mt-5  font-medium tracking-wider  text-custom-theme-purple mobile:text-xs laptop:text-[1.313rem] laptop:leading-[2.75rem]">
-            {aboutIntroSegment === 0 ? (
-              <div>
-                1/ <span className="font-bold italic">adj.</span> often used to
-                describe people whose wealth comes from doing little to no
-                effort.
-                <div className="mt-2" />
-                2/ <span className="font-bold italic">noun.</span> lucky gen xyz
-                who gain enormous amount of money just by holding and selling
-                random jpegs.
-              </div>
-            ) : (
-              <div className={`text-[#FF00D7]`}>
-                1/ <span className="font-bold italic">adj.</span> a zine-focused
-                lifestyle Web 3 brand, founded in October 2022 by a group of
-                dreamers and builders, who have strong passions to bring
-                valuable contents to the world.
-                <br />
-                2/ <span className="font-bold italic">noun.</span> a community
-                who fight against poverty, capitalism and elitism for a better
-                world.
-              </div>
-            )}
+            <div
+              className={`absolute ${
+                aboutIntroSegment === 0 ? easeInCss : easeOutCss
+              }`}
+            >
+              1/ <span className="font-bold italic">adj.</span> often used to
+              describe people whose wealth comes from doing little to no effort.
+              <div className="mt-2" />
+              2/ <span className="font-bold italic">noun.</span> lucky gen xyz
+              who gain enormous amount of money just by holding and selling
+              random jpegs.
+            </div>
+
+            <div
+              className={`absolute  ${
+                aboutIntroSegment === 1 ? easeInCss : easeOutCss
+              } text-[#FF00D7]`}
+            >
+              1/ <span className="font-bold italic">adj.</span> a zine-focused
+              lifestyle Web 3 brand, founded in October 2022 by a group of
+              dreamers and builders, who have strong passions to bring valuable
+              contents to the world.
+              <div className="mt-2" />
+              2/ <span className="font-bold italic">noun.</span> a community who
+              fight against poverty, capitalism and elitism for a better world.
+            </div>
           </div>
 
           <div className="mt-4 font-medium tracking-wider text-custom-theme-purple mobile:text-xs laptop:text-[1.313rem] laptop:leading-[2.75rem]"></div>
