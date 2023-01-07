@@ -54,7 +54,7 @@ const AboutIntro = () => {
                 aboutIntroSegment === 0 ? easeInCss : easeOutCss
               }`}
             >
-              [ lā-zē-nair ]{" "}
+              [ lā-zē-nair ]
               <span className="font-bold italic">n. informal</span>
             </div>
             <div
