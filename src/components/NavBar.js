@@ -46,7 +46,7 @@ const NavBar = () => {
         scrollInfo.scrollUp ? "opacity-100" : "opacity-0"
       } fixed z-10 h-screen w-screen opacity-100 transition-opacity duration-200 ease-in `}
     >
-      <div className="flex h-[5.5%] flex-grow justify-center bg-black ">
+      <div className="flex h-[5.5%] flex-grow items-center justify-center bg-black ">
         <div className="font-anton text-4xl text-white">LAZYNAIRE</div>
       </div>
 
