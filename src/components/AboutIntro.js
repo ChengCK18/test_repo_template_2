@@ -49,7 +49,17 @@ const AboutIntro = () => {
 
         <div className="h-[38%]">
           <div className="font-medium leading-[2.75rem] tracking-wider text-custom-theme-purple mobile:mb-4 laptop:mb-8  laptop:text-[1.313rem]">
-            [ lā-zē-nair ] <span className="font-bold italic">n. informal</span>
+            {aboutIntroSegment === 0 ? (
+              <div>
+                [ lā-zē-nair ]
+                <span className="font-bold italic"> n. informal</span>
+              </div>
+            ) : (
+              <div className={`text-[#FF00D7]`}>
+                [ lā-zē-nair ]
+                <span className="font-bold italic"> n. formal</span>
+              </div>
+            )}
           </div>
 
           <div
@@ -59,18 +69,38 @@ const AboutIntro = () => {
           ></div>
 
           <div className="mt-5  font-medium tracking-wider  text-custom-theme-purple mobile:text-xs laptop:text-[1.313rem] laptop:leading-[2.75rem]">
-            1/ <span className="font-bold italic">adj.</span> often used to
-            describe people whose wealth comes from doing little to no effort.
+            {aboutIntroSegment === 0 ? (
+              <div>
+                1/ <span className="font-bold italic">adj.</span> often used to
+                describe people whose wealth comes from doing little to no
+                effort.
+                <div className="mt-2" />
+                2/ <span className="font-bold italic">noun.</span> lucky gen xyz
+                who gain enormous amount of money just by holding and selling
+                random jpegs.
+              </div>
+            ) : (
+              <div className={`text-[#FF00D7]`}>
+                1/ <span className="font-bold italic">adj.</span> a zine-focused
+                lifestyle Web 3 brand, founded in October 2022 by a group of
+                dreamers and builders, who have strong passions to bring
+                valuable contents to the world.
+                <br />
+                2/ <span className="font-bold italic">noun.</span> a community
+                who fight against poverty, capitalism and elitism for a better
+                world.
+              </div>
+            )}
           </div>
 
-          <div className="mt-4 font-medium tracking-wider text-custom-theme-purple mobile:text-xs laptop:text-[1.313rem] laptop:leading-[2.75rem]">
-            2/ <span className="font-bold italic">noun.</span> lucky gen xyz who
-            gain enormous amount of money just by holding and selling random
-            jpegs.
-          </div>
+          <div className="mt-4 font-medium tracking-wider text-custom-theme-purple mobile:text-xs laptop:text-[1.313rem] laptop:leading-[2.75rem]"></div>
         </div>
         <div className="font-semibold tracking-widest mobile:text-xs laptop:mt-[4.25rem] laptop:text-[1.313rem]">
-          1/2
+          {aboutIntroSegment === 0 ? (
+            <span>1/2</span>
+          ) : (
+            <span className={`text-[#FF00D7]`}>2/2</span>
+          )}
         </div>
       </div>
     </div>
