@@ -47,7 +47,7 @@ const NavBar = () => {
       } fixed z-10 h-screen w-screen opacity-100 transition-opacity duration-200 ease-in `}
     >
       <div className="flex h-[5.5%] flex-grow justify-center bg-black ">
-        <div className="font-anton text-5xl text-white">LAZYNAIRE</div>
+        <div className="font-anton text-4xl text-white">LAZYNAIRE</div>
       </div>
 
       <div className="flex h-[5.5%] flex-grow flex-row items-center justify-center space-x-16 bg-custom-theme-purple">
