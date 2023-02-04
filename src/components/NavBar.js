@@ -75,20 +75,8 @@ const NavBar = () => {
             <SiDiscord size={30} color={"white"} />
           </a>
 
-          <a
-            className="rounded-full bg-custom-theme-purple p-2"
-            href="https://www.instagram.com/"
-          >
-            <RiInstagramFill size={30} color={"white"} />
-          </a>
           <a className="rounded-full bg-custom-theme-purple p-2" href="#">
             <MdEmail size={30} color={"white"} />
-          </a>
-          <a
-            className=" rounded-full bg-custom-theme-purple p-2"
-            href="https://open.spotify.com/"
-          >
-            <SiSpotify size={30} color={"white"} />
           </a>
         </div>
       </div>

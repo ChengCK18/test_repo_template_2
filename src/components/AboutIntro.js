@@ -4,8 +4,8 @@ const AboutIntro = () => {
   const [aboutIntroSegment, setAboutIntroSegment] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const easeInCss = "opacity-100 transition-opacity duration-500 ease-in";
-  const easeOutCss = "opacity-0 transition-opacity duration-500 ease-out";
+  const easeInCss = "opacity-100 transition-opacity duration-1000 ease-in";
+  const easeOutCss = "opacity-0 transition-opacity duration-1000 ease-out";
 
   useEffect(() => {
     if (scrollPosition > 1.5 * window.innerHeight) {
