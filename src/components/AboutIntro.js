@@ -35,10 +35,10 @@ const AboutIntro = () => {
   console.log(aboutIntroSegment);
 
   return (
-    <div className="h-[200vh] w-full ">
-      <div className="sticky top-0 flex h-screen flex-col justify-center mobile:px-4 laptop:px-14">
+    <div className="h-[200vh] w-full">
+      <div className="sticky top-0 flex h-screen flex-col justify-center mobile:px-6 laptop:px-14">
         <div
-          className={`mt-[4.25rem] font-anton tracking-wider  mobile:text-[3.625rem] laptop:text-[9.375rem] ${
+          className={`mt-[4.25rem] font-anton tracking-wider  mobile:text-[9.2vh] laptop:text-[13.8vh] ${
             aboutIntroSegment === 0
               ? "text-custom-theme-purple"
               : "text-[#FF00D7]"
@@ -48,7 +48,7 @@ const AboutIntro = () => {
         </div>
 
         <div className="h-[38%]">
-          <div className="font-medium leading-[2.75rem] tracking-wider text-custom-theme-purple mobile:mb-4 laptop:mb-8  laptop:text-[1.313rem]">
+          <div className="font-medium leading-[2.75rem] tracking-wider text-custom-theme-purple mobile:mb-4 mobile:text-[2vh] laptop:mb-8  laptop:text-[2vh]">
             {aboutIntroSegment === 0 ? (
               <div>
                 [ lā-zē-nair ]
@@ -68,7 +68,7 @@ const AboutIntro = () => {
             }`}
           ></div>
 
-          <div className="mt-5  font-medium tracking-wider  text-custom-theme-purple mobile:text-xs laptop:text-[1.313rem] laptop:leading-[2.75rem]">
+          <div className="mt-5  font-medium tracking-wider  text-custom-theme-purple mobile:text-[2vh] laptop:text-[2vh] laptop:leading-[2.75rem]">
             <div
               className={`absolute ${
                 aboutIntroSegment === 0 ? easeInCss : easeOutCss
@@ -96,10 +96,8 @@ const AboutIntro = () => {
               fight against poverty, capitalism and elitism for a better world.
             </div>
           </div>
-
-          <div className="mt-4 font-medium tracking-wider text-custom-theme-purple mobile:text-xs laptop:text-[1.313rem] laptop:leading-[2.75rem]"></div>
         </div>
-        <div className="font-semibold tracking-widest mobile:text-xs laptop:mt-[4.25rem] laptop:text-[1.313rem]">
+        <div className="font-semibold tracking-widest mobile:mt-[4rem] mobile:text-xs laptop:mt-[4.25rem] laptop:text-[2vh]">
           {aboutIntroSegment === 0 ? (
             <span>1/2</span>
           ) : (

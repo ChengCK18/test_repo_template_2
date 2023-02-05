@@ -149,7 +149,7 @@ const NavBar = ({ userDevice }) => {
   return (
     <div
       className={`fixed inset-0 z-50 h-full w-full ${
-        scrollInfo.scrollUp ? "hidden" : ""
+        scrollInfo.scrollUp ? "" : "hidden"
       }`}
     >
       {headerTitleBar}
