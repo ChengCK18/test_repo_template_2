@@ -2,17 +2,16 @@ import { SiTwitter, SiDiscord } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect } from "react";
 import NavItem from "./NavItem";
 
 const NavBar = ({ userDevice }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const [scrollInfo, setScrollInfo] = useState({
-    scrollUp: false,
+    scrollUp: true,
     previousScroll: 0,
   });
-  console.log(scrollInfo);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
