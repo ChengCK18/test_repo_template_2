@@ -36,9 +36,9 @@ const AboutIntro = () => {
 
   return (
     <div className="h-[200vh] w-full">
-      <div className="sticky top-0 flex h-screen flex-col justify-center mobile:px-6 laptop:px-14">
+      <div className="sticky top-0 flex h-screen flex-col items-center justify-center  mobile:px-6 laptop:px-14">
         <div
-          className={`mt-[4.25rem] font-anton tracking-wider  mobile:text-[9.2vh] laptop:text-[13.8vh] ${
+          className={`mt-[4.25rem] w-full font-anton tracking-wider  mobile:text-[9.2vh] laptop:text-[13.8vh] ${
             aboutIntroSegment === 0
               ? "text-custom-theme-purple"
               : "text-[#FF00D7]"
@@ -47,7 +47,7 @@ const AboutIntro = () => {
           LAZYNAIRE.
         </div>
 
-        <div className="h-[38%]">
+        <div className="h-[38%] w-full">
           <div className="font-medium leading-[2.75rem] tracking-wider text-custom-theme-purple mobile:mb-4 mobile:text-[2vh] laptop:mb-8  laptop:text-[2vh]">
             {aboutIntroSegment === 0 ? (
               <div>
@@ -97,7 +97,7 @@ const AboutIntro = () => {
             </div>
           </div>
         </div>
-        <div className="font-semibold tracking-widest mobile:mt-[4rem] mobile:text-xs laptop:mt-[4.25rem] laptop:text-[2vh]">
+        <div className="w-full font-semibold tracking-widest mobile:mt-[4rem] mobile:text-xs laptop:mt-[4.25rem] laptop:text-[2vh]">
           {aboutIntroSegment === 0 ? (
             <span>1/2</span>
           ) : (
