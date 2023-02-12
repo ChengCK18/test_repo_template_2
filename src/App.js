@@ -2,44 +2,50 @@ import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
 import AboutIntro from "./components/AboutIntro";
+import IntroPage from "./components/IntroPage";
 
 const App = () => {
-  const [userDevice, setUserDevice] = useState("laptop");
+    const [userDevice, setUserDevice] = useState("laptop");
 
-  useEffect(() => {
-    let screenWidth = window.innerWidth;
+    useEffect(() => {
+        let screenWidth = window.innerWidth;
 
-    if (screenWidth < 640) {
-      setUserDevice("mobile");
-    } else if (screenWidth < 821) {
-      setUserDevice("tablet");
-    } else {
-      setUserDevice("laptop");
-    }
-    window.addEventListener("resize", handleResize);
-  }, []);
+        if (screenWidth < 640) {
+            setUserDevice("mobile");
+        } else if (screenWidth < 821) {
+            setUserDevice("tablet");
+        } else {
+            setUserDevice("laptop");
+        }
+        window.addEventListener("resize", handleResize);
+    }, []);
 
-  const handleResize = () => {
-    let screenWidth = window.innerWidth;
-    if (screenWidth < 640) {
-      setUserDevice("mobile");
-    } else if (screenWidth < 821) {
-      setUserDevice("tablet");
-    } else {
-      setUserDevice("laptop");
-    }
-  };
+    const handleResize = () => {
+        let screenWidth = window.innerWidth;
+        if (screenWidth < 640) {
+            setUserDevice("mobile");
+        } else if (screenWidth < 821) {
+            setUserDevice("tablet");
+        } else {
+            setUserDevice("laptop");
+        }
+    };
 
-  console.log(userDevice);
+    console.log(userDevice);
 
-  return (
-    <>
-      <NavBar userDevice={userDevice} />
-      <LandingPage userDevice={userDevice} />
+    return (
+        <>
+            <NavBar userDevice={userDevice} />
+            <LandingPage userDevice={userDevice} />
 
-      <AboutIntro />
-    </>
-  );
+
+            <IntroPage userDevice={userDevice} />
+
+        </>
+    );
 };
 
 export default App;
+
+
+// <AboutIntro />
