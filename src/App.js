@@ -10,7 +10,7 @@ const App = () => {
     useEffect(() => {
         let screenWidth = window.innerWidth;
 
-        if (screenWidth < 640) {
+        if (screenWidth < 540) {
             setUserDevice("mobile");
         } else if (screenWidth < 821) {
             setUserDevice("tablet");

@@ -73,7 +73,7 @@ const IntroPage = ({ userDevice }) => {
 
                 <div className={`${introSegment === 1 ? easeInCss : easeOutCss} absolute flex h-full w-full justify-end`}>
                     <img
-                        className="absolute h-full "
+                        className="absolute w-full"
                         src={`/images/new_temp_images/${userDevice}/02_About Us.png`}
                         alt="car_pink"
                     />
@@ -81,7 +81,7 @@ const IntroPage = ({ userDevice }) => {
 
                 <div className={`${introSegment === 2 ? easeInCss : easeOutCss} absolute flex h-full w-full justify-start`}>
                     <img
-                        className="absolute h-full "
+                        className="absolute w-full "
                         src={`/images/new_temp_images/${userDevice}/03_About_Identity.png`}
                         alt="car_pink"
                     />
@@ -89,7 +89,7 @@ const IntroPage = ({ userDevice }) => {
 
                 <div className={`${introSegment === 3 ? easeInCss : easeOutCss} absolute flex h-full w-full justify-end`}>
                     <img
-                        className="absolute h-full "
+                        className="absolute w-full "
                         src={`/images/new_temp_images/${userDevice}/04_Roadmap.png`}
                         alt="car_pink"
                     />
@@ -98,7 +98,7 @@ const IntroPage = ({ userDevice }) => {
 
                 <div className={`${introSegment === 4 ? easeInCss : easeOutCss} absolute flex h-full w-full justify-center`}>
                     <img
-                        className="absolute h-full "
+                        className="absolute w-full "
                         src={`/images/new_temp_images/${userDevice}/05_Core.png`}
                         alt="car_pink"
                     />
