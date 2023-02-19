@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
-import AboutIntro from "./components/AboutIntro";
 import IntroPage from "./components/IntroPage";
+import ModuleIntroPage from "./components/ModuleIntroPage";
+import BlackBgWithImg from "./components/BlackBgWithImg";
+import HeaderText from "./components/HeaderText";
 
 const App = () => {
     const [userDevice, setUserDevice] = useState("laptop");
@@ -35,11 +37,15 @@ const App = () => {
 
     return (
         <>
+
             <NavBar userDevice={userDevice} />
             <LandingPage userDevice={userDevice} />
-
-
             <IntroPage userDevice={userDevice} />
+            <ModuleIntroPage userDevice={userDevice} />
+            <BlackBgWithImg userDevice={userDevice} imgPath={'10_Gallery.png'} />
+            <HeaderText userDevice={userDevice} imgPath={'11_Experience.png'} />
+            <BlackBgWithImg userDevice={userDevice} imgPath={'12_Team.png'} />
+            <HeaderText userDevice={userDevice} imgPath={'13_Unlock.png'} />
 
         </>
     );

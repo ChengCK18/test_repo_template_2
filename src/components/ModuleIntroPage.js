@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react"
 
 
-const IntroPage = ({ userDevice }) => {
+const ModuleIntroPage = ({ userDevice }) => {
 
     const [introSegment, setIntroSegment] = useState(0)
     const [scrollPosition, setScrollPosition] = useState(0)
 
     // const easeInCss = "opacity-100 transition-opacity duration-1000 ease-in";
     // const easeOutCss = "opacity-0 transition-opacity duration-1000 ease-out";
-
-    const easeInCss = "opacity-100 transition-opacity duration-1000 ease-in";
-    const easeOutCss = "opacity-0 transition-opacity duration-1000 ease-out";
 
 
     const handleScroll = () => {
@@ -28,7 +25,6 @@ const IntroPage = ({ userDevice }) => {
     }, [])
 
     useEffect(() => {
-        console.log(introSegment)
         if (scrollPosition > 4 * window.innerHeight) {
             if (introSegment !== 4) {
                 setIntroSegment(4)
@@ -52,20 +48,7 @@ const IntroPage = ({ userDevice }) => {
         }
 
 
-    }, [scrollPosition])
-
-    //     <div className="sticky top-[-0.5px] h-screen">
-
-    //     <div className={`absolute flex h-full w-full justify-center`}>
-    //         <img
-    //             className="absolute h-full w-full "
-    //             src={`/images/new_temp_images/${userDevice}/Standard_Background_Black.png`}
-    //             alt="car_pink"
-    //         />
-    //     </div>
-
-
-    //  </div>
+    }, [scrollPosition, introSegment])
 
 
 
@@ -75,36 +58,36 @@ const IntroPage = ({ userDevice }) => {
 
 
 
-            <div className={`flex h-screen w-full justify-end  `}>
+            <div className={` flex h-screen w-full justify-end  `}>
                 <img
                     className=" w-full"
-                    src={`/images/new_temp_images/${userDevice}/02_About Us.png`}
-                    alt="02_About Us.png"
+                    src={`/images/new_temp_images/${userDevice}/06_Club.png`}
+                    alt="06_Club.png"
                 />
             </div>
 
             <div className={` flex h-screen w-full justify-start`}>
                 <img
                     className=" w-full "
-                    src={`/images/new_temp_images/${userDevice}/03_About_Identity.png`}
-                    alt="03_About_Identity.png"
+                    src={`/images/new_temp_images/${userDevice}/07_Studio.png`}
+                    alt="07_Studio.png"
                 />
             </div>
 
             <div className={` flex h-screen w-full justify-end`}>
                 <img
                     className=" w-full "
-                    src={`/images/new_temp_images/${userDevice}/04_Roadmap.png`}
-                    alt="04_Roadmap.png"
+                    src={`/images/new_temp_images/${userDevice}/08_Market.png`}
+                    alt="08_Market.png"
                 />
             </div>
 
 
-            <div className={`h-screen flex w-full justify-center`}>
+            <div className={` h-screen flex  w-full justify-center`}>
                 <img
-                    className=" w-full "
-                    src={`/images/new_temp_images/${userDevice}/05_Core.png`}
-                    alt="05_Core.png"
+                    className="w-full "
+                    src={`/images/new_temp_images/${userDevice}/09_Lazyverse.png`}
+                    alt="09_Lazyverse.png"
                 />
             </div>
 
@@ -117,4 +100,4 @@ const IntroPage = ({ userDevice }) => {
 }
 
 
-export default IntroPage
+export default ModuleIntroPage
