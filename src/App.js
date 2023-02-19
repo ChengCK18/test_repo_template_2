@@ -37,21 +37,21 @@ const App = () => {
 
     return (
         <>
-
             <NavBar userDevice={userDevice} />
             <LandingPage userDevice={userDevice} />
             <IntroPage userDevice={userDevice} />
             <ModuleIntroPage userDevice={userDevice} />
-            <BlackBgWithImg userDevice={userDevice} imgPath={'10_Gallery.png'} />
-            <HeaderText userDevice={userDevice} imgPath={'11_Experience.png'} />
-            <BlackBgWithImg userDevice={userDevice} imgPath={'12_Team.png'} />
-            <HeaderText userDevice={userDevice} imgPath={'13_Unlock.png'} />
-
+            <BlackBgWithImg
+                userDevice={userDevice}
+                imgPath={"10_Gallery.png"}
+            />
+            <HeaderText userDevice={userDevice} imgPath={"11_Experience.png"} />
+            <BlackBgWithImg userDevice={userDevice} imgPath={"12_Team.png"} />
+            <HeaderText userDevice={userDevice} imgPath={"13_Unlock.png"} />
         </>
     );
 };
 
 export default App;
-
 
 // <AboutIntro />

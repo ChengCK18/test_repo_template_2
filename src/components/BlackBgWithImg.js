@@ -1,5 +1,4 @@
 const BlackBgWithImg = ({ userDevice, imgPath }) => {
-
     return (
         <div className="bg-black">
             <img
@@ -7,11 +6,8 @@ const BlackBgWithImg = ({ userDevice, imgPath }) => {
                 src={`/images/new_temp_images/${userDevice}/${imgPath}`}
                 alt="car_pink"
             />
-
         </div>
-    )
+    );
+};
 
-}
-
-
-export default BlackBgWithImg
+export default BlackBgWithImg;

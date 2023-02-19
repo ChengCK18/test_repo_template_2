@@ -49,17 +49,24 @@ const NavBar = ({ userDevice }) => {
         <>
             <div className="flex min-h-[5.5%] flex-grow  items-center justify-center bg-black mobile:h-[7%] ">
                 <div
-                    className={`font-anton tracking-wider text-white ${userDevice === "mobile"
-                        ? "ml-auto pl-12 text-[3.7vh]"
-                        : "text-[3.3vh]"
-                        }`}
+                    className={`font-anton tracking-wider text-white ${
+                        userDevice === "mobile"
+                            ? "ml-auto pl-12 text-[3.7vh]"
+                            : "text-[3.3vh]"
+                    }`}
                 >
                     LAZYNAIRE
                 </div>
                 <div
-                    className={`ml-auto pr-3 ${userDevice === "mobile" ? "" : "hidden"}`}
+                    className={`ml-auto pr-3 ${
+                        userDevice === "mobile" ? "" : "hidden"
+                    }`}
                 >
-                    <HiMenuAlt4 size={30} color={"white"} onClick={handleMobileMenu} />
+                    <HiMenuAlt4
+                        size={30}
+                        color={"white"}
+                        onClick={handleMobileMenu}
+                    />
                 </div>
             </div>
         </>
@@ -67,12 +74,14 @@ const NavBar = ({ userDevice }) => {
     let mobileNavLayout = (
         <>
             <div
-                className={`${showMobileMenu ? "w-screen" : "w-0"
-                    } transition-width transition-slowest ease absolute flex h-full opacity-95  items-center justify-center bg-white duration-1000`}
+                className={`${
+                    showMobileMenu ? "w-screen" : "w-0"
+                } transition-width transition-slowest ease absolute flex h-full items-center  justify-center bg-white opacity-95 duration-1000`}
             >
                 <div
-                    className={`${showMobileMenu ? "" : "hidden"
-                        } flex h-[85%] w-[85%] items-center justify-center border-y-2 border-black p-10`}
+                    className={`${
+                        showMobileMenu ? "" : "hidden"
+                    } flex h-[85%] w-[85%] items-center justify-center border-y-2 border-black p-10`}
                 >
                     <div className="text-clip text-center font-anton text-[6.3vh] leading-none tracking-wider text-custom-theme-purple">
                         WE'RE
@@ -95,13 +104,28 @@ const NavBar = ({ userDevice }) => {
     let laptopNavLayout = (
         <>
             <div
-                className={`${userDevice === "laptop" || userDevice === "tablet" ? "" : "hidden"
-                    } flex h-[5.5%] flex-grow flex-row items-center justify-center space-x-16 bg-custom-theme-purple`}
+                className={`${
+                    userDevice === "laptop" || userDevice === "tablet"
+                        ? ""
+                        : "hidden"
+                } flex h-[5.5%] flex-grow flex-row items-center justify-center space-x-16 bg-custom-theme-purple`}
             >
-                <NavItem text={"ABOUT"} textLink={"#"} userDevice={userDevice} />
-                <NavItem text={"EXPLORE"} textLink={"#"} userDevice={userDevice} />
+                <NavItem
+                    text={"ABOUT"}
+                    textLink={"#"}
+                    userDevice={userDevice}
+                />
+                <NavItem
+                    text={"EXPLORE"}
+                    textLink={"#"}
+                    userDevice={userDevice}
+                />
                 <NavItem text={"CORE"} textLink={"#"} userDevice={userDevice} />
-                <NavItem text={"ROADMAP"} textLink={"#"} userDevice={userDevice} />
+                <NavItem
+                    text={"ROADMAP"}
+                    textLink={"#"}
+                    userDevice={userDevice}
+                />
                 <NavItem text={"TEAM"} textLink={"#"} userDevice={userDevice} />
                 <NavItem text={"FAQ"} textLink={"#"} userDevice={userDevice} />
                 <NavItem text={"MINT"} textLink={"#"} userDevice={userDevice} />
@@ -113,8 +137,9 @@ const NavBar = ({ userDevice }) => {
         <>
             {" "}
             <div
-                className={`absolute bottom-8 z-50 w-full ${showMobileMenu ? "hidden" : ""
-                    }`}
+                className={`absolute bottom-8 z-50 w-full ${
+                    showMobileMenu ? "hidden" : ""
+                }`}
             >
                 <div className="flex flex-row items-center justify-center space-x-6">
                     <a
@@ -142,8 +167,9 @@ const NavBar = ({ userDevice }) => {
     );
     return (
         <div
-            className={`fixed inset-0 z-50 h-full w-full ${scrollInfo.scrollUp ? "" : "hidden"
-                }`}
+            className={`fixed inset-0 z-50 h-full w-full ${
+                scrollInfo.scrollUp ? "" : "hidden"
+            }`}
         >
             {headerTitleBar}
             {mobileNavLayout}

@@ -7,8 +7,7 @@ const HeaderText = ({ userDevice, imgPath }) => {
                 alt="car_pink"
             />
         </div>
-    )
-}
+    );
+};
 
-
-export default HeaderText
+export default HeaderText;
