@@ -42,33 +42,33 @@ const ModuleIntroPage = ({ userDevice }) => {
 
     return (
         <div className={`w-full bg-about_bg_img bg-fixed `}>
-            <div className={` flex h-screen w-full justify-end  `}>
+            <div className={` flex w-full justify-end  `}>
                 <img
-                    className=" w-full"
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/06_Club.png`}
                     alt="06_Club.png"
                 />
             </div>
 
-            <div className={` flex h-screen w-full justify-start`}>
+            <div className={` flex  w-full justify-start`}>
                 <img
-                    className=" w-full "
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/07_Studio.png`}
                     alt="07_Studio.png"
                 />
             </div>
 
-            <div className={` flex h-screen w-full justify-end`}>
+            <div className={` flex w-full justify-end`}>
                 <img
-                    className=" w-full "
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/08_Market.png`}
                     alt="08_Market.png"
                 />
             </div>
 
-            <div className={` flex h-screen  w-full justify-center`}>
+            <div className={` flex  w-full justify-center`}>
                 <img
-                    className="w-full "
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/09_Lazyverse.png`}
                     alt="09_Lazyverse.png"
                 />

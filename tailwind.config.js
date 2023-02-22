@@ -15,6 +15,23 @@ module.exports = {
             backgroundImage: {
                 'about_bg_img': "url('../public/images/new_temp_images/laptop/Standard_Background_Black.png')",
             },
+
+            animation: {
+                fadeInAni: 'fadeIn 0.6s ease-in-out forwards',
+                fadeOutAni: 'fadeOut 0.6s ease-in-out forwards',
+            },
+
+            // that is actual animation
+            keyframes: theme => ({
+                fadeIn: {
+                    '0%': { opacity: '0%' },
+                    '100%': { opacity: '100%' },
+                },
+                fadeOut: {
+                    '0%': { opacity: '100%' },
+                    '100%': { opacity: '0%' },
+                },
+            }),
         },
 
         screens: {

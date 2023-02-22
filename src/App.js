@@ -33,22 +33,19 @@ const App = () => {
         }
     };
 
-    console.log(userDevice);
+    console.log('here', userDevice);
 
     return (
-        <>
+        <div className="scroll-smooth">
             <NavBar userDevice={userDevice} />
             <LandingPage userDevice={userDevice} />
             <IntroPage userDevice={userDevice} />
             <ModuleIntroPage userDevice={userDevice} />
-            <BlackBgWithImg
-                userDevice={userDevice}
-                imgPath={"10_Gallery.png"}
-            />
+            <BlackBgWithImg userDevice={userDevice} imgPath={"10_Gallery.png"} divId={'section-gallery'} />
             <HeaderText userDevice={userDevice} imgPath={"11_Experience.png"} />
-            <BlackBgWithImg userDevice={userDevice} imgPath={"12_Team.png"} />
+            <BlackBgWithImg userDevice={userDevice} imgPath={"12_Team.png"} divId={'section-team'} />
             <HeaderText userDevice={userDevice} imgPath={"13_Unlock.png"} />
-        </>
+        </div >
     );
 };
 

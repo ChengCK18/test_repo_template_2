@@ -1,6 +1,7 @@
-const BlackBgWithImg = ({ userDevice, imgPath }) => {
+
+const BlackBgWithImg = ({ userDevice, imgPath, divId }) => {
     return (
-        <div className="bg-black">
+        <div className="bg-black" id={divId}>
             <img
                 className=" w-full "
                 src={`/images/new_temp_images/${userDevice}/${imgPath}`}
@@ -11,3 +12,4 @@ const BlackBgWithImg = ({ userDevice, imgPath }) => {
 };
 
 export default BlackBgWithImg;
+

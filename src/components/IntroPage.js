@@ -58,33 +58,33 @@ const IntroPage = ({ userDevice }) => {
 
     return (
         <div className={`w-full bg-about_bg_img bg-fixed `}>
-            <div className={`flex h-screen w-full justify-end  `}>
+            <div className={`flex w-full justify-end `} id='section-about'>
                 <img
-                    className=" w-full"
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/02_About Us.png`}
                     alt="02_About Us.png"
                 />
             </div>
 
-            <div className={` flex h-screen w-full justify-start`}>
+            <div className={` flex  w-full justify-start`}>
                 <img
-                    className=" w-full "
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/03_About_Identity.png`}
                     alt="03_About_Identity.png"
                 />
             </div>
 
-            <div className={` flex h-screen w-full justify-end`}>
+            <div className={` flex  w-full justify-end`} id='section-roadmap-core'>
                 <img
-                    className=" w-full "
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/04_Roadmap.png`}
                     alt="04_Roadmap.png"
                 />
             </div>
 
-            <div className={` flex h-screen w-full justify-center`}>
+            <div className={` flex  w-full justify-center`}>
                 <img
-                    className=" w-full "
+                    className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
                     src={`/images/new_temp_images/${userDevice}/05_Core.png`}
                     alt="05_Core.png"
                 />
