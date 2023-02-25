@@ -13,7 +13,7 @@ module.exports = {
                 "custom-theme-purple": "#47003C",
             },
             backgroundImage: {
-                'about_bg_img': "url('../public/images/new_temp_images/laptop/Standard_Background_Black.png')",
+                'about_bg_img': "url('../public/images/otherPages/laptop/Standard_Background_Black.png')",
             },
 
             animation: {

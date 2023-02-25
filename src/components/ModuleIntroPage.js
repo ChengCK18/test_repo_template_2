@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { BsArrowRight } from 'react-icons/bs'
 const ModuleIntroPage = ({ userDevice }) => {
     const [introSegment, setIntroSegment] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -9,7 +9,7 @@ const ModuleIntroPage = ({ userDevice }) => {
 
     const handleScroll = () => {
         const position = window.pageYOffset;
-        console.log("da ", position);
+
         setScrollPosition(position);
     };
 
@@ -41,37 +41,126 @@ const ModuleIntroPage = ({ userDevice }) => {
     }, [scrollPosition, introSegment]);
 
     return (
-        <div className={`w-full bg-about_bg_img bg-fixed `}>
-            <div className={` flex w-full justify-end  `}>
+        <div className={`w-full bg-about_bg_img bg-fixed bg-cover`}>
+            <div className={` relative flex w-full justify-end  `}>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/06_Club.png`}
+                    src={`/images/otherPages/${userDevice}/06_Club.png`}
                     alt="06_Club.png"
                 />
+                <div className=" z-20 absolute text-white h-full w-full ">
+                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                        <div className="mb-2">CLUB </div>
+                        A hub for the community from Web 2 and Web 3,
+                        with similar visions and interests <br />
+                        <div className="mt-2 flex justify-end ">
+                            <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
+                                <button className="flex items-center" onClick={() => console.log('hey')}>
+                                    <span className="font-semibold"> Join Us </span>
+                                    <span className="pl-1">
+                                        <BsArrowRight />
+                                    </span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
-            <div className={` flex  w-full justify-start`}>
+            <div className={` relative flex  w-full justify-start`}>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/07_Studio.png`}
+                    src={`/images/otherPages/${userDevice}/07_Studio.png`}
                     alt="07_Studio.png"
                 />
+
+                <div className=" z-20 absolute text-white h-full w-full ">
+                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                        <div className="mb-2">STUDIO </div>
+                        The masterminds behind Lazynaire, formed by a group of creative souls who love
+                        original contents. They execute all the main utilities, facilitate partnership &
+                        collaboration programs
+                        <br />
+                        <div className="mt-2 flex justify-end ">
+                            <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
+                                <button className="flex items-center" onClick={() => console.log('hey')}>
+                                    <span className="font-semibold"> Join Us </span>
+                                    <span className="pl-1">
+                                        <BsArrowRight />
+                                    </span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             </div>
 
-            <div className={` flex w-full justify-end`}>
+            <div className={` relative flex w-full justify-end`}>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/08_Market.png`}
+                    src={`/images/otherPages/${userDevice}/08_Market.png`}
                     alt="08_Market.png"
                 />
+
+                <div className=" z-20 absolute text-white h-full w-full ">
+                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                        <div className="mb-2">MARKET </div>
+                        Home to all Lazynaire products distribution. Lazynaire Market is
+                        our sales channel responsible for all products sales, exchanges and
+                        Holder-only claims
+                        <br />
+                        <div className="mt-2 flex justify-end ">
+                            <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
+                                <button className="flex items-center" onClick={() => console.log('hey')}>
+                                    <span className="font-semibold"> Join Us </span>
+                                    <span className="pl-1">
+                                        <BsArrowRight />
+                                    </span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div className={` flex  w-full justify-center`}>
+            <div className={` relative flex  w-full justify-center`}>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/09_Lazyverse.png`}
+                    src={`/images/otherPages/${userDevice}/09_Lazyverse.png`}
                     alt="09_Lazyverse.png"
                 />
+
+                <div className=" z-20 absolute text-white h-full w-full ">
+                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                        <div className="mb-2">LAZYVERSE </div>
+                        Our future hub as we grow big. Lazyverse is a digital space that connect community around
+                        our sales channel responsible for all products sales, exchanges and
+                        the globe, while fully utilizing potential of blockchain
+                        <br />
+                        <div className="mt-2 flex justify-end ">
+                            <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
+                                <button className="flex items-center" onClick={() => console.log('hey')}>
+                                    <span className="font-semibold"> Join Us </span>
+                                    <span className="pl-1">
+                                        <BsArrowRight />
+                                    </span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

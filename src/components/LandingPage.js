@@ -7,7 +7,7 @@ const LandingPage = ({ userDevice }) => {
                 <div className="absolute flex h-full w-screen justify-center">
                     <img
                         className="h-full w-screen"
-                        src="/images/merged/Desktop_Back_01.png"
+                        src="/images/landingPage/Desktop_Back_01.png"
                         alt="Desktop_Back_01"
                     />
                 </div>
@@ -15,17 +15,17 @@ const LandingPage = ({ userDevice }) => {
                     <div className={`h-[85%] shrink-0 `}>
                         <img
                             className="h-full "
-                            src="/images/merged/Desktop_Middle_01_2.png"
+                            src="/images/landingPage/Desktop_Middle_01_2.png"
                             alt="Desktop_Middle_01"
                         />
                     </div>
                 </div>
 
-                <div className="absolute z-40 flex h-full w-screen items-end justify-center">
+                <div className="absolute z-20 flex h-full w-screen items-end justify-center">
                     <div className={`h-[78%] shrink-0 `}>
                         <img
                             className="h-full"
-                            src="/images/merged/Desktop_Front_01.png"
+                            src="/images/landingPage/Desktop_Front_01.png"
                             alt="Desktop_Middle_01"
                         />
                     </div>
@@ -39,7 +39,7 @@ const LandingPage = ({ userDevice }) => {
                     <div className="h-[60%]">
                         <img
                             className="h-full object-cover"
-                            src="/images/merged/Mobile_Back_01.png"
+                            src="/images/landingPage/Mobile_Back_01.png"
                             alt="car_pink"
                         />
                     </div>
@@ -48,7 +48,7 @@ const LandingPage = ({ userDevice }) => {
                     <div className="h-[60%] ">
                         <img
                             className="h-full object-cover"
-                            src="/images/merged/Mobile_Front_01.png"
+                            src="/images/landingPage/Mobile_Front_01.png"
                             alt="car_pink"
                         />
                     </div>
@@ -61,7 +61,7 @@ const LandingPage = ({ userDevice }) => {
                 <div className="absolute inset-0 flex  h-full w-screen justify-center">
                     <img
                         className="h-full w-screen"
-                        src="/images/merged/Desktop_Back_01.png"
+                        src="/images/landingPage/Desktop_Back_01.png"
                         alt="Desktop_Back_01"
                     />
                 </div>
@@ -69,7 +69,7 @@ const LandingPage = ({ userDevice }) => {
                     <div className={`h-[78%] shrink-0`}>
                         <img
                             className="h-full "
-                            src="/images/merged/Tablet_Middle_01.png"
+                            src="/images/landingPage/Tablet_Middle_01.png"
                             alt="Desktop_Middle_01"
                         />
                     </div>
@@ -79,7 +79,7 @@ const LandingPage = ({ userDevice }) => {
                     <div className={`h-[75%] shrink-0`}>
                         <img
                             className="h-full"
-                            src="/images/merged/Tablet_Front_01.png"
+                            src="/images/landingPage/Tablet_Front_01.png"
                             alt="Desktop_Middle_01"
                         />
                     </div>

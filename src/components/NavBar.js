@@ -118,7 +118,7 @@ const NavBar = ({ userDevice }) => {
         <>
             {" "}
             <div
-                className={`absolute bottom-8 z-50 w-full ${showMobileMenu ? "hidden" : ""
+                className={`absolute bottom-8 z-30 w-full ${showMobileMenu ? "hidden" : ""
                     }`}
             >
                 <div className="flex flex-row items-center justify-center space-x-6">
@@ -147,7 +147,7 @@ const NavBar = ({ userDevice }) => {
     );
     return (
         <div
-            className={`fixed inset-0 z-50 h-full w-full ${scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
+            className={`fixed inset-0 z-30 h-full w-full ${scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
                 }`}
         >
             {headerTitleBar}

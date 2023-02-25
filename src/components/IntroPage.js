@@ -7,8 +7,7 @@ const IntroPage = ({ userDevice }) => {
     // const easeInCss = "opacity-100 transition-opacity duration-1000 ease-in";
     // const easeOutCss = "opacity-0 transition-opacity duration-1000 ease-out";
 
-    const easeInCss = "opacity-100 transition-opacity duration-1000 ease-in";
-    const easeOutCss = "opacity-0 transition-opacity duration-1000 ease-out";
+
 
     const handleScroll = () => {
         const position = window.pageYOffset;
@@ -42,26 +41,15 @@ const IntroPage = ({ userDevice }) => {
                 setIntroSegment(1);
             }
         }
-    }, [scrollPosition]);
+    }, [scrollPosition, introSegment]);
 
-    //     <div className="sticky top-[-0.5px] h-screen">
-
-    //     <div className={`absolute flex h-full w-full justify-center`}>
-    //         <img
-    //             className="absolute h-full w-full "
-    //             src={`/images/new_temp_images/${userDevice}/Standard_Background_Black.png`}
-    //             alt="car_pink"
-    //         />
-    //     </div>
-
-    //  </div>
 
     return (
         <div className={`w-full bg-about_bg_img bg-fixed `}>
             <div className={`flex w-full justify-end `} id='section-about'>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/02_About Us.png`}
+                    src={`/images/otherPages/${userDevice}/02_About Us.png`}
                     alt="02_About Us.png"
                 />
             </div>
@@ -69,7 +57,7 @@ const IntroPage = ({ userDevice }) => {
             <div className={` flex  w-full justify-start`}>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/03_About_Identity.png`}
+                    src={`/images/otherPages/${userDevice}/03_About_Identity.png`}
                     alt="03_About_Identity.png"
                 />
             </div>
@@ -77,7 +65,7 @@ const IntroPage = ({ userDevice }) => {
             <div className={` flex  w-full justify-end`} id='section-roadmap-core'>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/04_Roadmap.png`}
+                    src={`/images/otherPages/${userDevice}/04_Roadmap.png`}
                     alt="04_Roadmap.png"
                 />
             </div>
@@ -85,7 +73,7 @@ const IntroPage = ({ userDevice }) => {
             <div className={` flex  w-full justify-center`}>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
-                    src={`/images/new_temp_images/${userDevice}/05_Core.png`}
+                    src={`/images/otherPages/${userDevice}/05_Core.png`}
                     alt="05_Core.png"
                 />
             </div>

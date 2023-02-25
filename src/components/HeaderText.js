@@ -3,7 +3,7 @@ const HeaderText = ({ userDevice, imgPath }) => {
         <div>
             <img
                 className=" w-full "
-                src={`/images/new_temp_images/${userDevice}/${imgPath}`}
+                src={`/images/otherPages/${userDevice}/${imgPath}`}
                 alt="car_pink"
             />
         </div>

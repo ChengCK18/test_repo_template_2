@@ -4,7 +4,7 @@ const BlackBgWithImg = ({ userDevice, imgPath, divId }) => {
         <div className="bg-black" id={divId}>
             <img
                 className=" w-full "
-                src={`/images/new_temp_images/${userDevice}/${imgPath}`}
+                src={`/images/otherPages/${userDevice}/${imgPath}`}
                 alt="car_pink"
             />
         </div>
