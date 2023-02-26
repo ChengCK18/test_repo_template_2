@@ -44,7 +44,7 @@ const LandingPage = ({ userDevice }) => {
                         />
                     </div>
                 </div>
-                <div className="absolute inset-0 z-30  flex h-full w-screen items-end justify-center">
+                <div className="absolute inset-0 z-20  flex h-full w-screen items-end justify-center">
                     <div className="h-[60%] ">
                         <img
                             className="h-full object-cover"
@@ -75,7 +75,7 @@ const LandingPage = ({ userDevice }) => {
                     </div>
                 </div>
 
-                <div className="absolute inset-0 z-40  flex h-full w-screen items-end justify-center">
+                <div className="absolute inset-0 z-20  flex h-full w-screen items-end justify-center">
                     <div className={`h-[75%] shrink-0`}>
                         <img
                             className="h-full"

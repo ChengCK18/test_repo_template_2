@@ -19,6 +19,7 @@ module.exports = {
             animation: {
                 fadeInAni: 'fadeIn 0.6s ease-in-out forwards',
                 fadeOutAni: 'fadeOut 0.6s ease-in-out forwards',
+                shakeHorizontal: 'shakeHoriz 1.5s linear infinite'
             },
 
             // that is actual animation
@@ -31,6 +32,13 @@ module.exports = {
                     '0%': { opacity: '100%' },
                     '100%': { opacity: '0%' },
                 },
+                shakeHoriz: {
+
+                    '0%': { 'margin': '-7%' },
+                    '50%': { 'margin': '0' },
+                    '100%': { 'margin': '-7%' },
+
+                }
             }),
         },
 

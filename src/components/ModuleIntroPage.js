@@ -140,18 +140,18 @@ const ModuleIntroPage = ({ userDevice }) => {
                     alt="09_Lazyverse.png"
                 />
 
-                <div className=" z-20 absolute text-white h-full w-full ">
+                <div className="  absolute text-white h-full w-full ">
                     <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
                         <div className="mb-2">LAZYVERSE </div>
                         Our future hub as we grow big. Lazyverse is a digital space that connect community around
                         our sales channel responsible for all products sales, exchanges and
                         the globe, while fully utilizing potential of blockchain
                         <br />
-                        <div className="mt-2 flex justify-end ">
-                            <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
+                        <div className="relative z-50 mt-2  flex justify-end ">
+                            <div className=" p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
                                 <button className="flex items-center" onClick={() => console.log('hey')}>
-                                    <span className="font-semibold"> Join Us </span>
-                                    <span className="pl-1">
+                                    <span className="font-semibold mr-2"> Join Us </span>
+                                    <span className="pl-1 animate-shakeHorizontal ">
                                         <BsArrowRight />
                                     </span>
                                 </button>
