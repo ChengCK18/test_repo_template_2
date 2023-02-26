@@ -49,7 +49,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                     alt="06_Club.png"
                 />
                 <div className=" z-20 absolute text-white h-full w-full ">
-                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                    <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
                         <div className="mb-2">CLUB </div>
                         A hub for the community from Web 2 and Web 3,
                         with similar visions and interests <br />
@@ -57,7 +57,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                             <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
                                 <button className="flex items-center" onClick={() => console.log('hey')}>
                                     <span className="font-semibold"> Join Us </span>
-                                    <span className="pl-1">
+                                    <span className="pl-2 animate-shakeHorizontal">
                                         <BsArrowRight />
                                     </span>
                                 </button>
@@ -78,7 +78,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                 />
 
                 <div className=" z-20 absolute text-white h-full w-full ">
-                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                    <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
                         <div className="mb-2">STUDIO </div>
                         The masterminds behind Lazynaire, formed by a group of creative souls who love
                         original contents. They execute all the main utilities, facilitate partnership &
@@ -88,7 +88,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                             <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
                                 <button className="flex items-center" onClick={() => console.log('hey')}>
                                     <span className="font-semibold"> Join Us </span>
-                                    <span className="pl-1">
+                                    <span className="pl-2 animate-shakeHorizontal">
                                         <BsArrowRight />
                                     </span>
                                 </button>
@@ -111,7 +111,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                 />
 
                 <div className=" z-20 absolute text-white h-full w-full ">
-                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                    <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
                         <div className="mb-2">MARKET </div>
                         Home to all Lazynaire products distribution. Lazynaire Market is
                         our sales channel responsible for all products sales, exchanges and
@@ -121,7 +121,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                             <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
                                 <button className="flex items-center" onClick={() => console.log('hey')}>
                                     <span className="font-semibold"> Join Us </span>
-                                    <span className="pl-1">
+                                    <span className="pl-2 animate-shakeHorizontal">
                                         <BsArrowRight />
                                     </span>
                                 </button>
@@ -141,7 +141,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                 />
 
                 <div className="  absolute text-white h-full w-full ">
-                    <div className={`absolute top-[13%] text-[2vh] text-center tablet:w-[25%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                    <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
                         <div className="mb-2">LAZYVERSE </div>
                         Our future hub as we grow big. Lazyverse is a digital space that connect community around
                         our sales channel responsible for all products sales, exchanges and
@@ -151,7 +151,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                             <div className=" p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
                                 <button className="flex items-center" onClick={() => console.log('hey')}>
                                     <span className="font-semibold mr-2"> Join Us </span>
-                                    <span className="pl-1 animate-shakeHorizontal ">
+                                    <span className="pl-2 animate-shakeHorizontal ">
                                         <BsArrowRight />
                                     </span>
                                 </button>

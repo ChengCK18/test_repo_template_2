@@ -45,7 +45,7 @@ const IntroPage = ({ userDevice }) => {
 
 
     return (
-        <div className={`w-full bg-about_bg_img bg-fixed `}>
+        <div className={`w-full bg-about_bg_img bg-cover bg-fixed `}>
             <div className={`flex w-full justify-end `} id='section-about'>
                 <img
                     className={`${userDevice === 'mobile' ? 'w-full' : 'h-full'}`}
