@@ -147,7 +147,7 @@ const NavBar = ({ userDevice }) => {
             </div>
         </>
     );
-    const scrollIcon = (<div className="absolute bottom-0 right-[15%] font-anton text-xl rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadown">Scroll Down<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
+    const scrollIcon = (<div className="absolute bottom-0 tablet:right-[15%] mobile:right-[2%] font-anton text-xl rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadown">Scroll Down<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
     return (
         <div
             className={`fixed inset-0 z-30 h-full w-full ${scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
