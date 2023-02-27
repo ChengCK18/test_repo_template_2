@@ -50,9 +50,11 @@ const ModuleIntroPage = ({ userDevice }) => {
                 />
                 <div className=" z-20 absolute text-white h-full w-full ">
                     <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
-                        <div className="mb-2">CLUB </div>
-                        A hub for the community from Web 2 and Web 3,
-                        with similar visions and interests <br />
+                        <div className="font-libreBas mb-2">CLUB </div>
+                        <span className="font-libreBas ">
+                            A hub for the community from Web 2 and Web 3,
+                            with similar visions and interests <br />
+                        </span>
                         <div className="mt-2 flex justify-end ">
                             <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
                                 <button className="flex items-center" onClick={() => console.log('hey')}>
@@ -79,10 +81,12 @@ const ModuleIntroPage = ({ userDevice }) => {
 
                 <div className=" z-20 absolute text-white h-full w-full ">
                     <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
-                        <div className="mb-2">STUDIO </div>
-                        The masterminds behind Lazynaire, formed by a group of creative souls who love
-                        original contents. They execute all the main utilities, facilitate partnership &
-                        collaboration programs
+                        <div className="font-libreBas mb-2">STUDIO </div>
+                        <span className="font-libreBas ">
+                            The masterminds behind Lazynaire, formed by a group of creative souls who love
+                            original contents. They execute all the main utilities, facilitate partnership &
+                            collaboration programs
+                        </span>
                         <br />
                         <div className="mt-2 flex justify-end ">
                             <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
@@ -112,11 +116,13 @@ const ModuleIntroPage = ({ userDevice }) => {
 
                 <div className=" z-20 absolute text-white h-full w-full ">
                     <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
-                        <div className="mb-2">MARKET </div>
-                        Home to all Lazynaire products distribution. Lazynaire Market is
-                        our sales channel responsible for all products sales, exchanges and
-                        Holder-only claims
-                        <br />
+                        <div className="font-libreBas mb-2">MARKET </div>
+                        <span className="font-libreBas ">
+                            Home to all Lazynaire products distribution. Lazynaire Market is
+                            our sales channel responsible for all products sales, exchanges and
+                            Holder-only claims
+                            <br />
+                        </span>
                         <div className="mt-2 flex justify-end ">
                             <div className="p-2 shadow-2xl bg-custom-theme-purple rounded-lg">
                                 <button className="flex items-center" onClick={() => console.log('hey')}>
@@ -141,11 +147,13 @@ const ModuleIntroPage = ({ userDevice }) => {
                 />
 
                 <div className="  absolute text-white h-full w-full ">
-                    <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[25%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
-                        <div className="mb-2">LAZYVERSE </div>
-                        Our future hub as we grow big. Lazyverse is a digital space that connect community around
-                        our sales channel responsible for all products sales, exchanges and
-                        the globe, while fully utilizing potential of blockchain
+                    <div className={`absolute top-[13%] text-[2vh] text-center laptop:w-[27%] tablet:w-[45%] mobile:w-[50%] mx-auto left-0 right-0`}>
+                        <div className="font-libreBas mb-2">LAZYVERSE </div>
+                        <span className="font-libreBas">
+                            Our future hub as we grow big. Lazyverse is a digital space that connect community around
+                            our sales channel responsible for all products sales, exchanges and
+                            the globe, while fully utilizing potential of blockchain
+                        </span>
                         <br />
                         <div className="relative z-50 mt-2  flex justify-end ">
                             <div className=" p-2 shadow-2xl bg-custom-theme-purple rounded-lg">

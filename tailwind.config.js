@@ -8,6 +8,7 @@ module.exports = {
             fontFamily: {
                 anton: ["Anton", "sans-serif"],
                 neueHaas: ["Neue Haas Grotesk Display Pro", "sans-serif"],
+                libreBas: ["Libre Baskerville", "serif"]
             },
             colors: {
                 "custom-theme-purple": "#47003C",

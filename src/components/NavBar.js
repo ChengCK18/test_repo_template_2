@@ -3,6 +3,7 @@ import { MdEmail } from "react-icons/md";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useEffect } from "react";
+import { RxDoubleArrowDown } from "react-icons/rx";
 import NavItem from "./NavItem";
 
 const NavBar = ({ userDevice }) => {
@@ -141,10 +142,12 @@ const NavBar = ({ userDevice }) => {
                     >
                         <MdEmail size={30} color={"white"} />
                     </a>
+
                 </div>
             </div>
         </>
     );
+    const scrollIcon = (<div className="absolute bottom-0 right-[15%] font-anton text-xl rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadown">Scroll Down<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
     return (
         <div
             className={`fixed inset-0 z-30 h-full w-full ${scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
@@ -153,7 +156,12 @@ const NavBar = ({ userDevice }) => {
             {headerTitleBar}
             {mobileNavLayout}
             {laptopNavLayout}
+
             {footerFloatRedirectIcons}
+            {scrollInfo.previousScroll === 0 ? scrollIcon : ''}
+
+
+
         </div>
     );
 };
