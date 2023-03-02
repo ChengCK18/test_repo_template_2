@@ -4,15 +4,28 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
+import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs"
+
 import NavItem from "./NavItem";
 
-const NavBar = ({ userDevice }) => {
+const NavBar = ({ userDevice, bgAudioMusic }) => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-
+    const [playSongs, setPlaySongs] = useState(false)
     const [scrollInfo, setScrollInfo] = useState({
         scrollUp: true,
         previousScroll: 0,
     });
+
+
+
+
+    console.log(playSongs)
+
+    if (!playSongs) {
+        bgAudioMusic.pause()
+    } else {
+        bgAudioMusic.play()
+    }
 
     const handleScroll = () => {
         const position = window.pageYOffset;
@@ -122,7 +135,7 @@ const NavBar = ({ userDevice }) => {
                 className={`absolute bottom-8 z-30 w-full ${showMobileMenu ? "hidden" : ""
                     }`}
             >
-                <div className="flex flex-row items-center justify-center space-x-6">
+                <div className="flex flex-row items-center justify-center w-full space-x-6">
                     <a
                         className="rounded-full bg-custom-theme-purple p-2"
                         href=" https://twitter.com/lazynaire_club"
@@ -143,11 +156,18 @@ const NavBar = ({ userDevice }) => {
                         <MdEmail size={30} color={"white"} />
                     </a>
 
+                    <button className="absolute border-2 border-black right-[2%] rounded-full bg-custom-theme-purple p-2"
+                        onClick={() => { setPlaySongs(!playSongs) }}>
+                        {playSongs && <BsFillPauseFill size={30} color={"white"} />}
+                        {!playSongs && <BsFillPlayFill size={30} color={"white"} />}
+                    </button>
+
+
                 </div>
             </div>
         </>
     );
-    const scrollIcon = (<div className="absolute bottom-0 tablet:right-[15%] mobile:right-[2%] font-anton text-xl rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadown">Scroll Down<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
+    const scrollIcon = (<div className="absolute bottom-0 tablet:left-[15%] mobile:left-[2%] font-anton text-xl rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadown">Scroll Down<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
     return (
         <div
             className={`fixed inset-0 z-30 h-full w-full ${scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
