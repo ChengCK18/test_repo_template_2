@@ -5,6 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs"
+import { CgLoadbarSound } from 'react-icons/cg'
 
 import NavItem from "./NavItem";
 
@@ -156,10 +157,12 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                         <MdEmail size={30} color={"white"} />
                     </a>
 
-                    <button className="absolute border-2 border-black right-[2%] rounded-full bg-custom-theme-purple p-2"
+                    <button className="absolute right-[2%] rounded-full bg-white opacity-50 p-1 laptop:block tablet:hidden mobile:hidden"
                         onClick={() => { setPlaySongs(!playSongs) }}>
-                        {playSongs && <BsFillPauseFill size={30} color={"white"} />}
-                        {!playSongs && <BsFillPlayFill size={30} color={"white"} />}
+                        <div className="opacity-100">
+                            {playSongs && <CgLoadbarSound size={41} color={"black"} />}
+                            {!playSongs && <CgLoadbarSound size={41} color={"black"} />}
+                        </div>
                     </button>
 
 
@@ -167,7 +170,7 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
             </div>
         </>
     );
-    const scrollIcon = (<div className="absolute bottom-0 tablet:left-[15%] mobile:left-[2%] font-anton text-xl rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadown">Scroll Down<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
+    const scrollIcon = (<div className="absolute bottom-0 tablet:left-[15%] mobile:left-[2%] tracking-wide font-anton laptop:text-[2.2vh] tablet:text-[2.2vh] mobile:text-[2.3vh] tablet: rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadow">SCROLL DOWN<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
     return (
         <div
             className={`fixed inset-0 z-30 h-full w-full ${scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
