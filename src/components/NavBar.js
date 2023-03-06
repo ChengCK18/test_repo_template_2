@@ -60,6 +60,11 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
         setShowMobileMenu(inverseShowMobileMenu);
     };
 
+    const handleMusicButton = () => {
+        const inversePlaySongs = !playSongs
+        setPlaySongs(inversePlaySongs)
+    }
+
     let headerTitleBar = (
         <>
             <div className="flex min-h-[5.5%] flex-grow  items-center justify-center bg-black mobile:h-[7%] ">
@@ -157,13 +162,22 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                         <MdEmail size={30} color={"white"} />
                     </a>
 
-                    <button className="absolute right-[2%] rounded-full bg-white opacity-50 p-1 laptop:block tablet:hidden mobile:hidden"
-                        onClick={() => { setPlaySongs(!playSongs) }}>
-                        <div className="opacity-100">
-                            {playSongs && <CgLoadbarSound size={41} color={"black"} />}
-                            {!playSongs && <CgLoadbarSound size={41} color={"black"} />}
+                    <div className="absolute  transition-width duration-700 right-[2%] w-[50px] hover:w-[20%] bg-red-600 rounded-full  laptop:block tablet:hidden mobile:hidden">
+                        <div className="group w-full h-full flex justify-end">
+                            <div className="grow bg-blue-300 rounded-full hidden group-hover:block pl-4 pt-1">Hello there</div>
+                            <div className="grow-0">
+                                <button className=" opacity-100 p-1 "
+                                    onClick={handleMusicButton}>
+                                    <CgLoadbarSound size={41} color={"black"} />
+                                </button>
+                            </div>
+
+
                         </div>
-                    </button>
+
+
+
+                    </div>
 
 
                 </div>

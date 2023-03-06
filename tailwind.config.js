@@ -16,6 +16,11 @@ module.exports = {
             backgroundImage: {
                 'about_bg_img': "url('../public/images/otherPages/laptop/Standard_Background_Black.png')",
             },
+            display: ["group-hover"],
+            transitionProperty: {
+                'width': 'width'
+            },
+
 
             animation: {
                 fadeInAni: 'fadeIn 0.6s ease-in-out forwards',
