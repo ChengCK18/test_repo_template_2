@@ -4,28 +4,25 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
-import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs"
-import { CgLoadbarSound } from 'react-icons/cg'
+import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
+import { CgLoadbarSound } from "react-icons/cg";
 
 import NavItem from "./NavItem";
 
 const NavBar = ({ userDevice, bgAudioMusic }) => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const [playSongs, setPlaySongs] = useState(false)
+    const [playSongs, setPlaySongs] = useState(false);
     const [scrollInfo, setScrollInfo] = useState({
         scrollUp: true,
         previousScroll: 0,
     });
 
-
-
-
-    console.log(playSongs)
+    console.log(playSongs);
 
     if (!playSongs) {
-        bgAudioMusic.pause()
+        bgAudioMusic.pause();
     } else {
-        bgAudioMusic.play()
+        bgAudioMusic.play();
     }
 
     const handleScroll = () => {
@@ -61,24 +58,26 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
     };
 
     const handleMusicButton = () => {
-        const inversePlaySongs = !playSongs
-        setPlaySongs(inversePlaySongs)
-    }
+        const inversePlaySongs = !playSongs;
+        setPlaySongs(inversePlaySongs);
+    };
 
     let headerTitleBar = (
         <>
             <div className="flex min-h-[5.5%] flex-grow  items-center justify-center bg-black mobile:h-[7%] ">
                 <div
-                    className={`font-anton tracking-wider text-white ${userDevice === "mobile"
-                        ? "ml-auto pl-12 text-[3.7vh]"
-                        : "text-[3.3vh]"
-                        }`}
+                    className={`font-anton tracking-wider text-white ${
+                        userDevice === "mobile"
+                            ? "ml-auto pl-12 text-[3.7vh]"
+                            : "text-[3.3vh]"
+                    }`}
                 >
                     LAZYNAIRE
                 </div>
                 <div
-                    className={`ml-auto pr-3 ${userDevice === "mobile" ? "" : "hidden"
-                        }`}
+                    className={`ml-auto pr-3 ${
+                        userDevice === "mobile" ? "" : "hidden"
+                    }`}
                 >
                     <HiMenuAlt4
                         size={30}
@@ -92,19 +91,41 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
     let mobileNavLayout = (
         <>
             <div
-                className={`${showMobileMenu ? "w-screen" : "w-0"
-                    } transition-width transition-slowest ease absolute flex h-full items-center justify-center bg-white opacity-95 duration-1000`}
+                className={`${
+                    showMobileMenu ? "w-screen" : "w-0"
+                } transition-slowest ease absolute flex h-full items-center justify-center bg-white opacity-95 transition-width duration-1000`}
             >
                 <div
-                    className={`${showMobileMenu ? "" : "hidden"} flex h-[80%] w-[90%] border-y-2 border-black`}
+                    className={`${
+                        showMobileMenu ? "" : "hidden"
+                    } flex h-[80%] w-[90%] border-y-2 border-black`}
                 >
                     <div className="flex flex-col justify-start">
-                        <NavItem text={"ABOUT"} textLink={"section-about"} userDevice={userDevice} />
-                        <NavItem text={"ROADMAP & CORE"} textLink={"section-roadmap-core"} userDevice={userDevice} />
-                        <NavItem text={"GALLERY"} textLink={"section-gallery"} userDevice={userDevice} />
-                        <NavItem text={"TEAM"} textLink={"section-team"} userDevice={userDevice} />
-                        <NavItem text={"MINT"} textLink={"#"} userDevice={userDevice} />
-
+                        <NavItem
+                            text={"ABOUT"}
+                            textLink={"section-about"}
+                            userDevice={userDevice}
+                        />
+                        <NavItem
+                            text={"ROADMAP & CORE"}
+                            textLink={"section-roadmap-core"}
+                            userDevice={userDevice}
+                        />
+                        <NavItem
+                            text={"GALLERY"}
+                            textLink={"section-gallery"}
+                            userDevice={userDevice}
+                        />
+                        <NavItem
+                            text={"TEAM"}
+                            textLink={"section-team"}
+                            userDevice={userDevice}
+                        />
+                        <NavItem
+                            text={"MINT"}
+                            textLink={"#"}
+                            userDevice={userDevice}
+                        />
                     </div>
                 </div>
                 <div className={`absolute top-2 right-2 `}>
@@ -120,15 +141,32 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
     let laptopNavLayout = (
         <>
             <div
-                className={`${userDevice === "laptop" || userDevice === "tablet"
-                    ? ""
-                    : "hidden"
-                    } flex h-[5.5%] flex-grow flex-row items-center justify-center space-x-16 bg-custom-theme-purple`}
+                className={`${
+                    userDevice === "laptop" || userDevice === "tablet"
+                        ? ""
+                        : "hidden"
+                } flex h-[5.5%] flex-grow flex-row items-center justify-center space-x-16 bg-custom-theme-purple`}
             >
-                <NavItem text={"ABOUT"} textLink={"section-about"} userDevice={userDevice} />
-                <NavItem text={"ROADMAP & CORE"} textLink={"section-roadmap-core"} userDevice={userDevice} />
-                <NavItem text={"GALLERY"} textLink={"section-gallery"} userDevice={userDevice} />
-                <NavItem text={"TEAM"} textLink={"section-team"} userDevice={userDevice} />
+                <NavItem
+                    text={"ABOUT"}
+                    textLink={"section-about"}
+                    userDevice={userDevice}
+                />
+                <NavItem
+                    text={"ROADMAP & CORE"}
+                    textLink={"section-roadmap-core"}
+                    userDevice={userDevice}
+                />
+                <NavItem
+                    text={"GALLERY"}
+                    textLink={"section-gallery"}
+                    userDevice={userDevice}
+                />
+                <NavItem
+                    text={"TEAM"}
+                    textLink={"section-team"}
+                    userDevice={userDevice}
+                />
                 <NavItem text={"MINT"} textLink={"#"} userDevice={userDevice} />
             </div>
         </>
@@ -138,10 +176,11 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
         <>
             {" "}
             <div
-                className={`absolute bottom-8 z-30 w-full ${showMobileMenu ? "hidden" : ""
-                    }`}
+                className={`absolute bottom-8 z-30 w-full ${
+                    showMobileMenu ? "hidden" : ""
+                }`}
             >
-                <div className="flex flex-row items-center justify-center w-full space-x-6">
+                <div className="flex w-full flex-row items-center justify-center space-x-6">
                     <a
                         className="rounded-full bg-custom-theme-purple p-2"
                         href=" https://twitter.com/lazynaire_club"
@@ -162,43 +201,45 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                         <MdEmail size={30} color={"white"} />
                     </a>
 
-                    <div className="absolute  transition-width duration-700 right-[2%] w-[50px] hover:w-[20%] bg-red-600 rounded-full  laptop:block tablet:hidden mobile:hidden">
-                        <div className="group w-full h-full flex justify-end">
-                            <div className="grow bg-blue-300 rounded-full hidden group-hover:block pl-4 pt-1">Hello there</div>
+                    <div className="absolute right-[2%] w-[50px] rounded-full bg-red-600 transition-width duration-700 hover:w-[20%]  mobile:hidden tablet:hidden laptop:block">
+                        <div className="group flex h-full w-full justify-end">
+                            <div className="hidden grow rounded-full bg-blue-300 pl-4 pt-1 group-hover:block">
+                                Hello there
+                            </div>
                             <div className="grow-0">
-                                <button className=" opacity-100 p-1 "
-                                    onClick={handleMusicButton}>
+                                <button
+                                    className=" p-1 opacity-100 "
+                                    onClick={handleMusicButton}
+                                >
                                     <CgLoadbarSound size={41} color={"black"} />
                                 </button>
                             </div>
-
-
                         </div>
-
-
-
                     </div>
-
-
                 </div>
             </div>
         </>
     );
-    const scrollIcon = (<div className="absolute bottom-0 tablet:left-[15%] mobile:left-[2%] tracking-wide font-anton laptop:text-[2.2vh] tablet:text-[2.2vh] mobile:text-[2.3vh] tablet: rounded-lg text-white w-24 p-1 pt-3 text-center dropTextShadow">SCROLL DOWN<div className="mt-3 w-full flex items-center justify-center shadow-custom-theme-purple animate-bounce"><RxDoubleArrowDown size={30} /></div></div>)
+    const scrollIcon = (
+        <div className="tablet: dropTextShadow absolute bottom-0 w-24 rounded-lg p-1 pt-3 text-center font-anton tracking-wide text-white mobile:left-[2%] mobile:text-[2.3vh] tablet:left-[15%] tablet:text-[2.2vh] laptop:text-[2.2vh]">
+            SCROLL DOWN
+            <div className="mt-3 flex w-full animate-bounce items-center justify-center shadow-custom-theme-purple">
+                <RxDoubleArrowDown size={30} />
+            </div>
+        </div>
+    );
     return (
         <div
-            className={`fixed inset-0 z-30 h-full w-full ${scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
-                }`}
+            className={`fixed inset-0 z-30 h-full w-full ${
+                scrollInfo.scrollUp ? "animate-fadeInAni" : "animate-fadeOutAni"
+            }`}
         >
             {headerTitleBar}
             {mobileNavLayout}
             {laptopNavLayout}
 
             {footerFloatRedirectIcons}
-            {scrollInfo.previousScroll === 0 ? scrollIcon : ''}
-
-
-
+            {scrollInfo.previousScroll === 0 ? scrollIcon : ""}
         </div>
     );
 };
