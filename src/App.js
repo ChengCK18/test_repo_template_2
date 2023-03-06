@@ -5,11 +5,11 @@ import IntroPage from "./components/IntroPage";
 import ModuleIntroPage from "./components/ModuleIntroPage";
 import BlackBgWithImg from "./components/BlackBgWithImg";
 import HeaderText from "./components/HeaderText";
-import bgMusic from './components/Hikaru_nara_by_Goose_House.mp3'
+import bgMusic from "./components/Hikaru_nara_by_Goose_House.mp3";
 
 const App = () => {
     const [userDevice, setUserDevice] = useState("laptop");
-    let bgAudioMusic = new Audio(bgMusic)
+    let bgAudioMusic = new Audio(bgMusic);
 
     useEffect(() => {
         let screenWidth = window.innerWidth;
@@ -35,7 +35,7 @@ const App = () => {
         }
     };
 
-    console.log('here', userDevice);
+    console.log("here", userDevice);
 
     return (
         <div className="scroll-smooth">
@@ -43,11 +43,19 @@ const App = () => {
             <LandingPage userDevice={userDevice} />
             <IntroPage userDevice={userDevice} />
             <ModuleIntroPage userDevice={userDevice} />
-            <BlackBgWithImg userDevice={userDevice} imgPath={"10_Gallery.png"} divId={'section-gallery'} />
+            <BlackBgWithImg
+                userDevice={userDevice}
+                imgPath={"10_Gallery.png"}
+                divId={"section-gallery"}
+            />
             <HeaderText userDevice={userDevice} imgPath={"11_Experience.png"} />
-            <BlackBgWithImg userDevice={userDevice} imgPath={"12_Team.png"} divId={'section-team'} />
+            <BlackBgWithImg
+                userDevice={userDevice}
+                imgPath={"12_Team.png"}
+                divId={"section-team"}
+            />
             <HeaderText userDevice={userDevice} imgPath={"13_Unlock.png"} />
-        </div >
+        </div>
     );
 };
 

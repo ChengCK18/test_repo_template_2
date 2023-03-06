@@ -88,13 +88,14 @@ const LandingPage = ({ userDevice }) => {
         );
     }
     return (
-        <div className=" flex relative h-screen w-full flex-col overflow-hidden">
+        <div className=" relative flex h-screen w-full flex-col overflow-hidden">
             <div className="absolute inset-0  h-full w-full justify-center  text-center">
                 <div
-                    className={`absolute z-20  ${userDevice === "mobile"
-                        ? "bottom-[60vh]"
-                        : "bottom-[68vh]"
-                        }  w-full bg-white bg-opacity-0 text-center font-anton font-normal leading-none tracking-wider text-custom-theme-purple mobile:text-[10.2vh] laptop:text-[13.8vh]`}
+                    className={`absolute z-20  ${
+                        userDevice === "mobile"
+                            ? "bottom-[60vh]"
+                            : "bottom-[68vh]"
+                    }  w-full bg-white bg-opacity-0 text-center font-anton font-normal leading-none tracking-wider text-custom-theme-purple mobile:text-[10.2vh] laptop:text-[13.8vh]`}
                 >
                     <p className={``}>
                         HOME TO {userDevice === "mobile" ? <br /> : ""} ALL.
