@@ -75,7 +75,7 @@ const MusicCapsule = ({ bgAudioMusic }) => {
     }
 
     return (
-        <div className="absolute right-[2%] h-[140%]  w-[65px] items-center justify-center rounded-full bg-music-capsule-white transition-width duration-700  hover:w-[35%] mobile:hidden tablet:hidden laptop:flex">
+        <div className="absolute right-[2%] h-16  w-[65px] items-center justify-center rounded-full bg-music-capsule-white transition-width duration-700  hover:w-[35%] mobile:hidden tablet:hidden laptop:flex">
             <div className="group flex h-full w-full justify-end overflow-clip">
                 <div className=" hidden grow flex-row rounded-full  py-1  pl-4  group-hover:flex">
                     <div className="ml-3 w-3/5">

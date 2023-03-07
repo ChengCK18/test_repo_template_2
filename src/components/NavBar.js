@@ -170,20 +170,20 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                         className="rounded-full bg-custom-theme-purple p-2"
                         href=" https://twitter.com/lazynaire_club"
                     >
-                        <SiTwitter size={30} color={"white"} />
+                        <SiTwitter size={35} color={"white"} />
                     </a>
                     <a
                         className="rounded-full bg-custom-theme-purple p-2"
                         href="https://discord.gg/lazynaireclub"
                     >
-                        <SiDiscord size={30} color={"white"} />
+                        <SiDiscord size={35} color={"white"} />
                     </a>
 
                     <a
                         className="rounded-full bg-custom-theme-purple p-2"
                         href="mailto:lazynaire.nft@gmail.com"
                     >
-                        <MdEmail size={30} color={"white"} />
+                        <MdEmail size={35} color={"white"} />
                     </a>
                     <MusicCapsule bgAudioMusic={bgAudioMusic} />
                 </div>

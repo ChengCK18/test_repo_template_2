@@ -6,9 +6,9 @@ import ModuleIntroPage from "./components/ModuleIntroPage";
 import BlackBgWithImg from "./components/BlackBgWithImg";
 import HeaderText from "./components/HeaderText";
 
-const App = () => {
+const App = ({ bgAudioMusic }) => {
     const [userDevice, setUserDevice] = useState("laptop");
-    let bgAudioMusic = new Audio();
+
     useEffect(() => {
         let screenWidth = window.innerWidth;
 
