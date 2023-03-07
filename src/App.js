@@ -5,12 +5,10 @@ import IntroPage from "./components/IntroPage";
 import ModuleIntroPage from "./components/ModuleIntroPage";
 import BlackBgWithImg from "./components/BlackBgWithImg";
 import HeaderText from "./components/HeaderText";
-import bgMusic from "./components/Hikaru_nara_by_Goose_House.mp3";
 
 const App = () => {
     const [userDevice, setUserDevice] = useState("laptop");
-    let bgAudioMusic = new Audio(bgMusic);
-
+    let bgAudioMusic = new Audio();
     useEffect(() => {
         let screenWidth = window.innerWidth;
 

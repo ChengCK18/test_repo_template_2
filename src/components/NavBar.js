@@ -4,47 +4,37 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
-import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
-import { CgLoadbarSound } from "react-icons/cg";
 
 import NavItem from "./NavItem";
+import MusicCapsule from "./MusicCapsule";
 
 const NavBar = ({ userDevice, bgAudioMusic }) => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const [playSongs, setPlaySongs] = useState(false);
+
     const [scrollInfo, setScrollInfo] = useState({
         scrollUp: true,
         previousScroll: 0,
     });
 
-    console.log(playSongs);
-
-    if (!playSongs) {
-        bgAudioMusic.pause();
-    } else {
-        bgAudioMusic.play();
-    }
-
-    const handleScroll = () => {
-        const position = window.pageYOffset;
-
-        if (scrollInfo.previousScroll !== position) {
-            const difference = scrollInfo.previousScroll - position;
-            if (difference < 0) {
-                setScrollInfo({
-                    scrollUp: false,
-                    previousScroll: position,
-                });
-            } else {
-                setScrollInfo({
-                    scrollUp: true,
-                    previousScroll: position,
-                });
-            }
-        }
-    };
-
     useEffect(() => {
+        const handleScroll = () => {
+            const position = window.pageYOffset;
+
+            if (scrollInfo.previousScroll !== position) {
+                const difference = scrollInfo.previousScroll - position;
+                if (difference < 0) {
+                    setScrollInfo({
+                        scrollUp: false,
+                        previousScroll: position,
+                    });
+                } else {
+                    setScrollInfo({
+                        scrollUp: true,
+                        previousScroll: position,
+                    });
+                }
+            }
+        };
         window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => {
@@ -55,11 +45,6 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
     const handleMobileMenu = () => {
         const inverseShowMobileMenu = !showMobileMenu;
         setShowMobileMenu(inverseShowMobileMenu);
-    };
-
-    const handleMusicButton = () => {
-        const inversePlaySongs = !playSongs;
-        setPlaySongs(inversePlaySongs);
     };
 
     let headerTitleBar = (
@@ -200,22 +185,7 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                     >
                         <MdEmail size={30} color={"white"} />
                     </a>
-
-                    <div className="absolute right-[2%] w-[50px] rounded-full bg-red-600 transition-width duration-700 hover:w-[20%]  mobile:hidden tablet:hidden laptop:block">
-                        <div className="group flex h-full w-full justify-end">
-                            <div className="hidden grow rounded-full bg-blue-300 pl-4 pt-1 group-hover:block">
-                                Hello there
-                            </div>
-                            <div className="grow-0">
-                                <button
-                                    className=" p-1 opacity-100 "
-                                    onClick={handleMusicButton}
-                                >
-                                    <CgLoadbarSound size={41} color={"black"} />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <MusicCapsule bgAudioMusic={bgAudioMusic} />
                 </div>
             </div>
         </>
@@ -228,6 +198,7 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
             </div>
         </div>
     );
+
     return (
         <div
             className={`fixed inset-0 z-30 h-full w-full ${

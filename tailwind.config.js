@@ -8,43 +8,42 @@ module.exports = {
             fontFamily: {
                 anton: ["Anton", "sans-serif"],
                 neueHaas: ["Neue Haas Grotesk Display Pro", "sans-serif"],
-                libreBas: ["Libre Baskerville", "serif"]
+                libreBas: ["Libre Baskerville", "serif"],
             },
             colors: {
                 "custom-theme-purple": "#47003C",
+                "music-capsule-white": "rgba(255, 255, 255, 0.75)",
             },
             backgroundImage: {
-                'about_bg_img': "url('../public/images/otherPages/laptop/Standard_Background_Black.png')",
+                about_bg_img:
+                    "url('../public/images/otherPages/laptop/Standard_Background_Black.png')",
             },
             display: ["group-hover"],
             transitionProperty: {
-                'width': 'width'
+                width: "width",
             },
 
-
             animation: {
-                fadeInAni: 'fadeIn 0.6s ease-in-out forwards',
-                fadeOutAni: 'fadeOut 0.6s ease-in-out forwards',
-                shakeHorizontal: 'shakeHoriz 1.5s linear infinite'
+                fadeInAni: "fadeIn 0.6s ease-in-out forwards",
+                fadeOutAni: "fadeOut 0.6s ease-in-out forwards",
+                shakeHorizontal: "shakeHoriz 1.5s linear infinite",
             },
 
             // that is actual animation
-            keyframes: theme => ({
+            keyframes: (theme) => ({
                 fadeIn: {
-                    '0%': { opacity: '0%' },
-                    '100%': { opacity: '100%' },
+                    "0%": { opacity: "0%" },
+                    "100%": { opacity: "100%" },
                 },
                 fadeOut: {
-                    '0%': { opacity: '100%' },
-                    '100%': { opacity: '0%' },
+                    "0%": { opacity: "100%" },
+                    "100%": { opacity: "0%" },
                 },
                 shakeHoriz: {
-
-                    '0%': { 'margin': '-7%' },
-                    '50%': { 'margin': '0' },
-                    '100%': { 'margin': '-7%' },
-
-                }
+                    "0%": { margin: "-7%" },
+                    "50%": { margin: "0" },
+                    "100%": { margin: "-7%" },
+                },
             }),
         },
 
