@@ -9,7 +9,6 @@ const IntroPage = ({ userDevice }) => {
 
     const handleScroll = () => {
         const position = window.pageYOffset;
-        console.log("da ", position);
         setScrollPosition(position);
     };
 
@@ -21,7 +20,6 @@ const IntroPage = ({ userDevice }) => {
     }, []);
 
     useEffect(() => {
-        console.log(introSegment);
         if (scrollPosition > 4 * window.innerHeight) {
             if (introSegment !== 4) {
                 setIntroSegment(4);
