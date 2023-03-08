@@ -35,17 +35,38 @@ const MusicCapsule = ({ bgAudioMusic }) => {
     });
 
     useEffect(() => {
-        bgAudioMusic.src = songsList[songProperties.songIndex].songPath;
+        let strBgPath = bgAudioMusic.src.split("/");
+        let parsedStrPath = strBgPath.at(-2) + "/" + strBgPath.at(-1);
+
+        if (parsedStrPath !== songsList[songProperties.songIndex].songPath) {
+            bgAudioMusic.src = songsList[songProperties.songIndex].songPath;
+        }
+
+        if (!songProperties.playStatus) {
+            bgAudioMusic.pause();
+        } else {
+            bgAudioMusic.play();
+        }
+
         setReload();
     }, [songProperties, bgAudioMusic]);
 
-    const handlePlayPauseButton = () => {
+    const handlePlayButton = () => {
         let songPropertiesUpdated = {
             ...songProperties,
-            playStatus: !songProperties.playStatus,
+            playStatus: true,
         };
         setSongProperties(songPropertiesUpdated);
     };
+
+    const handlePauseButton = () => {
+        let songPropertiesUpdated = {
+            ...songProperties,
+            playStatus: false,
+        };
+        setSongProperties(songPropertiesUpdated);
+    };
+
     const handleSkipStartButton = () => {
         let updatedSongIndex = songProperties.songIndex - 1;
         if (updatedSongIndex === -1) {
@@ -63,16 +84,6 @@ const MusicCapsule = ({ bgAudioMusic }) => {
 
         setSongProperties({ ...songProperties, songIndex: updatedSongIndex });
     };
-
-    console.log(bgAudioMusic.src);
-
-    if (!songProperties.playStatus) {
-        bgAudioMusic.pause();
-        console.log("pause ", bgAudioMusic.src);
-    } else {
-        bgAudioMusic.play();
-        console.log("play ", bgAudioMusic.src);
-    }
 
     return (
         <div className="absolute right-[2%] h-16  w-[65px] items-center justify-center rounded-full bg-music-capsule-white transition-width duration-700  hover:w-[35%] mobile:hidden tablet:hidden laptop:flex">
@@ -94,14 +105,16 @@ const MusicCapsule = ({ bgAudioMusic }) => {
                             </button>
                         </div>
                         <div className="flex h-full w-1/3 items-center justify-center ">
-                            <button onClick={handlePlayPauseButton}>
-                                {!songProperties.playStatus && (
+                            {!songProperties.playStatus && (
+                                <button onClick={handlePlayButton}>
                                     <BsFillPlayFill size={35} />
-                                )}
-                                {songProperties.playStatus && (
+                                </button>
+                            )}
+                            {songProperties.playStatus && (
+                                <button onClick={handlePauseButton}>
                                     <BsFillPauseFill size={35} />
-                                )}
-                            </button>
+                                </button>
+                            )}
                         </div>
                         <div className="flex h-full w-1/3 items-center justify-center">
                             <button onClick={handleSkipEndButton}>
