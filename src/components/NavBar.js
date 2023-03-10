@@ -167,23 +167,23 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
             >
                 <div className="flex w-full flex-row items-center justify-center space-x-6">
                     <a
-                        className="rounded-full bg-custom-theme-purple p-2"
+                        className="rounded-full bg-custom-theme-purple p-3"
                         href=" https://twitter.com/lazynaire_club"
                     >
-                        <SiTwitter size={35} color={"white"} />
+                        <SiTwitter size={30} color={"white"} />
                     </a>
                     <a
-                        className="rounded-full bg-custom-theme-purple p-2"
+                        className="rounded-full bg-custom-theme-purple p-3"
                         href="https://discord.gg/lazynaireclub"
                     >
-                        <SiDiscord size={35} color={"white"} />
+                        <SiDiscord size={30} color={"white"} />
                     </a>
 
                     <a
-                        className="rounded-full bg-custom-theme-purple p-2"
+                        className="rounded-full bg-custom-theme-purple p-3"
                         href="mailto:lazynaire.nft@gmail.com"
                     >
-                        <MdEmail size={35} color={"white"} />
+                        <MdEmail size={30} color={"white"} />
                     </a>
                     <MusicCapsule bgAudioMusic={bgAudioMusic} />
                 </div>
@@ -191,7 +191,7 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
         </>
     );
     const scrollIcon = (
-        <div className="tablet: dropTextShadow absolute bottom-0 w-24 rounded-lg p-1 pt-3 text-center font-anton tracking-wide text-white mobile:left-[2%] mobile:text-[2.3vh] tablet:left-[15%] tablet:text-[2.2vh] laptop:text-[2.2vh]">
+        <div className="tablet: dropTextShadow absolute bottom-0 w-24 rounded-lg p-1 pt-3 text-center font-anton tracking-wide text-white mobile:left-[2%] mobile:text-[2.3vh] tablet:left-[15%] tablet:text-[2.2vh] laptop:left-[2%] laptop:text-[2.2vh]">
             SCROLL DOWN
             <div className="mt-3 flex w-full animate-bounce items-center justify-center shadow-custom-theme-purple">
                 <RxDoubleArrowDown size={30} />

@@ -12,7 +12,7 @@ module.exports = {
             },
             colors: {
                 "custom-theme-purple": "#47003C",
-                "music-capsule-white": "rgba(255, 255, 255, 0.75)",
+                "music-capsule-white": "rgba(255, 255, 255, 1)",
             },
             backgroundImage: {
                 about_bg_img:

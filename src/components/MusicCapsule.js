@@ -10,6 +10,11 @@ import { CgLoadbarSound } from "react-icons/cg";
 
 const songsList = [
     {
+        songTitle: "horese",
+        songArtist: "horese",
+        songPath: "songs/horse.mp3",
+    },
+    {
         songTitle: "Let's Do It (Let's Fall In Love)",
         songArtist: "Ella Fitzgerald",
         songPath: "songs/track1.mp3",
@@ -30,9 +35,18 @@ const MusicCapsule = ({ bgAudioMusic }) => {
     const [, setReload] = useState();
 
     const [songProperties, setSongProperties] = useState({
-        songIndex: 2,
+        songIndex: 0,
         playStatus: false,
     });
+
+    useEffect(() => {
+        bgAudioMusic.addEventListener("ended", () => handleSkipEndButton());
+        return () => {
+            bgAudioMusic.removeEventListener("ended", () =>
+                handleSkipEndButton()
+            );
+        };
+    }, []);
 
     useEffect(() => {
         let strBgPath = bgAudioMusic.src.split("/");
@@ -69,28 +83,38 @@ const MusicCapsule = ({ bgAudioMusic }) => {
 
     const handleSkipStartButton = () => {
         let updatedSongIndex = songProperties.songIndex - 1;
+        console.log("before ", updatedSongIndex);
         if (updatedSongIndex === -1) {
-            updatedSongIndex = 2;
+            updatedSongIndex = 3;
         }
-
-        setSongProperties({ ...songProperties, songIndex: updatedSongIndex });
+        console.log("after ", updatedSongIndex);
+        setSongProperties({
+            ...songProperties,
+            playStatus: true,
+            songIndex: updatedSongIndex,
+        });
     };
 
     const handleSkipEndButton = () => {
         let updatedSongIndex = songProperties.songIndex + 1;
-        if (updatedSongIndex === 3) {
+        if (updatedSongIndex === 4) {
             updatedSongIndex = 0;
         }
-
-        setSongProperties({ ...songProperties, songIndex: updatedSongIndex });
+        setSongProperties({
+            ...songProperties,
+            playStatus: true,
+            songIndex: updatedSongIndex,
+        });
     };
 
+    console.log(songProperties);
+
     return (
-        <div className="absolute right-[2%] h-16  w-[65px] items-center justify-center rounded-full bg-music-capsule-white transition-width duration-700  hover:w-[35%] mobile:hidden tablet:hidden laptop:flex">
+        <div className="absolute right-[2%] h-16 w-[65px] items-center justify-center rounded-full  bg-music-capsule-white transition-width duration-700  hover:w-[35%] mobile:hidden tablet:hidden laptop:flex">
             <div className="group flex h-full w-full justify-end overflow-clip">
                 <div className=" hidden grow flex-row rounded-full  py-1  pl-4  group-hover:flex">
-                    <div className="ml-3 w-3/5">
-                        <span className="font-neueHaas text-[1.1vw] font-bold">
+                    <div className="ml-3 w-3/5 pt-1 leading-tight">
+                        <span className="font-anton text-[1.1vw]  tracking-wide">
                             {songsList[songProperties.songIndex].songTitle}
                         </span>
                         <br />
@@ -123,7 +147,7 @@ const MusicCapsule = ({ bgAudioMusic }) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex grow-0 items-center justify-center p-1 ">
+                <div className="flex grow-0 items-center justify-center p-1 pr-[0.4rem]">
                     <CgLoadbarSound size={54} color={"black"} />
                 </div>
             </div>
