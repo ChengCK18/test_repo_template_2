@@ -62,9 +62,9 @@ const ModuleIntroPage = ({ userDevice }) => {
                         </span>
                         <div className="mt-2 flex justify-center">
                             <div className="rounded-lg border border-white p-1 px-4 mobile:text-[1.4vh] tablet:text-[1.6vh] laptop:text-[1.7vh]">
-                                <button
+                                <a
                                     className="relative z-30 flex items-center"
-                                    onClick={() => console.log("hey")}
+                                    href={"https://discord.gg/qmWZ5pwj"}
                                 >
                                     <span className="font-neueHaas">
                                         {" "}
@@ -73,7 +73,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                                     <span className="animate-shakeHorizontal pl-2">
                                         <BsArrowRight />
                                     </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -104,18 +104,17 @@ const ModuleIntroPage = ({ userDevice }) => {
                         <br />
                         <div className="mt-2 flex justify-center">
                             <div className="rounded-lg border border-white p-1 px-4 mobile:text-[1.4vh] tablet:text-[1.6vh] laptop:text-[1.7vh]">
-                                <button
+                                <a
                                     className="relative z-30 flex items-center"
-                                    onClick={() => console.log("hey")}
+                                    href={"https://linktr.ee/lazynaire"}
                                 >
                                     <span className="font-neueHaas">
-                                        {" "}
-                                        COLLAB{" "}
+                                        COLLAB
                                     </span>
                                     <span className="animate-shakeHorizontal pl-2">
                                         <BsArrowRight />
                                     </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

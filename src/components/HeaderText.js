@@ -2,7 +2,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 const HeaderText = ({ userDevice, imgPath }) => {
     let copyrightText = (
-        <div className="h-10 w-full bg-custom-theme-purple text-center tracking-wider ">
+        <div className="m-0 h-10 w-full bg-custom-theme-purple text-center tracking-wider ">
             <span className="font-neueHaas text-white mobile:text-[12px] tablet:text-[14px] laptop:text-[16px]">
                 Copyright &copy; 2023 Lazynaire{" "}
             </span>
@@ -13,15 +13,15 @@ const HeaderText = ({ userDevice, imgPath }) => {
         <div className="absolute top-[68%] flex h-[25%] w-full justify-center ">
             <div className="mt-2 ">
                 <div className="rounded-lg border border-white p-1 px-4 mobile:text-[1.4vh] tablet:text-[1.6vh] laptop:text-[1.7vh]">
-                    <button
+                    <a
                         className="relative z-30 flex items-center text-white"
-                        onClick={() => console.log("hey")}
+                        href={"https://linktr.ee/lazynaire"}
                     >
                         <span className="font-neueHaas"> COLLAB </span>
                         <span className="animate-shakeHorizontal pl-2">
                             <BsArrowRight />
                         </span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

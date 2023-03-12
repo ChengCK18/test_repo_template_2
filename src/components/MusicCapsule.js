@@ -10,11 +10,6 @@ import { CgLoadbarSound } from "react-icons/cg";
 
 const songsList = [
     {
-        songTitle: "horese",
-        songArtist: "horese",
-        songPath: "songs/horse.mp3",
-    },
-    {
         songTitle: "Let's Do It (Let's Fall In Love)",
         songArtist: "Ella Fitzgerald",
         songPath: "songs/track1.mp3",
@@ -83,11 +78,11 @@ const MusicCapsule = ({ bgAudioMusic }) => {
 
     const handleSkipStartButton = () => {
         let updatedSongIndex = songProperties.songIndex - 1;
-        console.log("before ", updatedSongIndex);
+
         if (updatedSongIndex === -1) {
-            updatedSongIndex = 3;
+            updatedSongIndex = songsList.length - 1;
         }
-        console.log("after ", updatedSongIndex);
+
         setSongProperties({
             ...songProperties,
             playStatus: true,
@@ -97,7 +92,7 @@ const MusicCapsule = ({ bgAudioMusic }) => {
 
     const handleSkipEndButton = () => {
         let updatedSongIndex = songProperties.songIndex + 1;
-        if (updatedSongIndex === 4) {
+        if (updatedSongIndex === songsList.length) {
             updatedSongIndex = 0;
         }
         setSongProperties({
@@ -106,8 +101,6 @@ const MusicCapsule = ({ bgAudioMusic }) => {
             songIndex: updatedSongIndex,
         });
     };
-
-    console.log(songProperties);
 
     return (
         <div className="absolute right-[2%] h-16 w-[65px] items-center justify-center rounded-full  bg-music-capsule-white transition-width duration-700  hover:w-[35%] mobile:hidden tablet:hidden laptop:flex">

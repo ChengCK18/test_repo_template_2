@@ -107,7 +107,7 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                             userDevice={userDevice}
                         />
                         <NavItem
-                            text={"MINT"}
+                            text={"MINT (TBA)"}
                             textLink={"#"}
                             userDevice={userDevice}
                         />
@@ -152,7 +152,11 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                     textLink={"section-team"}
                     userDevice={userDevice}
                 />
-                <NavItem text={"MINT"} textLink={"#"} userDevice={userDevice} />
+                <NavItem
+                    text={"MINT (TBA)"}
+                    textLink={"#"}
+                    userDevice={userDevice}
+                />
             </div>
         </>
     );
