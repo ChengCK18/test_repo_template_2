@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
     BsFillPlayFill,
     BsFillPauseFill,
@@ -7,6 +7,7 @@ import {
 } from "react-icons/bs";
 
 import { CgLoadbarSound } from "react-icons/cg";
+import { MusicContext } from "..";
 
 const songsList = [
     {
@@ -26,8 +27,9 @@ const songsList = [
     },
 ];
 
-const MusicCapsule = ({ bgAudioMusic }) => {
+const MusicCapsule = () => {
     const [, setReload] = useState();
+    let bgAudioMusic = useContext(MusicContext);
 
     const [songProperties, setSongProperties] = useState({
         songIndex: 0,

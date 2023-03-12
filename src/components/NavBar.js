@@ -7,8 +7,9 @@ import { RxDoubleArrowDown } from "react-icons/rx";
 
 import NavItem from "./NavItem";
 import MusicCapsule from "./MusicCapsule";
+import { MusicContext } from "..";
 
-const NavBar = ({ userDevice, bgAudioMusic }) => {
+const NavBar = ({ userDevice }) => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     const [scrollInfo, setScrollInfo] = useState({
@@ -189,7 +190,8 @@ const NavBar = ({ userDevice, bgAudioMusic }) => {
                     >
                         <MdEmail size={30} color={"white"} />
                     </a>
-                    <MusicCapsule bgAudioMusic={bgAudioMusic} />
+
+                    <MusicCapsule />
                 </div>
             </div>
         </>

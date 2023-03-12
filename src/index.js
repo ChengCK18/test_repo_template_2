@@ -4,9 +4,14 @@ import "./index.css";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+export const MusicContext = React.createContext();
 let bgAudioMusic = new Audio();
+
 root.render(
     <React.StrictMode>
-        <App bgAudioMusic={bgAudioMusic} />
+        <MusicContext.Provider value={bgAudioMusic}>
+            <App />
+        </MusicContext.Provider>
     </React.StrictMode>
 );

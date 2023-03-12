@@ -6,7 +6,7 @@ import ModuleIntroPage from "./components/ModuleIntroPage";
 import BlackBgWithImg from "./components/BlackBgWithImg";
 import HeaderText from "./components/HeaderText";
 
-const App = ({ bgAudioMusic }) => {
+const App = () => {
     const [userDevice, setUserDevice] = useState("laptop");
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const App = ({ bgAudioMusic }) => {
 
     return (
         <div className="scroll-smooth">
-            <NavBar userDevice={userDevice} bgAudioMusic={bgAudioMusic} />
+            <NavBar userDevice={userDevice} />
             <LandingPage userDevice={userDevice} />
             <IntroPage userDevice={userDevice} />
             <ModuleIntroPage userDevice={userDevice} />
