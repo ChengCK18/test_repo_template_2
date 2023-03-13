@@ -38,9 +38,9 @@ const IntroPage = ({ userDevice }) => {
             }
         }
     }, [scrollPosition, introSegment]);
-
+    // bg-black bg-about_bg_img bg-cover bg-fixed bg-center
     return (
-        <div className={`w-full bg-about_bg_img bg-cover bg-fixed `}>
+        <div className={`bgImageCustom -z-10 h-full w-full `}>
             <div className={`flex w-full justify-end `} id="section-about">
                 <img
                     className={`${

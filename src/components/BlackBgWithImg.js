@@ -14,9 +14,14 @@ const BlackBgWithImg = ({ userDevice, imgPath, divId }) => {
             </div>
         );
     }
-
+    if (imgPath === "12_Team.png") {
+        bgLayout = "-z-10 bgImageCustom";
+    }
     return (
-        <div className={`relative overflow-hidden bg-black`} id={divId}>
+        <div
+            className={`relative overflow-hidden bg-black ${bgLayout}`}
+            id={divId}
+        >
             <img
                 className="relative z-10 w-full "
                 src={`/images/otherPages/${userDevice}/${imgPath}`}

@@ -6,6 +6,17 @@
     text-shadow: #47003c 1px 0 10px;
 }
 
+.bgImageCustom {
+    background: url("../public/images/otherPages/laptop/Standard_Background_Black.png")
+        no-repeat center center;
+
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 @font-face {
     font-family: "libreBasItalic";
     src: url("../public/fonts/Libre_Baskerville/LibreBaskerville-Italic.ttf");
