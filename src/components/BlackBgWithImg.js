@@ -7,11 +7,11 @@ const BlackBgWithImg = ({ userDevice, imgPath, divId }) => {
             <div className="absolute z-0 h-screen mobile:top-[20%] mobile:right-[-25%] mobile:w-full tablet:top-[13%] laptop:top-[12%] laptop:right-[12%] laptop:w-[45%]">
                 <video
                     className="w-full"
-                    muted
                     defaultMuted
+                    muted
                     playsinline
-                    oncontextmenu="return false;"
-                    preload="auto"
+                    loop
+                    autoPlay
                 >
                     <source
                         src="/videos/product_gallery.mp4"
