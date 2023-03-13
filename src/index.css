@@ -5,3 +5,13 @@
 .dropTextShadow {
     text-shadow: #47003c 1px 0 10px;
 }
+
+@font-face {
+    font-family: "libreBasItalic";
+    src: url("../public/fonts/Libre_Baskerville/LibreBaskerville-Italic.ttf");
+}
+
+@font-face {
+    font-family: "antonRegular";
+    src: url("../public/fonts/Anton/Anton-Regular.ttf");
+}
