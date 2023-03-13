@@ -7,10 +7,15 @@
 }
 
 .bgImageCustom {
+    content: "";
+
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
     background: url("../public/images/otherPages/laptop/Standard_Background_Black.png")
         no-repeat center center;
-
-    background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -38,10 +38,16 @@ const IntroPage = ({ userDevice }) => {
             }
         }
     }, [scrollPosition, introSegment]);
-    // bg-black bg-about_bg_img bg-cover bg-fixed bg-center
+
     return (
-        <div className={`bgImageCustom -z-10 h-full w-full `}>
-            <div className={`flex w-full justify-end `} id="section-about">
+        <div className={`relative w-full `}>
+            <div className="absolute top-0 h-[500vh] w-full">
+                <div className="sticky top-0 h-screen w-full bg-about_bg_img bg-cover"></div>
+            </div>
+            <div
+                className={`relative  flex w-full justify-end`}
+                id="section-about"
+            >
                 <img
                     className={`${
                         userDevice === "mobile" ? "w-full" : "h-full"
@@ -51,7 +57,7 @@ const IntroPage = ({ userDevice }) => {
                 />
             </div>
 
-            <div className={` flex  w-full justify-start`}>
+            <div className={`relative   flex  w-full justify-start `}>
                 <img
                     className={`${
                         userDevice === "mobile" ? "w-full" : "h-full"
@@ -62,7 +68,7 @@ const IntroPage = ({ userDevice }) => {
             </div>
 
             <div
-                className={` flex  w-full justify-end`}
+                className={`relative   flex  w-full justify-end  `}
                 id="section-roadmap-core"
             >
                 <img
@@ -74,7 +80,7 @@ const IntroPage = ({ userDevice }) => {
                 />
             </div>
 
-            <div className={` flex  w-full justify-center`}>
+            <div className={`relative   flex  w-full justify-center  `}>
                 <img
                     className={`${
                         userDevice === "mobile" ? "w-full" : "h-full"

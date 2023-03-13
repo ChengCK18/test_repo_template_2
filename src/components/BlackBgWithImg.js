@@ -15,7 +15,7 @@ const BlackBgWithImg = ({ userDevice, imgPath, divId }) => {
         );
     }
     if (imgPath === "12_Team.png") {
-        bgLayout = "-z-10 bgImageCustom";
+        bgLayout = "";
     }
     return (
         <div

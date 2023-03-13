@@ -58,7 +58,7 @@ const NavBar = ({ userDevice }) => {
                             : "text-[3.3vh]"
                     }`}
                 >
-                    LAZYNAIRE
+                    <a href="#">LAZYNAIRE</a>
                 </div>
                 <div
                     className={`ml-auto pr-3 ${
