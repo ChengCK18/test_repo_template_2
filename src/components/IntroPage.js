@@ -42,7 +42,7 @@ const IntroPage = ({ userDevice }) => {
     return (
         <div className={`relative w-full `}>
             <div className="absolute top-0 -z-10 h-[500vh] w-full">
-                <div className="sticky top-0 h-screen w-full bg-about_bg_img bg-cover bg-center"></div>
+                <div className="sticky top-0 h-screen w-full bg-cover bg-center mobile:bg-about_bg_img_mobile tablet:bg-about_bg_img_tablet laptop:bg-about_bg_img_laptop"></div>
             </div>
             <div
                 className={`relative  flex w-full justify-end`}

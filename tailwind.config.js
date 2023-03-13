@@ -15,8 +15,12 @@ module.exports = {
                 "music-capsule-white": "rgba(255, 255, 255, 1)",
             },
             backgroundImage: {
-                about_bg_img:
+                about_bg_img_laptop:
                     "url('../public/images/otherPages/laptop/Standard_Background_Black.png')",
+                about_bg_img_tablet:
+                    "url('../public/images/otherPages/tablet/Standard_Background_Black.png')",
+                about_bg_img_mobile:
+                    "url('../public/images/otherPages/mobile/Standard_Background_Black.png')",
             },
             display: ["group-hover"],
             transitionProperty: {
