@@ -42,7 +42,7 @@ const ModuleIntroPage = ({ userDevice }) => {
     }, [scrollPosition, introSegment]);
 
     return (
-        <div className={`w-full bg-about_bg_img bg-cover bg-fixed`}>
+        <div className={`w-full`}>
             <div className={` relative flex w-full justify-end  `}>
                 <img
                     className={`${
