@@ -17,7 +17,7 @@ const HeaderText = ({ userDevice, imgPath }) => {
                         className="relative z-30 flex items-center text-white"
                         href={"https://linktr.ee/lazynaire"}
                     >
-                        <span className="font-neueHaas"> COLLAB </span>
+                        <span className="font-neueHaas"> CONTACT US </span>
                         <span className="animate-shakeHorizontal pl-2">
                             <BsArrowRight />
                         </span>

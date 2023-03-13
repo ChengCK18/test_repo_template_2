@@ -7,6 +7,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 export const MusicContext = React.createContext();
 let bgAudioMusic = new Audio();
+bgAudioMusic.volume = 0.5;
 
 root.render(
     <React.StrictMode>

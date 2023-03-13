@@ -52,6 +52,7 @@ const App = () => {
                 imgPath={"12_Team.png"}
                 divId={"section-team"}
             />
+
             <HeaderText userDevice={userDevice} imgPath={"13_Unlock.png"} />
         </div>
     );

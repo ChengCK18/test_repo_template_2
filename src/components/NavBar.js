@@ -108,7 +108,7 @@ const NavBar = ({ userDevice }) => {
                             userDevice={userDevice}
                         />
                         <NavItem
-                            text={"MINT (TBA)"}
+                            text={"MINT"}
                             textLink={"#"}
                             userDevice={userDevice}
                         />
@@ -153,11 +153,7 @@ const NavBar = ({ userDevice }) => {
                     textLink={"section-team"}
                     userDevice={userDevice}
                 />
-                <NavItem
-                    text={"MINT (TBA)"}
-                    textLink={"#"}
-                    userDevice={userDevice}
-                />
+                <NavItem text={"MINT"} textLink={"#"} userDevice={userDevice} />
             </div>
         </>
     );
