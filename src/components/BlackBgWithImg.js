@@ -5,7 +5,14 @@ const BlackBgWithImg = ({ userDevice, imgPath, divId }) => {
     if (imgPath === "10_Gallery.png") {
         videoPlayLayout = (
             <div className="absolute z-0 h-screen mobile:top-[20%] mobile:right-[-25%] mobile:w-full tablet:top-[13%] laptop:top-[12%] laptop:right-[12%] laptop:w-[45%]">
-                <video className="w-full" muted loop autoPlay playsinline>
+                <video
+                    className="w-full"
+                    muted
+                    defaultMuted
+                    playsinline
+                    oncontextmenu="return false;"
+                    preload="auto"
+                >
                     <source
                         src="/videos/product_gallery.mp4"
                         type="video/mp4"
