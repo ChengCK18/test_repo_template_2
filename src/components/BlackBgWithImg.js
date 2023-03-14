@@ -10,7 +10,7 @@ const BlackBgWithImg = ({ userDevice, imgPath, divId }) => {
                     autoPlay
                     loop
                     muted
-                    playsinline
+                    playsInline
                     src="/videos/product_gallery.mp4"
                     type="video/mp4"
                 ></video>
