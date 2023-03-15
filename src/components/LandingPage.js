@@ -28,7 +28,7 @@ const LandingPage = ({ userDevice, setLoading }) => {
                             src="/images/landingPage/Desktop_Front_01.png"
                             alt="Desktop_Middle_01"
                             onLoad={() => {
-                                setLoading(false);
+                                // setLoading(false);
                             }}
                         />
                     </div>
