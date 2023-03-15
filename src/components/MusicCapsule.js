@@ -16,11 +16,6 @@ const songsList = [
         songPath: "songs/track1.mp3",
     },
     {
-        songTitle: "Cheek To Cheek",
-        songArtist: "Ella Fitzgerald & Louis Armstrong",
-        songPath: "songs/track2.mp3",
-    },
-    {
         songTitle: "In a sentimental mood",
         songArtist: "Ella Fitzgerald",
         songPath: "songs/track3.mp3",
