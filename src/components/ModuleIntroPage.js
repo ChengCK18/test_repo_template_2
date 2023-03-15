@@ -42,10 +42,10 @@ const ModuleIntroPage = ({ userDevice }) => {
     }, [scrollPosition, introSegment]);
 
     return (
-        <div className={`w-full`}>
-            <div className={` relative flex w-full justify-end  `}>
+        <div className={`relative w-full bg-black`}>
+            <div className={` relative flex w-full justify-center  `}>
                 <img
-                    className={`${
+                    className={`laptop:w-full ${
                         userDevice === "mobile" ? "w-full" : "h-full"
                     }`}
                     src={`/images/otherPages/${userDevice}/06_Club.png`}
@@ -80,9 +80,9 @@ const ModuleIntroPage = ({ userDevice }) => {
                 </div>
             </div>
 
-            <div className={` relative flex  w-full justify-start`}>
+            <div className={` relative flex  w-full justify-center`}>
                 <img
-                    className={`${
+                    className={`laptop:w-full ${
                         userDevice === "mobile" ? "w-full" : "h-full"
                     }`}
                     src={`/images/otherPages/${userDevice}/07_Studio.png`}
@@ -121,9 +121,9 @@ const ModuleIntroPage = ({ userDevice }) => {
                 </div>
             </div>
 
-            <div className={` relative flex w-full justify-end`}>
+            <div className={` relative flex w-full justify-center`}>
                 <img
-                    className={`${
+                    className={`laptop:w-full ${
                         userDevice === "mobile" ? "w-full" : "h-full"
                     }`}
                     src={`/images/otherPages/${userDevice}/08_Market.png`}
@@ -161,7 +161,7 @@ const ModuleIntroPage = ({ userDevice }) => {
 
             <div className={` relative flex  w-full justify-center`}>
                 <img
-                    className={`${
+                    className={`laptop:w-full ${
                         userDevice === "mobile" ? "w-full" : "h-full"
                     }`}
                     src={`/images/otherPages/${userDevice}/09_Lazyverse.png`}

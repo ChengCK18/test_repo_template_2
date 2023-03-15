@@ -41,11 +41,11 @@ const IntroPage = ({ userDevice }) => {
 
     return (
         <div className={`relative w-full `}>
-            <div className="absolute top-0 -z-10 h-[500vh] w-full">
+            <div className="absolute top-0 -z-10 h-[600vh] w-full">
                 <div className="sticky top-0 h-screen w-full bg-cover bg-center mobile:bg-about_bg_img_mobile tablet:bg-about_bg_img_tablet laptop:bg-about_bg_img_laptop"></div>
             </div>
             <div
-                className={`relative  flex w-full justify-end`}
+                className={`relative  flex w-full justify-center`}
                 id="section-about"
             >
                 <img
@@ -57,7 +57,7 @@ const IntroPage = ({ userDevice }) => {
                 />
             </div>
 
-            <div className={`relative   flex  w-full justify-start `}>
+            <div className={`relative   flex  w-full justify-center `}>
                 <img
                     className={`${
                         userDevice === "mobile" ? "w-full" : "h-full"
@@ -68,7 +68,7 @@ const IntroPage = ({ userDevice }) => {
             </div>
 
             <div
-                className={`relative   flex  w-full justify-end  `}
+                className={`relative   flex  w-full justify-center  `}
                 id="section-roadmap-core"
             >
                 <img
