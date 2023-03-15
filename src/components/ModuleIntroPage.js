@@ -53,7 +53,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                 />
                 <div className="absolute h-full w-full text-white ">
                     <div
-                        className={`absolute top-[13%] left-0 right-0 mx-auto text-center mobile:w-[50%] mobile:text-[1.4vh] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[25%] laptop:text-[2vh]`}
+                        className={`absolute top-[8%] left-0 right-0 mx-auto text-center leading-tight mobile:w-[50%] mobile:text-[16px] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[25%] laptop:text-[2vh]`}
                     >
                         <div className="mb-2 font-libreBas">CLUB </div>
                         <span className="font-libreBas ">
@@ -61,7 +61,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                             similar visions and interests.
                         </span>
                         <div className="mt-2 flex justify-center">
-                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[1.4vh] tablet:text-[1.6vh] laptop:text-[1.7vh]">
+                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[14px] tablet:text-[1.6vh] laptop:text-[1.7vh]">
                                 <a
                                     className="relative z-30 flex items-center"
                                     href={"https://discord.gg/qmWZ5pwj"}
@@ -91,10 +91,10 @@ const ModuleIntroPage = ({ userDevice }) => {
 
                 <div className=" absolute h-full w-full text-white ">
                     <div
-                        className={`absolute top-[13%] left-0 right-0 mx-auto text-center mobile:w-[50%] mobile:text-[1.4vh] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[29%] laptop:text-[2vh]`}
+                        className={`absolute top-[8%] left-0 right-0 mx-auto text-center leading-tight mobile:w-[70%] mobile:text-[16px] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[29%] laptop:text-[2vh]`}
                     >
                         <div className="mb-2 font-libreBas">STUDIO </div>
-                        <span className="font-libreBas ">
+                        <span className="font-libreBas " leading-tight>
                             The masterminds behind Lazynaire, formed by a group
                             of creative souls who love original lifestyle
                             products and contents. They execute all the main
@@ -103,7 +103,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                         </span>
                         <br />
                         <div className="mt-2 flex justify-center">
-                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[1.4vh] tablet:text-[1.6vh] laptop:text-[1.7vh]">
+                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[14px] tablet:text-[1.6vh] laptop:text-[1.7vh]">
                                 <a
                                     className="relative z-30 flex items-center"
                                     href={"https://linktr.ee/lazynaire"}
@@ -132,7 +132,7 @@ const ModuleIntroPage = ({ userDevice }) => {
 
                 <div className=" absolute h-full w-full text-white ">
                     <div
-                        className={`absolute top-[13%] left-0 right-0 mx-auto text-center mobile:w-[50%] mobile:text-[1.4vh] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[25%] laptop:text-[2vh]`}
+                        className={`absolute top-[8%] left-0 right-0 mx-auto text-center leading-tight mobile:w-[70%] mobile:text-[16px] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[29%] laptop:text-[2vh]`}
                     >
                         <div className="mb-2 font-libreBas">MARKET </div>
                         <span className="font-libreBas ">
@@ -143,7 +143,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                             <br />
                         </span>
                         <div className="mt-2 flex justify-center">
-                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[1.4vh] tablet:text-[1.6vh] laptop:text-[1.7vh]">
+                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[14px] tablet:text-[1.6vh] laptop:text-[1.7vh]">
                                 <button
                                     className="relative z-30 flex items-center"
                                     onClick={() => console.log("hey")}
@@ -170,7 +170,7 @@ const ModuleIntroPage = ({ userDevice }) => {
 
                 <div className="  absolute h-full w-full text-white ">
                     <div
-                        className={`absolute top-[10%] left-0 right-0 mx-auto text-center mobile:w-[50%] mobile:text-[1.4vh] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[36%] laptop:text-[2vh]`}
+                        className={`absolute top-[8%] left-0 right-0 mx-auto text-center leading-tight mobile:w-[70%] mobile:text-[16px] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[36%] laptop:text-[2vh]`}
                     >
                         <div className="mb-2 font-libreBas">LAZYVERSE </div>
                         <span className="font-libreBas">
@@ -181,7 +181,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                         </span>
                         <br />
                         <div className="mt-2 flex justify-center">
-                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[1.4vh] tablet:text-[1.6vh] laptop:text-[1.7vh]">
+                            <div className="rounded-lg border border-white p-1 px-4 mobile:text-[14px] tablet:text-[1.6vh] laptop:text-[1.7vh]">
                                 <button
                                     className="relative z-30 flex items-center"
                                     onClick={() => console.log("hey")}
