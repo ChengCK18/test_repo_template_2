@@ -1,4 +1,4 @@
-const LandingPage = ({ userDevice }) => {
+const LandingPage = ({ userDevice, setLoading }) => {
     let landingPageLayout = "";
 
     if (userDevice === "laptop") {
@@ -27,6 +27,9 @@ const LandingPage = ({ userDevice }) => {
                             className="h-full"
                             src="/images/landingPage/Desktop_Front_01.png"
                             alt="Desktop_Middle_01"
+                            onLoad={() => {
+                                setLoading(false);
+                            }}
                         />
                     </div>
                 </div>

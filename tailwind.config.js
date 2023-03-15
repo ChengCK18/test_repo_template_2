@@ -30,6 +30,7 @@ module.exports = {
             animation: {
                 fadeInAni: "fadeIn 0.6s ease-in-out forwards",
                 fadeOutAni: "fadeOut 0.6s ease-in-out forwards",
+                fadeOutAniLoading: "fadeOut 1.5s ease-in-out forwards",
                 shakeHorizontal: "shakeHoriz 1.5s linear infinite",
             },
 
