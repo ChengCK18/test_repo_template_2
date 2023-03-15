@@ -14,9 +14,8 @@ const LoadingPage = ({ loading }) => {
         <div
             className={`${
                 loading ? "" : "animate-fadeOutAniLoading"
-            } ${loadingHidden} absolute top-0 z-50 h-full w-full overflow-hidden bg-black`}
+            } ${loadingHidden} absolute top-0 z-50 h-full w-full bg-black`}
         >
-            <div className="absolute top-0  h-[200vh] w-full bg-black"></div>
             <div className="relative flex h-full w-full items-center justify-center bg-cover bg-center mobile:bg-about_bg_img_mobile tablet:bg-about_bg_img_tablet laptop:bg-about_bg_img_laptop">
                 <div>
                     <div

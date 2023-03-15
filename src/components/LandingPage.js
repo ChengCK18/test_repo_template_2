@@ -1,4 +1,4 @@
-const LandingPage = ({ userDevice, setLoading }) => {
+const LandingPage = ({ userDevice, loading, setLoading }) => {
     let landingPageLayout = "";
 
     if (userDevice === "laptop") {
@@ -106,6 +106,9 @@ const LandingPage = ({ userDevice, setLoading }) => {
                 </div>
                 {landingPageLayout}
             </div>
+            {loading && (
+                <div className="absolute top-0 z-40 h-[120vh] w-full bg-black"></div>
+            )}
         </div>
     );
 };

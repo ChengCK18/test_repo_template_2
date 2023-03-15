@@ -48,7 +48,11 @@ const App = () => {
         <div className="scroll-smooth">
             <div className={`${loadingStyle}`}>
                 <NavBar userDevice={userDevice} />
-                <LandingPage userDevice={userDevice} setLoading={setLoading} />
+                <LandingPage
+                    userDevice={userDevice}
+                    loading={loading}
+                    setLoading={setLoading}
+                />
                 <IntroPage userDevice={userDevice} />
                 <ModuleIntroPage userDevice={userDevice} />
                 <BlackBgWithImg
