@@ -27,10 +27,6 @@ const App = () => {
             setUserDevice("laptop");
         }
         window.addEventListener("resize", handleResize);
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 5000);
     }, []);
 
     const handleResize = () => {

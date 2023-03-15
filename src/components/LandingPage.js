@@ -28,7 +28,7 @@ const LandingPage = ({ userDevice, loading, setLoading }) => {
                             src="/images/landingPage/Desktop_Front_01.png"
                             alt="Desktop_Middle_01"
                             onLoad={() => {
-                                // setLoading(false);
+                                setLoading(false);
                             }}
                         />
                     </div>
@@ -53,6 +53,9 @@ const LandingPage = ({ userDevice, loading, setLoading }) => {
                             className="h-full object-cover"
                             src="/images/landingPage/Mobile_Front_01.png"
                             alt="car_pink"
+                            onLoad={() => {
+                                setLoading(false);
+                            }}
                         />
                     </div>
                 </div>
@@ -84,6 +87,9 @@ const LandingPage = ({ userDevice, loading, setLoading }) => {
                             className="h-full"
                             src="/images/landingPage/Tablet_Front_01.png"
                             alt="Desktop_Middle_01"
+                            onLoad={() => {
+                                setLoading(false);
+                            }}
                         />
                     </div>
                 </div>
@@ -107,7 +113,7 @@ const LandingPage = ({ userDevice, loading, setLoading }) => {
                 {landingPageLayout}
             </div>
             {loading && (
-                <div className="absolute top-0 z-40 h-[120vh] w-full bg-black"></div>
+                <div className="absolute top-0 z-50 h-[120vh] w-full bg-black"></div>
             )}
         </div>
     );
