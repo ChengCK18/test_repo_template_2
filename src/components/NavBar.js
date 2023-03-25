@@ -1,9 +1,9 @@
 import { SiTwitter, SiDiscord } from "react-icons/si";
-import { MdEmail } from "react-icons/md";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
+import { SiLinktree } from "react-icons/si";
 
 import NavItem from "./NavItem";
 import MusicCapsule from "./MusicCapsule";
@@ -184,7 +184,7 @@ const NavBar = ({ userDevice }) => {
                         className="rounded-full bg-custom-theme-purple p-3"
                         href="https://linktr.ee/lazynaire"
                     >
-                        <MdEmail size={30} color={"white"} />
+                        <SiLinktree size={30} color={"white"} />
                     </a>
 
                     <MusicCapsule />
