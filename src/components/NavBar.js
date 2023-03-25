@@ -182,7 +182,7 @@ const NavBar = ({ userDevice }) => {
 
                     <a
                         className="rounded-full bg-custom-theme-purple p-3"
-                        href="mailto:lazynaire.nft@gmail.com"
+                        href="https://linktr.ee/lazynaire"
                     >
                         <MdEmail size={30} color={"white"} />
                     </a>
