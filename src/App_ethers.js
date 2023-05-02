@@ -1,33 +1,9 @@
 import { useState, useEffect } from "react";
-import {
-    EthereumClient,
-    w3mConnectors,
-    w3mProvider,
-} from "@web3modal/ethereum";
-import { Web3Modal } from "@web3modal/react";
-import { configureChains, createClient, WagmiConfig, useNetwork } from "wagmi";
-import { arbitrum, goerli, polygon } from "wagmi/chains";
-import { Web3Button } from "@web3modal/react";
-import { Web3NetworkSwitch } from "@web3modal/react";
-// import { useAccount, useContract, useSigner } from "wagmi";
-import {
-    getAccount,
-    readContract,
-    fetchSigner,
-    switchNetwork,
-} from "@wagmi/core";
+import { ethers } from "ethers";
+import "./App.css";
 
-const chains = [arbitrum, goerli, polygon];
-const projectId = "cbba414475f0cadd1d582d8c5b7f47dc";
-
-const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
-const wagmiClient = createClient({
-    autoConnect: true,
-    connectors: w3mConnectors({ projectId, version: 1, chains }),
-    provider,
-});
-const ethereumClient = new EthereumClient(wagmiClient, chains);
-const defAbi = [
+const contractAddress = "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb";
+const abi = [
     {
         inputs: [
             {
@@ -1204,36 +1180,7 @@ const defAbi = [
 
 const App = () => {
     const [currentAccount, setCurrentAccount] = useState(null);
-    const contractAddress = "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb";
-    const { chain, chains } = useNetwork();
-
-    useEffect(() => {
-        checkWalletIsConnected();
-    }, []);
-    const testButton = async () => {
-        try {
-            const userAddr = await getAccount().address;
-            const signer = await fetchSigner();
-            console.log("chian name =", chain.name);
-            if (chain.name === "Goerli") {
-                const data = await readContract({
-                    address: "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb",
-                    abi: defAbi,
-                    functionName: "balanceOf",
-                    args: [userAddr],
-                });
-                console.log(data);
-            }
-
-            console.log(userAddr);
-            console.log(signer);
-            console.log();
-        } catch (err) {
-            console.log(err);
-        }
-        // console.log(data);
-    };
-
+    const [totalSupply, setTotalSupply] = useState(0);
     const checkWalletIsConnected = async () => {
         //check if whitelisted
 
@@ -1255,21 +1202,97 @@ const App = () => {
         }
     };
 
+    const connectWalletHandler = async () => {
+        //check if whitelisted
+
+        const { ethereum } = window;
+        if (!ethereum) {
+            alert("You need to install Metamask");
+        }
+        try {
+            const accounts = await ethereum.request({
+                method: "eth_requestAccounts",
+            });
+            console.log("Found an account! Address -> ", accounts[0]);
+            setCurrentAccount(accounts[0]);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const mintNftHandler = async () => {
+        try {
+            const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const nftcontract = new ethers.Contract(
+                    contractAddress,
+                    abi,
+                    signer
+                );
+                // const userBalance = await nftcontract.balanceOf(
+                //     signer.getAddress()
+                // );
+
+                // //const totalNftCost = await nftcontract.getPrice(); //Given 1)mint amount 2)wallet address
+
+                // console.log("Price => ", totalSupplyDisplay);
+                // setTotalSupply(totalSupplyDisplay);
+
+                console.log("Initialize payment");
+                let nftTxn = await nftcontract.mint(1, {
+                    value: ethers.utils.parseEther("0.00001"),
+                });
+
+                console.log("Mining...please wait");
+                await nftTxn.wait();
+                console.log(`Done, hash => ${nftTxn.hash}`);
+            } else {
+                console.log("ethereum object does not exist");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const connectWalletButton = () => {
+        return (
+            <button
+                onClick={connectWalletHandler}
+                className="cta-button connect-wallet-button"
+            >
+                Connect Wallet
+            </button>
+        );
+    };
+
+    const mintNftButton = () => {
+        return (
+            <button
+                onClick={mintNftHandler}
+                className="cta-button mint-nft-button"
+            >
+                Mint NFT
+            </button>
+        );
+    };
+
+    useEffect(() => {
+        checkWalletIsConnected();
+    }, []);
+
     return (
-        <>
-            <button onClick={testButton}>Test mic</button>
-            <WagmiConfig client={wagmiClient}>
-                <Web3Button
-                    contractAddress="0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb"
-                    action={(contract) => console.log(contract)}
-                    onSuccess={(result) => alert("Success!")}
-                    icon="show"
-                    label="Connect Wallet"
-                    balance="show"
-                />
-            </WagmiConfig>
-            <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
-        </>
+        <div className="main-app">
+            <h1>S Tutorial</h1>
+            {totalSupply}
+            <div>
+                {currentAccount ? mintNftButton() : connectWalletButton()}
+            </div>
+        </div>
     );
 };
+
 export default App;
+
+// <AboutIntro />

@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
 import {
     EthereumClient,
     w3mConnectors,
     w3mProvider,
 } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
-import { configureChains, createClient, WagmiConfig, useNetwork } from "wagmi";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { arbitrum, goerli, polygon } from "wagmi/chains";
-import { Web3Button } from "@web3modal/react";
-import { Web3NetworkSwitch } from "@web3modal/react";
-// import { useAccount, useContract, useSigner } from "wagmi";
+
 import {
     getAccount,
     readContract,
@@ -17,16 +14,20 @@ import {
     switchNetwork,
 } from "@wagmi/core";
 
+import { Web3Button } from "@web3modal/react";
+
 const chains = [arbitrum, goerli, polygon];
 const projectId = "cbba414475f0cadd1d582d8c5b7f47dc";
 
 const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
+
 const wagmiClient = createClient({
     autoConnect: true,
     connectors: w3mConnectors({ projectId, version: 1, chains }),
     provider,
 });
 const ethereumClient = new EthereumClient(wagmiClient, chains);
+
 const defAbi = [
     {
         inputs: [
@@ -1203,73 +1204,37 @@ const defAbi = [
 ];
 
 const App = () => {
-    const [currentAccount, setCurrentAccount] = useState(null);
-    const contractAddress = "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb";
-    const { chain, chains } = useNetwork();
+    // const testContract = async () => {
+    //     const network = await switchNetwork({
+    //         chainId: 1,
+    //     });
+    //     console.log(network);
+    //     // const userAddr = getAccount().address;
+    //     // const data = await readContract({
+    //     //     address: "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb",
+    //     //     abi: defAbi,
+    //     //     functionName: "balanceOf",
+    //     //     args: [userAddr],
+    //     // });
+    //     // console.log(data);
+    // };
 
-    useEffect(() => {
-        checkWalletIsConnected();
-    }, []);
-    const testButton = async () => {
-        try {
-            const userAddr = await getAccount().address;
-            const signer = await fetchSigner();
-            console.log("chian name =", chain.name);
-            if (chain.name === "Goerli") {
-                const data = await readContract({
-                    address: "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb",
-                    abi: defAbi,
-                    functionName: "balanceOf",
-                    args: [userAddr],
-                });
-                console.log(data);
-            }
-
-            console.log(userAddr);
-            console.log(signer);
-            console.log();
-        } catch (err) {
-            console.log(err);
-        }
-        // console.log(data);
-    };
-
-    const checkWalletIsConnected = async () => {
-        //check if whitelisted
-
-        const { ethereum } = window;
-        if (!ethereum) {
-            console.log("You need to install Metamask");
-        } else {
-            console.log("WALLETTTTT");
-        }
-
-        const accounts = await ethereum.request({ method: "eth_accounts" });
-
-        if (accounts.length !== 0) {
-            const account = accounts[0];
-            console.log("Found authorized account: ", account);
-            setCurrentAccount(account);
-        } else {
-            console.log("No authorized account found");
-        }
-    };
+    // useEffect(() => {
+    //     //testContract();
+    // }, []);
 
     return (
         <>
-            <button onClick={testButton}>Test mic</button>
             <WagmiConfig client={wagmiClient}>
-                <Web3Button
-                    contractAddress="0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb"
-                    action={(contract) => console.log(contract)}
-                    onSuccess={(result) => alert("Success!")}
-                    icon="show"
-                    label="Connect Wallet"
-                    balance="show"
-                />
+                <HomePage />
             </WagmiConfig>
+
             <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
         </>
     );
 };
 export default App;
+
+function HomePage() {
+    return <Web3Button />;
+}
