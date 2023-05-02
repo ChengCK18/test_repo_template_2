@@ -1,35 +1,11 @@
-import { useState, useEffect } from "react";
-import TestButton from "./components/TestButton";
-import {
-    EthereumClient,
-    w3mConnectors,
-    w3mProvider,
-} from "@web3modal/ethereum";
-import { Web3Modal } from "@web3modal/react";
-import { configureChains, createClient, WagmiConfig, useNetwork } from "wagmi";
-import { arbitrum, goerli, polygon } from "wagmi/chains";
-import { Web3Button } from "@web3modal/react";
-import { Web3NetworkSwitch } from "@web3modal/react";
-import { useSwitchNetwork } from "wagmi";
-
-// import { useAccount, useContract, useSigner } from "wagmi";
 import {
     getAccount,
     readContract,
     fetchSigner,
     switchNetwork,
 } from "@wagmi/core";
+import { configureChains, createClient, WagmiConfig, useNetwork } from "wagmi";
 
-const chains = [arbitrum, goerli, polygon];
-const projectId = "cbba414475f0cadd1d582d8c5b7f47dc";
-
-const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
-const wagmiClient = createClient({
-    autoConnect: true,
-    connectors: w3mConnectors({ projectId, version: 1, chains }),
-    provider,
-});
-const ethereumClient = new EthereumClient(wagmiClient, chains);
 const defAbi = [
     {
         inputs: [
@@ -1205,49 +1181,34 @@ const defAbi = [
     },
 ];
 
-const App = () => {
-    const [currentAccount, setCurrentAccount] = useState(null);
-    const contractAddress = "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb";
+const TestButton = () => {
+    let { chain, _ } = useNetwork();
 
-    useEffect(() => {
-        checkWalletIsConnected();
-    }, []);
+    const handleButton = async () => {
+        try {
+            const userAddr = await getAccount().address;
+            const signer = await fetchSigner();
 
-    const checkWalletIsConnected = async () => {
-        //check if whitelisted
-        const { ethereum } = window;
-        if (!ethereum) {
-            console.log("You need to install Metamask");
-        } else {
-            console.log("WALLETTTTT");
-        }
+            if (chain.name !== "Goerli") {
+                const network = await switchNetwork({ chainId: 5 });
+                chain = network;
+            }
 
-        const accounts = await ethereum.request({ method: "eth_accounts" });
-
-        if (accounts.length !== 0) {
-            const account = accounts[0];
-            console.log("Found authorized account: ", account);
-            setCurrentAccount(account);
-        } else {
-            console.log("No authorized account found");
+            const data = await readContract({
+                address: "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb",
+                abi: defAbi,
+                functionName: "balanceOf",
+                args: [userAddr],
+            });
+            console.log(data);
+            console.log(userAddr);
+            console.log(signer);
+        } catch (err) {
+            console.log(err);
         }
     };
-    //
-    return (
-        <>
-            <WagmiConfig client={wagmiClient}>
-                <TestButton />
-                <Web3Button
-                    contractAddress="0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb"
-                    action={(contract) => console.log(contract)}
-                    onSuccess={(result) => alert("Success!")}
-                    icon="show"
-                    label="Connect Wallet"
-                    balance="show"
-                />
-            </WagmiConfig>
-            <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
-        </>
-    );
+
+    return <button onClick={handleButton}>Test smic</button>;
 };
-export default App;
+
+export default TestButton;
