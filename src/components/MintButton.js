@@ -4,7 +4,7 @@ import {
     fetchSigner,
     switchNetwork,
 } from "@wagmi/core";
-import { configureChains, createClient, WagmiConfig, useNetwork } from "wagmi";
+import { useNetwork } from "wagmi";
 
 const defAbi = [
     {
@@ -1181,7 +1181,9 @@ const defAbi = [
     },
 ];
 
-const TestButton = () => {
+const contractAddress = "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb";
+
+const MintButton = () => {
     let { chain, _ } = useNetwork();
 
     const handleButton = async () => {
@@ -1208,7 +1210,7 @@ const TestButton = () => {
         }
     };
 
-    return <button onClick={handleButton}>Test smic</button>;
+    return <button onClick={handleButton}>Mint</button>;
 };
 
-export default TestButton;
+export default MintButton;
