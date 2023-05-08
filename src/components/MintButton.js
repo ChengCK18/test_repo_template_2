@@ -4,7 +4,9 @@ import {
     fetchSigner,
     switchNetwork,
 } from "@wagmi/core";
+import { useState } from "react";
 import { useNetwork } from "wagmi";
+import { ethers } from "ethers";
 
 const defAbi = [
     {
@@ -1185,6 +1187,7 @@ const contractAddress = "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb";
 
 const MintButton = () => {
     let { chain, _ } = useNetwork();
+    const [mintAmount, setMintAmount] = useState(0.00001);
 
     const handleButton = async () => {
         try {
@@ -1205,12 +1208,44 @@ const MintButton = () => {
             console.log(data);
             console.log(userAddr);
             console.log(signer);
+
+            const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                const nftcontract = new ethers.Contract(
+                    contractAddress,
+                    defAbi,
+                    signer
+                );
+                // const userBalance = await nftcontract.balanceOf(
+                //     signer.getAddress()
+                // );
+
+                // //const totalNftCost = await nftcontract.getPrice(); //Given 1)mint amount 2)wallet address
+
+                // console.log("Price => ", totalSupplyDisplay);
+                // setTotalSupply(totalSupplyDisplay);
+
+                console.log("Initialize payment");
+                let nftTxn = await nftcontract.mint(1, {
+                    value: ethers.utils.parseEther(mintAmount.toString()),
+                });
+
+                console.log("Mining...please wait");
+                await nftTxn.wait();
+                console.log(`Done, hash => ${nftTxn.hash}`);
+            }
         } catch (err) {
             console.log(err);
         }
     };
 
-    return <button onClick={handleButton}>Mint</button>;
+    return (
+        <div>
+            <button onClick={handleButton}>Mint</button>
+        </div>
+    );
 };
 
 export default MintButton;
