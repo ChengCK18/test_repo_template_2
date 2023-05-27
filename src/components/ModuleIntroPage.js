@@ -94,7 +94,7 @@ const ModuleIntroPage = ({ userDevice }) => {
                         className={`absolute top-[8%] left-0 right-0 mx-auto text-center leading-tight mobile:w-[70%] mobile:text-[16px] tablet:w-[45%] tablet:text-[1.6vh] laptop:w-[29%] laptop:text-[2vh]`}
                     >
                         <div className="mb-2 font-libreBas">STUDIO </div>
-                        <span className="font-libreBas " leading-tight>
+                        <span className="font-libreBas leading-tight">
                             The masterminds behind Lazynaire, formed by a group
                             of creative souls who love original lifestyle
                             products and contents. They execute all the main

@@ -1187,7 +1187,8 @@ const contractAddress = "0xB2F1DfbdEef238b8afB6d276Cd7058D7a2c644Fb";
 
 const MintButton = () => {
     let { chain, _ } = useNetwork();
-    const [mintAmount, setMintAmount] = useState(0.00001);
+    const [mintAmount, setMintAmount] = useState(1);
+    const [mintPrice, setMintPrice] = useState(0.00001);
 
     const handleButton = async () => {
         try {
@@ -1228,8 +1229,8 @@ const MintButton = () => {
                 // setTotalSupply(totalSupplyDisplay);
 
                 console.log("Initialize payment");
-                let nftTxn = await nftcontract.mint(1, {
-                    value: ethers.utils.parseEther(mintAmount.toString()),
+                let nftTxn = await nftcontract.mint(mintAmount, {
+                    value: ethers.utils.parseEther(mintPrice.toString()),
                 });
 
                 console.log("Mining...please wait");
@@ -1242,8 +1243,13 @@ const MintButton = () => {
     };
 
     return (
-        <div>
-            <button onClick={handleButton}>Mint</button>
+        <div className="relative mt-6 flex h-[6%] w-full justify-center">
+            <button
+                className="h-full w-[35%] rounded-3xl bg-white font-neueHaas text-[1.9vh]  font-semibold leading-6 text-custom-theme-purple"
+                onClick={handleButton}
+            >
+                Mint
+            </button>
         </div>
     );
 };
