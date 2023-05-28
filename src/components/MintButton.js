@@ -1243,9 +1243,9 @@ const MintButton = () => {
     };
 
     return (
-        <div className="relative mt-6 flex h-[6%] w-full justify-center">
+        <div className="relative  flex h-[6%] w-full justify-center">
             <button
-                className="h-full w-[35%] rounded-3xl bg-white font-neueHaas text-[1.9vh]  font-semibold leading-6 text-custom-theme-purple"
+                className="h-full w-[35%] rounded-3xl bg-white font-neueHaas text-[1.9vh] font-semibold  leading-6 tracking-wider text-custom-theme-purple"
                 onClick={handleButton}
             >
                 Mint
