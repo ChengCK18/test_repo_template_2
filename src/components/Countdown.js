@@ -18,22 +18,22 @@ const Countdown = () => {
     return (
         <div>
             <div className="flex flex-row items-center justify-center font-neueHaas  text-[21px] font-semibold text-white">
-                <div className="mx-5 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
+                <div className="mx-2 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
                     {timeLeft.days}
                     <br />
                     Days
                 </div>
-                <div className="mx-5 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
+                <div className="mx-2 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
                     {timeLeft.hours}
                     <br />
                     Hrs
                 </div>
-                <div className="mx-5 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
+                <div className="mx-2 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
                     {timeLeft.minutes}
                     <br />
                     Mins
                 </div>
-                <div className="mx-5 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
+                <div className="mx-2 flex h-[75px] w-[75px] items-center justify-center rounded-xl border-2 border-white text-center tracking-wider">
                     {timeLeft.seconds}
                     <br />
                     Secs

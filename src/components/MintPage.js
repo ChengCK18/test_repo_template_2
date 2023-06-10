@@ -6,10 +6,10 @@ import Countdown from "./Countdown";
 import TotalMinted from "./TotalMinted";
 import ConnectWalletButton from "./ConnectWalletButton";
 import MintButton from "./MintButton";
-
+import MintAmount from "./MintAmount";
 const MintPage = () => {
     const { isConnected } = useAccount();
-    const accountEligiblity = false; // Get from ABI
+    const accountEligiblity = true; // Get from ABI
     const accountTierIndex = 1; //Get from ABI (1= Trillionaire, 2=billionaire, et cetera)
     const phaseIndex = 3; //Get from ABI
 
@@ -70,11 +70,13 @@ const MintPage = () => {
     }
 
     return (
-        <div className="relative flex h-screen w-full flex-col justify-center bg-about_bg_img_laptop">
+        <div className="relative flex h-screen w-full flex-col items-center justify-center bg-about_bg_img_laptop bg-cover bg-center">
             <Countdown />
             <TotalMinted />
             <WagmiConfig client={wagmiClient}>
-                {isConnected ? <MintButton /> : ""}
+                <MintAmount />
+
+                {isConnected && accountEligiblity ? <MintButton /> : ""}
                 <ConnectWalletButton />
             </WagmiConfig>
             <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
