@@ -1,4 +1,5 @@
-import { useAccount, WagmiConfig } from "wagmi";
+import { useAccount, WagmiConfig, useNetwork } from "wagmi";
+import { switchNetwork } from "@wagmi/core";
 import { wagmiClient, projectId, ethereumClient } from "../utils";
 import { Web3Modal } from "@web3modal/react";
 
@@ -7,7 +8,9 @@ import TotalMinted from "./TotalMinted";
 import ConnectWalletButton from "./ConnectWalletButton";
 import MintButton from "./MintButton";
 import MintAmount from "./MintAmount";
+
 const MintPage = () => {
+    let { chain } = useNetwork();
     const { isConnected } = useAccount();
     const accountEligiblity = true; // Get from ABI
     const accountTierIndex = 1; //Get from ABI (1= Trillionaire, 2=billionaire, et cetera)
@@ -69,12 +72,41 @@ const MintPage = () => {
             break;
     }
 
+    const handleSwitchNetworkButton = () => {
+        const network = switchNetwork({ chainId: 5 });
+        chain = network;
+    };
+
+    let mintAmountPanel = "";
+    if (chain === undefined) {
+        mintAmountPanel = "";
+    } else {
+        if (isConnected && accountEligiblity && chain.name === "Goerli") {
+            mintAmountPanel = <MintAmount />;
+        }
+        if (chain.name !== "Goerli") {
+            mintAmountPanel = (
+                <div className="flex h-[80px] w-full flex-col items-center justify-center text-center  font-neueHaas font-semibold leading-6 tracking-wider">
+                    <span className="text-white">
+                        You need to be in Goerli Network. Please switch to mint
+                    </span>
+                    <button
+                        className=" h-[50px] w-[35%] rounded-3xl  bg-white text-[1.9vh] text-custom-theme-purple"
+                        onClick={handleSwitchNetworkButton}
+                    >
+                        Switch Network
+                    </button>
+                </div>
+            );
+        }
+    }
+
     return (
         <div className="relative flex h-screen w-full flex-col items-center justify-center bg-about_bg_img_laptop bg-cover bg-center">
             <Countdown />
             <TotalMinted />
             <WagmiConfig client={wagmiClient}>
-                {isConnected && accountEligiblity ? <MintAmount /> : ""}
+                {mintAmountPanel}
                 <ConnectWalletButton />
             </WagmiConfig>
             <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />

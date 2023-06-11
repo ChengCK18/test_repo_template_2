@@ -9,7 +9,6 @@ const ConnectWalletButton = () => {
     const { disconnect } = useDisconnect();
     const label = isConnected ? address : "Connect Wallet";
     let style = "";
-    let welcomeMessage = "";
 
     const onOpen = async () => {
         setLoading(true);
