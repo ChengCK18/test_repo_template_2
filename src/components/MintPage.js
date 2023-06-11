@@ -74,9 +74,7 @@ const MintPage = () => {
             <Countdown />
             <TotalMinted />
             <WagmiConfig client={wagmiClient}>
-                <MintAmount />
-
-                {isConnected && accountEligiblity ? <MintButton /> : ""}
+                {isConnected && accountEligiblity ? <MintAmount /> : ""}
                 <ConnectWalletButton />
             </WagmiConfig>
             <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
