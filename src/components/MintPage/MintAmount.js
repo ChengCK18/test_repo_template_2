@@ -11,7 +11,7 @@ import {} from "@wagmi/core";
 
 import MintButton from "./MintButton";
 
-const MintAmount = () => {
+const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     let { chain } = useNetwork();
     const [maxMintAccBal, setMaxMintAccBal] = useState(3);
     const [mintAmountNum, setMintAmountNum] = useState(1);
@@ -97,6 +97,8 @@ const MintAmount = () => {
             <MintButton
                 mintAmountNum={mintAmountNum}
                 parsedMintCost={parsedMintCost}
+                confirmingTransac={confirmingTransac}
+                setConfirmingTransac={setConfirmingTransac}
             />
         </>
     );

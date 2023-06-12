@@ -3,7 +3,12 @@ import { useNetwork } from "wagmi";
 import { ethers } from "ethers";
 import { defAbi, contractAddress } from "../../utils";
 
-const MintButton = ({ mintAmountNum, parsedMintCost }) => {
+const MintButton = ({
+    mintAmountNum,
+    parsedMintCost,
+    confirmingTransac,
+    setConfirmingTransac,
+}) => {
     let { chain } = useNetwork();
     // const [mintAmount, setMintAmount] = useState(1);
     // const [mintPrice, setMintPrice] = useState(0.00001);
@@ -12,6 +17,7 @@ const MintButton = ({ mintAmountNum, parsedMintCost }) => {
 
     const handleButton = async () => {
         try {
+            setConfirmingTransac(1);
             if (chain.name !== "Goerli") {
                 const network = await switchNetwork({ chainId: 5 });
                 chain = network;
@@ -31,16 +37,18 @@ const MintButton = ({ mintAmountNum, parsedMintCost }) => {
                 let nftTxn = await nftcontract.mint(mintAmountNum, {
                     value: ethers.utils.parseEther(strParsedMintCost),
                 });
-
+                setConfirmingTransac(2);
                 console.log("Mining...please wait");
                 await nftTxn.wait();
                 console.log(`Done, hash => ${nftTxn.hash}`);
+                setConfirmingTransac(3);
             }
         } catch (err) {
+            setConfirmingTransac(4);
             console.log(err);
         }
     };
-
+    console.log(confirmingTransac);
     return (
         <div className="relative  flex h-[6%] w-full justify-center">
             <button
