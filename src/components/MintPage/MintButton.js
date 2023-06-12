@@ -1,7 +1,7 @@
 import { switchNetwork } from "@wagmi/core";
 import { useNetwork } from "wagmi";
 import { ethers } from "ethers";
-import { defAbi, contractAddress } from "../utils";
+import { defAbi, contractAddress } from "../../utils";
 
 const MintButton = ({ mintAmountNum, parsedMintCost }) => {
     let { chain } = useNetwork();

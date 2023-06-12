@@ -6,7 +6,7 @@ import {
     useNetwork,
     useSwitchNetwork,
 } from "wagmi";
-import { defAbi, contractAddress } from "../utils";
+import { defAbi, contractAddress } from "../../utils";
 import {} from "@wagmi/core";
 
 import MintButton from "./MintButton";

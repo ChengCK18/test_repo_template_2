@@ -1,6 +1,6 @@
 import { useAccount, WagmiConfig, useNetwork } from "wagmi";
 import { switchNetwork } from "@wagmi/core";
-import { wagmiClient, projectId, ethereumClient } from "../utils";
+import { wagmiClient, projectId, ethereumClient } from "../../utils";
 import { Web3Modal } from "@web3modal/react";
 
 import Countdown from "./Countdown";
@@ -8,10 +8,12 @@ import TotalMinted from "./TotalMinted";
 import ConnectWalletButton from "./ConnectWalletButton";
 import MintButton from "./MintButton";
 import MintAmount from "./MintAmount";
+import { useState } from "react";
 
 const MintPage = () => {
     let { chain } = useNetwork();
     const { isConnected } = useAccount();
+    const [confirmingTransac, setConfirmingTransac] = useState(false);
     const accountEligiblity = true; // Get from ABI
     const accountTierIndex = 1; //Get from ABI (1= Trillionaire, 2=billionaire, et cetera)
     const phaseIndex = 3; //Get from ABI
@@ -82,7 +84,12 @@ const MintPage = () => {
         mintAmountPanel = "";
     } else {
         if (isConnected && accountEligiblity && chain.name === "Goerli") {
-            mintAmountPanel = <MintAmount />;
+            mintAmountPanel = (
+                <>
+                    <TotalMinted />
+                    <MintAmount />
+                </>
+            );
         }
         if (chain.name !== "Goerli") {
             mintAmountPanel = (
@@ -102,32 +109,42 @@ const MintPage = () => {
     }
 
     return (
-        <div className="relative flex h-screen w-full flex-col items-center justify-center bg-about_bg_img_laptop bg-cover bg-center">
-            <Countdown />
-            <TotalMinted />
-            <WagmiConfig client={wagmiClient}>
-                {mintAmountPanel}
-                <ConnectWalletButton />
-            </WagmiConfig>
-            <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        <>
+            <div
+                className={`relative flex h-screen w-full flex-col items-center justify-center bg-about_bg_img_laptop bg-cover bg-center `}
+            >
+                <Countdown />
+                <WagmiConfig client={wagmiClient}>
+                    {mintAmountPanel}
+                    <ConnectWalletButton />
+                </WagmiConfig>
+                <Web3Modal
+                    projectId={projectId}
+                    ethereumClient={ethereumClient}
+                />
 
-            <div className="mt-6 text-center font-neueHaas font-semibold tracking-wider text-white">
-                {isConnected ? (
-                    <div>
-                        <p>Welcome, {accountTierString}</p>
-                        <p>
-                            {accountEligiblity |
-                            (phaseIndex === 0) | //Pre mint
-                            (phaseIndex === 6) //Post mint
-                                ? `${eligibleMessage}`
-                                : `Sorry, you're not eligible for Phase ${phaseRoman}`}
-                        </p>
-                    </div>
-                ) : (
-                    ""
-                )}
+                <div className="mt-6 text-center font-neueHaas font-semibold tracking-wider text-white">
+                    {isConnected ? (
+                        <div>
+                            <p>Welcome, {accountTierString}</p>
+                            <p>
+                                {accountEligiblity |
+                                (phaseIndex === 0) | //Pre mint
+                                (phaseIndex === 6) //Post mint
+                                    ? `${eligibleMessage}`
+                                    : `Sorry, you're not eligible for Phase ${phaseRoman}`}
+                            </p>
+                        </div>
+                    ) : (
+                        ""
+                    )}
+                </div>
             </div>
-        </div>
+
+            {/* <div className="absolute top-[25%] left-[25%] h-screen h-1/2 w-full w-1/2 bg-white bg-about_bg_img_laptop bg-cover bg-center">
+                <div>Hyeyey</div>
+            </div> */}
+        </>
     );
 };
 
