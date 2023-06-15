@@ -1,14 +1,15 @@
 import { useAccount, WagmiConfig, useNetwork } from "wagmi";
+import { useState } from "react";
 import { switchNetwork } from "@wagmi/core";
 import { wagmiClient, projectId, ethereumClient } from "../../utils";
 import { Web3Modal } from "@web3modal/react";
 
+import Phases from "./Phases";
 import Countdown from "./Countdown";
 import TotalMinted from "./TotalMinted";
 import ConnectWalletButton from "./ConnectWalletButton";
 import MintAmount from "./MintAmount";
 import TransactionConfirm from "./TransactionConfirm";
-import { useState } from "react";
 import EligibilityMessage from "./EligibilityMessage";
 
 const MintPage = () => {
@@ -66,6 +67,7 @@ const MintPage = () => {
                         confirmingTransac > 0 ? "invisible" : ""
                     }`}
                 >
+                    <Phases />
                     <Countdown />
                     <WagmiConfig client={wagmiClient}>
                         {mintAmountPanel}
