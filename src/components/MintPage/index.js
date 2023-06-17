@@ -42,7 +42,7 @@ const MintPage = () => {
         }
         if (chain.name !== "Goerli") {
             mintAmountPanel = (
-                <div className="flex h-[80px] w-full flex-col items-center justify-center text-center  font-neueHaas font-semibold leading-6 tracking-wider">
+                <div className="mt-10 flex h-[80px] w-full flex-col items-center justify-center text-center  font-neueHaas font-semibold leading-6 tracking-wider">
                     <span className="text-white">
                         You need to be in Goerli Network. Please switch to mint
                     </span>

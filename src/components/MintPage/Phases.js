@@ -4,7 +4,7 @@ const Phase = ({ roman, phrase }) => {
             key={`Key_${roman}`}
             className="flex h-full w-[250px] flex-col items-center justify-center  text-center font-neueHaas text-4xl font-semibold leading-10 text-white"
         >
-            {roman !== undefined && (
+            {roman !== 999 && (
                 <>
                     <p>Phase {roman}</p>
                     <span className="text-xl">{phrase}</span>
@@ -33,7 +33,7 @@ const Phases = () => {
 
     if (phaseIndex === 1) {
         threePhases.push({
-            roman: undefined,
+            roman: 999,
             phrase: undefined,
         });
         threePhases.push({
@@ -66,7 +66,11 @@ const Phases = () => {
     return (
         <div className="mb-8 flex h-[80px] w-full flex-row justify-center ">
             {threePhases.map((item) => (
-                <Phase roman={item.roman} phrase={item.phrase} />
+                <Phase
+                    key={`roman_${item.roman}`}
+                    roman={item.roman}
+                    phrase={item.phrase}
+                />
             ))}
         </div>
     );

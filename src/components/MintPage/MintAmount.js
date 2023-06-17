@@ -33,16 +33,21 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
             },
         ],
     });
+    if (data[0] === null) {
+        return <div>Something went wrong, we are fixing the issue</div>;
+    }
 
     if (!isLoading) {
         console.log(data);
-        console.log(parseInt(data[0]._hex, 16));
+
+        // console.log(parseInt(data[0]._hex, 16));
         parsedMintCost = parseInt(data[0]._hex);
         parsedMintCost = mintAmountNum * 0.00001;
     }
     if (isLoading) {
         return <div>Switching network</div>;
     }
+
     return (
         <>
             <div className="mb-16 flex h-[120px] w-[455px] flex-col justify-center rounded-2xl border-2 border-white px-4 py-1 font-neueHaas text-[21px] font-semibold text-red-50">
