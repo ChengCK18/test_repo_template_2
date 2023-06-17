@@ -33,14 +33,24 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
             },
         ],
     });
-    if (data[0] === null) {
-        return <div>Something went wrong, we are fixing the issue</div>;
+
+    if (isError) {
+        return (
+            <div className="font-neueHaas text-white">
+                Something went wrong, we are fixing the issue
+            </div>
+        );
     }
 
     if (!isLoading) {
-        console.log(data);
+        if (data[0] === null) {
+            return (
+                <div className="font-neueHaas text-white">
+                    Something went wrong, we are fixing the issue
+                </div>
+            );
+        }
 
-        // console.log(parseInt(data[0]._hex, 16));
         parsedMintCost = parseInt(data[0]._hex);
         parsedMintCost = mintAmountNum * 0.00001;
     }
