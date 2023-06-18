@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAccount, useContractReads } from "wagmi";
 import { defAbi, contractAddress } from "../../utils";
-import {} from "@wagmi/core";
 
 import MintButton from "./MintButton";
 
@@ -31,7 +30,7 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     if (isError) {
         return (
             <div className="font-neueHaas text-white">
-                Something went wrong, we are fixing the issue
+                sssssSomething went wrong, we are fixing the issue
             </div>
         );
     }
@@ -61,7 +60,7 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
                         <button
                             onClick={() => {
                                 const newNum = mintAmountNum - 1;
-                                if (newNum > 0) {
+                                if (newNum >= 0) {
                                     setMintAmountNum(newNum);
                                 }
                             }}

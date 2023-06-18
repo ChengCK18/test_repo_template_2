@@ -63,6 +63,11 @@ const MintPage = () => {
                 className={`relative flex h-screen w-full flex-col items-center justify-center bg-about_bg_img_laptop bg-cover bg-center `}
             >
                 <div
+                    className={`absolute top-0 h-10 w-full bg-black text-center font-anton text-[3.3vh] tracking-wider text-white`}
+                >
+                    <a href="/">LAZYNAIRE</a>
+                </div>
+                <div
                     className={`flex h-full w-full flex-col items-center justify-center ${
                         confirmingTransac > 0 ? "invisible" : ""
                     }`}

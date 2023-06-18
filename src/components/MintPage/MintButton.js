@@ -17,6 +17,10 @@ const MintButton = ({
 
     const handleButton = async () => {
         try {
+            if (mintAmountNum <= 0) {
+                return;
+            }
+
             setConfirmingTransac(1);
             if (chain.name !== "Goerli") {
                 const network = await switchNetwork({ chainId: 5 });
@@ -52,7 +56,9 @@ const MintButton = ({
     return (
         <div className="relative  flex h-[6%] w-full justify-center">
             <button
-                className="h-full w-[35%] rounded-3xl bg-white font-neueHaas text-[1.9vh] font-semibold  leading-6 tracking-wider text-custom-theme-purple"
+                className={`${
+                    mintAmountNum <= 0 ? "opacity-70" : ""
+                } h-full w-[35%] rounded-3xl bg-white font-neueHaas text-[1.9vh] font-semibold  leading-6 tracking-wider text-custom-theme-purple`}
                 onClick={handleButton}
             >
                 Mint
