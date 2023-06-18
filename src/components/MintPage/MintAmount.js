@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
-import {
-    useAccount,
-    useDisconnect,
-    useContractReads,
-    useNetwork,
-    useSwitchNetwork,
-} from "wagmi";
+import { useState } from "react";
+import { useAccount, useContractReads } from "wagmi";
 import { defAbi, contractAddress } from "../../utils";
 import {} from "@wagmi/core";
 
 import MintButton from "./MintButton";
 
 const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
-    let { chain } = useNetwork();
-    const [maxMintAccBal, setMaxMintAccBal] = useState(3);
-    const [mintAmountNum, setMintAmountNum] = useState(1);
-    const { address, isConnected } = useAccount();
+    // let { chain } = useNetwork();
+    const [maxMintAccBal, setMaxMintAccBal] = useState(3); // How much the account can mint left
+    const [mintAmountNum, setMintAmountNum] = useState(1); // What number the user set to mint
+    const { address } = useAccount();
     let parsedMintCost = -1;
 
     const { data, isError, isLoading } = useContractReads({

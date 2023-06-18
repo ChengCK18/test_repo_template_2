@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { TwitterIcon, TwitterShareButton } from "react-share";
+import { TwitterShareButton } from "react-share";
 const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
     const [heading, setHeading] = useState();
     const [subtext, setSubtext] = useState();

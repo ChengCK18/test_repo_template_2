@@ -6,7 +6,6 @@ import ModuleIntroPage from "./ModuleIntroPage";
 import BlackBgWithImg from "./BlackBgWithImg";
 import HeaderText from "./HeaderText";
 import LoadingPage from "./LoadingPage";
-import MintPage from "./MintPage";
 
 const Home = () => {
     const [userDevice, setUserDevice] = useState("laptop");

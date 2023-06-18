@@ -7,7 +7,6 @@ import { SiLinktree } from "react-icons/si";
 
 import NavItem from "./NavItem";
 import MusicCapsule from "./MusicCapsule";
-import { MusicContext } from "..";
 
 const NavBar = ({ userDevice }) => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -58,7 +57,7 @@ const NavBar = ({ userDevice }) => {
                             : "text-[3.3vh]"
                     }`}
                 >
-                    <a href="#">LAZYNAIRE</a>
+                    <a href="/">LAZYNAIRE</a>
                 </div>
                 <div
                     className={`ml-auto pr-3 ${
