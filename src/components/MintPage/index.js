@@ -72,9 +72,8 @@ const MintPage = () => {
                         confirmingTransac > 0 ? "invisible" : ""
                     }`}
                 >
-                    <Phases />
-                    <Countdown />
                     <WagmiConfig client={wagmiClient}>
+                        <Phases />
                         {mintAmountPanel}
                         <ConnectWalletButton />
                     </WagmiConfig>

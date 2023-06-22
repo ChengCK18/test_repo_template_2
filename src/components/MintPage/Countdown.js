@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 
-const Countdown = () => {
-    const dummy = "2023-08-28T16:28:56+08:00";
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(dummy));
+const Countdown = ({ timeEndInUnix }) => {
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(timeEndInUnix));
 
     useEffect(() => {
         setTimeout(() => {
-            const timeLeftObj = calculateTimeLeft(dummy);
+            const timeLeftObj = calculateTimeLeft(timeEndInUnix);
             if (timeLeftObj !== -1) {
                 setTimeLeft(timeLeftObj);
             } else {
@@ -47,7 +46,8 @@ const Countdown = () => {
 };
 
 const calculateTimeLeft = (datetime) => {
-    const difference = +new Date(datetime) - +new Date();
+    const difference = +new Date(1687741289 * 1000) - +new Date();
+
     let timeLeft = {};
 
     timeLeft = {

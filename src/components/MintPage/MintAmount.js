@@ -11,44 +11,39 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     const { address } = useAccount();
     let parsedMintCost = -1;
 
-    const { data, isError, isLoading } = useContractReads({
-        contracts: [
-            {
-                address: contractAddress,
-                abi: defAbi,
-                functionName: "balanceOf",
-                args: [address],
-            },
-            {
-                address: contractAddress,
-                abi: defAbi,
-                functionName: "totalSupply",
-            },
-        ],
-    });
+    const { data, isError, isLoading, refetch, isRefetching } =
+        useContractReads({
+            contracts: [
+                {
+                    address: contractAddress,
+                    abi: defAbi,
+                    functionName: "balanceOf",
+                    args: [address],
+                },
+                {
+                    address: contractAddress,
+                    abi: defAbi,
+                    functionName: "totalSupply",
+                },
+            ],
+        });
 
     if (isError) {
-        return (
-            <div className="font-neueHaas text-white">
-                sssssSomething went wrong, we are fixing the issue
-            </div>
-        );
+        refetch();
     }
 
     if (!isLoading) {
         if (data[0] === null) {
-            return (
-                <div className="font-neueHaas text-white">
-                    Something went wrong, we are fixing the issue
-                </div>
-            );
+            refetch();
+            return <div className="font-neueHaas text-white">Loading...</div>;
         }
 
         parsedMintCost = parseInt(data[0]._hex);
         parsedMintCost = mintAmountNum * 0.00001;
     }
-    if (isLoading) {
-        return <div>Switching network</div>;
+
+    if (isRefetching) {
+        return <div>Loading...</div>;
     }
 
     return (

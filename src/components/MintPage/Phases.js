@@ -1,22 +1,47 @@
-const Phase = ({ roman, phrase }) => {
-    return (
-        <div
-            key={`Key_${roman}`}
-            className="flex h-full w-[250px] flex-col items-center justify-center  text-center font-neueHaas text-4xl font-semibold leading-10 text-white"
-        >
-            {roman !== 999 && (
-                <>
-                    <p>Phase {roman}</p>
-                    <span className="text-xl">{phrase}</span>
-                </>
-            )}
-        </div>
-    );
-};
-
+import { useContractReads } from "wagmi";
+import { contractAddress, defAbi } from "../../utils";
+import Countdown from "./Countdown";
 const Phases = () => {
-    const phaseIndex = 1;
-    const phasesRomanIndex = ["PRE", "I", "II", "III", "IV", "Public"];
+    let phaseIndex = 0;
+    let timeEndInUnix = 0;
+    const { data, isError, isLoading, refetch, isRefetching } =
+        useContractReads({
+            contracts: [
+                {
+                    address: contractAddress,
+                    abi: defAbi,
+                    functionName: "getCurrentPhase",
+                },
+            ],
+        });
+
+    if (isError) {
+        refetch();
+    }
+
+    if (!isLoading) {
+        if (data[0] === null) {
+            refetch();
+            return <div className="font-neueHaas text-white">Loading...</div>;
+        }
+        phaseIndex = data[0][0];
+        timeEndInUnix = data[0]["endTime"];
+    }
+
+    if (isRefetching) {
+        return <div>Loading...</div>;
+    }
+
+    const phasesRomanIndex = [
+        "PRE",
+        "I",
+        "II",
+        "III",
+        "IV",
+        "V",
+        "VI",
+        "Public",
+    ];
     const phrases = ["ended", "ends in", "starts in"];
     let threePhases = [];
 
@@ -64,16 +89,35 @@ const Phases = () => {
     }
 
     return (
-        <div className="mb-8 flex h-[80px] w-full flex-row justify-center ">
-            {threePhases.map((item) => (
-                <Phase
-                    key={`roman_${item.roman}`}
-                    roman={item.roman}
-                    phrase={item.phrase}
-                />
-            ))}
-        </div>
+        <>
+            <div className="mb-8 flex h-[80px] w-full flex-row justify-center ">
+                {threePhases.map((item) => (
+                    <Phase
+                        key={`roman_${item.roman}`}
+                        roman={item.roman}
+                        phrase={item.phrase}
+                    />
+                ))}
+            </div>
+            <Countdown timeEndInUnix={timeEndInUnix} />
+        </>
     );
 };
 
 export default Phases;
+
+const Phase = ({ roman, phrase }) => {
+    return (
+        <div
+            key={`Key_${roman}`}
+            className="flex h-full w-[250px] flex-col items-center justify-center  text-center font-neueHaas text-4xl font-semibold leading-10 text-white"
+        >
+            {roman !== 999 && (
+                <>
+                    <p>Phase {roman}</p>
+                    <span className="text-xl">{phrase}</span>
+                </>
+            )}
+        </div>
+    );
+};
