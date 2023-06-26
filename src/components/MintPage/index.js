@@ -5,7 +5,6 @@ import { wagmiClient, projectId, ethereumClient } from "../../utils";
 import { Web3Modal } from "@web3modal/react";
 
 import Phases from "./Phases";
-import Countdown from "./Countdown";
 import TotalMinted from "./TotalMinted";
 import ConnectWalletButton from "./ConnectWalletButton";
 import MintAmount from "./MintAmount";
@@ -32,6 +31,7 @@ const MintPage = () => {
         if (isConnected && accountEligiblity && chain.name === "Goerli") {
             mintAmountPanel = (
                 <>
+                    <Phases />
                     <TotalMinted />
                     <MintAmount
                         confirmingTransac={confirmingTransac}
@@ -73,7 +73,6 @@ const MintPage = () => {
                     }`}
                 >
                     <WagmiConfig client={wagmiClient}>
-                        <Phases />
                         {mintAmountPanel}
                         <ConnectWalletButton />
                     </WagmiConfig>

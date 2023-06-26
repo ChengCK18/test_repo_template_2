@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAccount, useContractReads } from "wagmi";
 import { defAbi, contractAddress } from "../../utils";
-
 import MintButton from "./MintButton";
+import { treeProof } from "../../utils";
 
 const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     // let { chain } = useNetwork();
@@ -11,6 +11,8 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     const { address } = useAccount();
     let parsedMintCost = -1;
 
+    const proof = treeProof.getProof([address]);
+    console.log(proof);
     const { data, isError, isLoading, refetch, isRefetching } =
         useContractReads({
             contracts: [
@@ -25,6 +27,12 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
                     abi: defAbi,
                     functionName: "totalSupply",
                 },
+                {
+                    address: contractAddress,
+                    abi: defAbi,
+                    functionName: "calculateTotalMintPrice",
+                    args: [address, mintAmountNum, proof],
+                },
             ],
         });
 
@@ -33,12 +41,13 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     }
 
     if (!isLoading) {
+        console.log("hereeee ", data);
         if (data[0] === null) {
             refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
 
-        parsedMintCost = parseInt(data[0]._hex);
+        // parsedMintCost = parseInt(data[0]._hex);
         parsedMintCost = mintAmountNum * 0.00001;
     }
 

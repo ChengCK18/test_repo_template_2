@@ -43,6 +43,7 @@
         ]
     },
     "devDependencies": {
+        "@openzeppelin/merkle-tree": "^1.0.5",
         "autoprefixer": "^10.4.13",
         "cross-env": "^7.0.3",
         "postcss": "^8.4.20",

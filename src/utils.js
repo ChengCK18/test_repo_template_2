@@ -1,14 +1,3 @@
-// import Web3ConnectCustButton from "./components/ConnectWalletButton";
-// import {
-//     EthereumClient,
-//     w3mConnectors,
-//     w3mProvider,
-// } from "@web3modal/ethereum";
-// import { Web3Modal } from "@web3modal/react";
-// import { configureChains, createClient, WagmiConfig, useNetwork } from "wagmi";
-// import { arbitrum, goerli, polygon } from "wagmi/chains";
-// import { useAccount } from "wagmi";
-
 import {
     EthereumClient,
     w3mConnectors,
@@ -16,6 +5,8 @@ import {
 } from "@web3modal/ethereum";
 import { configureChains, createClient } from "wagmi";
 import { arbitrum, goerli, polygon } from "wagmi/chains";
+import { tree } from "./tree";
+const { StandardMerkleTree } = require("@openzeppelin/merkle-tree");
 
 const chains = [arbitrum, goerli, polygon];
 export const projectId = "2d2ff768204bdfd16aaabeddd7b9e032";
@@ -29,7 +20,8 @@ export const wagmiClient = createClient({
 });
 export const ethereumClient = new EthereumClient(wagmiClient, chains);
 
-export const contractAddress = "0xb530b8526Af9C1646540b4DFcD441C8BC8b60c47";
+export const contractAddress = "0x87362421C5f8759504B8001e71e26e24E5c1fc48";
+export const treeProof = StandardMerkleTree.load(tree);
 
 export const defAbi = [
     {
@@ -43,23 +35,71 @@ export const defAbi = [
         stateMutability: "nonpayable",
         type: "constructor",
     },
-    { inputs: [], name: "ApprovalCallerNotOwnerNorApproved", type: "error" },
-    { inputs: [], name: "ApprovalQueryForNonexistentToken", type: "error" },
-    { inputs: [], name: "BalanceQueryForZeroAddress", type: "error" },
-    { inputs: [], name: "MintERC2309QuantityExceedsLimit", type: "error" },
-    { inputs: [], name: "MintToZeroAddress", type: "error" },
-    { inputs: [], name: "MintZeroQuantity", type: "error" },
-    { inputs: [], name: "OwnerQueryForNonexistentToken", type: "error" },
-    { inputs: [], name: "OwnershipNotInitializedForExtraData", type: "error" },
-    { inputs: [], name: "TransferCallerNotOwnerNorApproved", type: "error" },
-    { inputs: [], name: "TransferFromIncorrectOwner", type: "error" },
+    {
+        inputs: [],
+        name: "ApprovalCallerNotOwnerNorApproved",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "ApprovalQueryForNonexistentToken",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "BalanceQueryForZeroAddress",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "MintERC2309QuantityExceedsLimit",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "MintToZeroAddress",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "MintZeroQuantity",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "OwnerQueryForNonexistentToken",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "OwnershipNotInitializedForExtraData",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "TransferCallerNotOwnerNorApproved",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "TransferFromIncorrectOwner",
+        type: "error",
+    },
     {
         inputs: [],
         name: "TransferToNonERC721ReceiverImplementer",
         type: "error",
     },
-    { inputs: [], name: "TransferToZeroAddress", type: "error" },
-    { inputs: [], name: "URIQueryForNonexistentToken", type: "error" },
+    {
+        inputs: [],
+        name: "TransferToZeroAddress",
+        type: "error",
+    },
+    {
+        inputs: [],
+        name: "URIQueryForNonexistentToken",
+        type: "error",
+    },
     {
         anonymous: false,
         inputs: [
@@ -232,14 +272,28 @@ export const defAbi = [
     {
         inputs: [],
         name: "OGMintPrice",
-        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [
-            { internalType: "address", name: "to", type: "address" },
-            { internalType: "uint256", name: "tokenId", type: "uint256" },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
         ],
         name: "approve",
         outputs: [],
@@ -247,17 +301,41 @@ export const defAbi = [
         type: "function",
     },
     {
-        inputs: [{ internalType: "address", name: "owner", type: "address" }],
+        inputs: [
+            {
+                internalType: "address",
+                name: "owner",
+                type: "address",
+            },
+        ],
         name: "balanceOf",
-        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [
-            { internalType: "address", name: "user_", type: "address" },
-            { internalType: "uint256", name: "amount_", type: "uint256" },
-            { internalType: "bytes32[]", name: "proof_", type: "bytes32[]" },
+            {
+                internalType: "address",
+                name: "user_",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "amount_",
+                type: "uint256",
+            },
+            {
+                internalType: "bytes32[]",
+                name: "proof_",
+                type: "bytes32[]",
+            },
         ],
         name: "calculateTotalMintPrice",
         outputs: [
@@ -271,9 +349,39 @@ export const defAbi = [
         type: "function",
     },
     {
-        inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+        inputs: [
+            {
+                internalType: "address",
+                name: "to_",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "amount_",
+                type: "uint256",
+            },
+        ],
+        name: "devMint",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+        ],
         name: "getApproved",
-        outputs: [{ internalType: "address", name: "", type: "address" }],
+        outputs: [
+            {
+                internalType: "address",
+                name: "",
+                type: "address",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
@@ -282,33 +390,63 @@ export const defAbi = [
         name: "getCurrentPhase",
         outputs: [
             {
-                internalType: "enum Lazynaire.Phases",
+                internalType: "enum NotSusProject.Phases",
                 name: "phase",
                 type: "uint8",
             },
-            { internalType: "uint32", name: "startTime", type: "uint32" },
-            { internalType: "uint32", name: "endTime", type: "uint32" },
-        ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [{ internalType: "address", name: "_user", type: "address" }],
-        name: "getMintable",
-        outputs: [
-            { internalType: "uint256", name: "mintable", type: "uint256" },
+            {
+                internalType: "uint32",
+                name: "startTime",
+                type: "uint32",
+            },
+            {
+                internalType: "uint32",
+                name: "endTime",
+                type: "uint32",
+            },
         ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [
-            { internalType: "address", name: "user_", type: "address" },
-            { internalType: "bytes32[]", name: "proof_", type: "bytes32[]" },
+            {
+                internalType: "address",
+                name: "_user",
+                type: "address",
+            },
+        ],
+        name: "getMintable",
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "mintable",
+                type: "uint256",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "user_",
+                type: "address",
+            },
+            {
+                internalType: "bytes32[]",
+                name: "proof_",
+                type: "bytes32[]",
+            },
         ],
         name: "getRole",
         outputs: [
-            { internalType: "enum Lazynaire.Roles", name: "", type: "uint8" },
+            {
+                internalType: "enum NotSusProject.Roles",
+                name: "",
+                type: "uint8",
+            },
         ],
         stateMutability: "view",
         type: "function",
@@ -322,39 +460,77 @@ export const defAbi = [
                 name: "collectionSize",
                 type: "uint256",
             },
-            { internalType: "uint256", name: "totalSupply_", type: "uint256" },
+            {
+                internalType: "uint256",
+                name: "totalSupply_",
+                type: "uint256",
+            },
         ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [
-            { internalType: "address", name: "owner", type: "address" },
-            { internalType: "address", name: "operator", type: "address" },
+            {
+                internalType: "address",
+                name: "owner",
+                type: "address",
+            },
+            {
+                internalType: "address",
+                name: "operator",
+                type: "address",
+            },
         ],
         name: "isApprovedForAll",
-        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        outputs: [
+            {
+                internalType: "bool",
+                name: "",
+                type: "bool",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [],
         name: "maxMintable",
-        outputs: [{ internalType: "uint32", name: "", type: "uint32" }],
+        outputs: [
+            {
+                internalType: "uint32",
+                name: "",
+                type: "uint32",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [],
         name: "maxPublicMintable",
-        outputs: [{ internalType: "uint32", name: "", type: "uint32" }],
+        outputs: [
+            {
+                internalType: "uint32",
+                name: "",
+                type: "uint32",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [
-            { internalType: "uint256", name: "amount_", type: "uint256" },
-            { internalType: "bytes32[]", name: "proof_", type: "bytes32[]" },
+            {
+                internalType: "uint256",
+                name: "amount_",
+                type: "uint256",
+            },
+            {
+                internalType: "bytes32[]",
+                name: "proof_",
+                type: "bytes32[]",
+            },
         ],
         name: "mint",
         outputs: [],
@@ -364,28 +540,64 @@ export const defAbi = [
     {
         inputs: [],
         name: "name",
-        outputs: [{ internalType: "string", name: "", type: "string" }],
+        outputs: [
+            {
+                internalType: "string",
+                name: "",
+                type: "string",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
-        inputs: [{ internalType: "address", name: "", type: "address" }],
+        inputs: [
+            {
+                internalType: "address",
+                name: "",
+                type: "address",
+            },
+        ],
         name: "numberMintedPublicSales",
-        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [],
         name: "owner",
-        outputs: [{ internalType: "address", name: "", type: "address" }],
+        outputs: [
+            {
+                internalType: "address",
+                name: "",
+                type: "address",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
-        inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+        inputs: [
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+        ],
         name: "ownerOf",
-        outputs: [{ internalType: "address", name: "", type: "address" }],
+        outputs: [
+            {
+                internalType: "address",
+                name: "",
+                type: "address",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
@@ -398,9 +610,21 @@ export const defAbi = [
     },
     {
         inputs: [
-            { internalType: "address", name: "from", type: "address" },
-            { internalType: "address", name: "to", type: "address" },
-            { internalType: "uint256", name: "tokenId", type: "uint256" },
+            {
+                internalType: "address",
+                name: "from",
+                type: "address",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
         ],
         name: "safeTransferFrom",
         outputs: [],
@@ -409,10 +633,26 @@ export const defAbi = [
     },
     {
         inputs: [
-            { internalType: "address", name: "from", type: "address" },
-            { internalType: "address", name: "to", type: "address" },
-            { internalType: "uint256", name: "tokenId", type: "uint256" },
-            { internalType: "bytes", name: "_data", type: "bytes" },
+            {
+                internalType: "address",
+                name: "from",
+                type: "address",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+            {
+                internalType: "bytes",
+                name: "_data",
+                type: "bytes",
+            },
         ],
         name: "safeTransferFrom",
         outputs: [],
@@ -421,8 +661,16 @@ export const defAbi = [
     },
     {
         inputs: [
-            { internalType: "address", name: "operator", type: "address" },
-            { internalType: "bool", name: "approved", type: "bool" },
+            {
+                internalType: "address",
+                name: "operator",
+                type: "address",
+            },
+            {
+                internalType: "bool",
+                name: "approved",
+                type: "bool",
+            },
         ],
         name: "setApprovalForAll",
         outputs: [],
@@ -430,14 +678,26 @@ export const defAbi = [
         type: "function",
     },
     {
-        inputs: [{ internalType: "string", name: "baseURI_", type: "string" }],
+        inputs: [
+            {
+                internalType: "string",
+                name: "baseURI_",
+                type: "string",
+            },
+        ],
         name: "setBaseURI",
         outputs: [],
         stateMutability: "nonpayable",
         type: "function",
     },
     {
-        inputs: [{ internalType: "uint256", name: "phase_", type: "uint256" }],
+        inputs: [
+            {
+                internalType: "uint256",
+                name: "phase_",
+                type: "uint256",
+            },
+        ],
         name: "setCurrentPhase",
         outputs: [],
         stateMutability: "nonpayable",
@@ -446,11 +706,15 @@ export const defAbi = [
     {
         inputs: [
             {
-                internalType: "enum Lazynaire.Roles",
+                internalType: "enum NotSusProject.Roles",
                 name: "role_",
                 type: "uint8",
             },
-            { internalType: "bytes32", name: "root_", type: "bytes32" },
+            {
+                internalType: "bytes32",
+                name: "root_",
+                type: "bytes32",
+            },
         ],
         name: "setMerkleRoot",
         outputs: [],
@@ -459,9 +723,21 @@ export const defAbi = [
     },
     {
         inputs: [
-            { internalType: "uint256", name: "phase_", type: "uint256" },
-            { internalType: "uint32", name: "startTime_", type: "uint32" },
-            { internalType: "uint32", name: "endTime_", type: "uint32" },
+            {
+                internalType: "uint256",
+                name: "phase_",
+                type: "uint256",
+            },
+            {
+                internalType: "uint32",
+                name: "startTime_",
+                type: "uint32",
+            },
+            {
+                internalType: "uint32",
+                name: "endTime_",
+                type: "uint32",
+            },
         ],
         name: "setPhaseConfig",
         outputs: [],
@@ -471,45 +747,97 @@ export const defAbi = [
     {
         inputs: [],
         name: "standardMintPrice",
-        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [
-            { internalType: "bytes4", name: "interfaceId", type: "bytes4" },
+            {
+                internalType: "bytes4",
+                name: "interfaceId",
+                type: "bytes4",
+            },
         ],
         name: "supportsInterface",
-        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        outputs: [
+            {
+                internalType: "bool",
+                name: "",
+                type: "bool",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [],
         name: "symbol",
-        outputs: [{ internalType: "string", name: "", type: "string" }],
+        outputs: [
+            {
+                internalType: "string",
+                name: "",
+                type: "string",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
-        inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+        inputs: [
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+        ],
         name: "tokenURI",
-        outputs: [{ internalType: "string", name: "", type: "string" }],
+        outputs: [
+            {
+                internalType: "string",
+                name: "",
+                type: "string",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [],
         name: "totalSupply",
-        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
         stateMutability: "view",
         type: "function",
     },
     {
         inputs: [
-            { internalType: "address", name: "from", type: "address" },
-            { internalType: "address", name: "to", type: "address" },
-            { internalType: "uint256", name: "tokenId", type: "uint256" },
+            {
+                internalType: "address",
+                name: "from",
+                type: "address",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
         ],
         name: "transferFrom",
         outputs: [],
@@ -518,7 +846,11 @@ export const defAbi = [
     },
     {
         inputs: [
-            { internalType: "address", name: "newOwner", type: "address" },
+            {
+                internalType: "address",
+                name: "newOwner",
+                type: "address",
+            },
         ],
         name: "transferOwnership",
         outputs: [],
@@ -534,6 +866,19 @@ export const defAbi = [
             },
         ],
         name: "updateCollectionSize",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address payable",
+                name: "to_",
+                type: "address",
+            },
+        ],
+        name: "withdrawAll",
         outputs: [],
         stateMutability: "nonpayable",
         type: "function",

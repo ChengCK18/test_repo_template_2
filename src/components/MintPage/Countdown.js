@@ -6,6 +6,7 @@ const Countdown = ({ timeEndInUnix }) => {
     useEffect(() => {
         setTimeout(() => {
             const timeLeftObj = calculateTimeLeft(timeEndInUnix);
+
             if (timeLeftObj !== -1) {
                 setTimeLeft(timeLeftObj);
             } else {
@@ -46,7 +47,7 @@ const Countdown = ({ timeEndInUnix }) => {
 };
 
 const calculateTimeLeft = (datetime) => {
-    const difference = +new Date(1687741289 * 1000) - +new Date();
+    const difference = +new Date(datetime * 1000) - +new Date();
 
     let timeLeft = {};
 

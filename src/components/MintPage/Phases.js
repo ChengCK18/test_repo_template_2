@@ -20,8 +20,10 @@ const Phases = () => {
     }
 
     if (!isLoading) {
+        console.log("Time", data);
         if (data[0] === null) {
             refetch();
+
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
         phaseIndex = data[0][0];
