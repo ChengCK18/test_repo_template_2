@@ -6,14 +6,13 @@ import { defAbi, contractAddress } from "../../utils";
 const MintButton = ({
     mintAmountNum,
     parsedMintCost,
+    proof,
     confirmingTransac,
     setConfirmingTransac,
 }) => {
     let { chain } = useNetwork();
     // const [mintAmount, setMintAmount] = useState(1);
     // const [mintPrice, setMintPrice] = useState(0.00001);
-    parsedMintCost = parsedMintCost.toFixed(5);
-    const strParsedMintCost = parsedMintCost.toString();
 
     const handleButton = async () => {
         try {
@@ -36,10 +35,11 @@ const MintButton = ({
                     defAbi,
                     signer
                 );
-
+                console.log("strParsedMintCost => ", parsedMintCost);
+                console.log("mintAmountNum => ", mintAmountNum);
                 console.log("Initialize payment");
-                let nftTxn = await nftcontract.mint(mintAmountNum, {
-                    value: ethers.utils.parseEther(strParsedMintCost),
+                let nftTxn = await nftcontract.mint(mintAmountNum, proof, {
+                    value: ethers.utils.parseEther(parsedMintCost),
                 });
                 setConfirmingTransac(2);
                 console.log("Mining...please wait");
@@ -48,11 +48,11 @@ const MintButton = ({
                 setConfirmingTransac(3);
             }
         } catch (err) {
+            console.log("ERROR => ", err);
             setConfirmingTransac(4);
-            console.log(err);
         }
     };
-    console.log(confirmingTransac);
+    console.log("confirmingTransac ", confirmingTransac);
     return (
         <div className="relative  flex h-[6%] w-full justify-center">
             <button

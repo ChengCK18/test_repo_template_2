@@ -1,7 +1,7 @@
 import { useContractReads } from "wagmi";
 import { contractAddress, defAbi } from "../../utils";
 import Countdown from "./Countdown";
-const Phases = () => {
+const Phases = ({ setConfirmingTransac }) => {
     let phaseIndex = 0;
     let timeEndInUnix = 0;
     const { data, isError, isLoading, refetch, isRefetching } =
@@ -28,22 +28,14 @@ const Phases = () => {
         }
         phaseIndex = data[0][0];
         timeEndInUnix = data[0]["endTime"];
+        console.log("phaseIndex => ", phaseIndex);
     }
 
     if (isRefetching) {
         return <div>Loading...</div>;
     }
 
-    const phasesRomanIndex = [
-        "PRE",
-        "I",
-        "II",
-        "III",
-        "IV",
-        "V",
-        "VI",
-        "Public",
-    ];
+    const phasesRomanIndex = ["PRE", "I", "II", "III"];
     const phrases = ["ended", "ends in", "starts in"];
     let threePhases = [];
 
@@ -73,7 +65,7 @@ const Phases = () => {
         });
     }
 
-    if (phaseIndex >= 2) {
+    if (phaseIndex === 2) {
         threePhases.push({
             roman: phasesRomanIndex[phaseIndex - 1],
             phrase: phrases[0],
@@ -90,6 +82,23 @@ const Phases = () => {
         });
     }
 
+    if (phaseIndex === 3) {
+        threePhases.push({
+            roman: phasesRomanIndex[phaseIndex - 1],
+            phrase: phrases[0],
+        });
+
+        threePhases.push({
+            roman: phasesRomanIndex[phaseIndex],
+            phrase: phrases[1],
+        });
+
+        threePhases.push({
+            roman: 999,
+            phrase: undefined,
+        });
+    }
+
     return (
         <>
             <div className="mb-8 flex h-[80px] w-full flex-row justify-center ">
@@ -101,7 +110,10 @@ const Phases = () => {
                     />
                 ))}
             </div>
-            <Countdown timeEndInUnix={timeEndInUnix} />
+            <Countdown
+                timeEndInUnix={timeEndInUnix}
+                setConfirmingTransac={setConfirmingTransac}
+            />
         </>
     );
 };

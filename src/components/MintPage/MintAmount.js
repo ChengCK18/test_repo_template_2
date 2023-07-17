@@ -3,35 +3,37 @@ import { useAccount, useContractReads } from "wagmi";
 import { defAbi, contractAddress } from "../../utils";
 import MintButton from "./MintButton";
 import { treeProof } from "../../utils";
+import { ethers } from "ethers";
 
 const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     // let { chain } = useNetwork();
-    const [maxMintAccBal, setMaxMintAccBal] = useState(3); // How much the account can mint left
     const [mintAmountNum, setMintAmountNum] = useState(1); // What number the user set to mint
     const { address } = useAccount();
-    let parsedMintCost = -1;
+    let parsedMintCost = 0;
+    let maxMintAccBal = 0;
 
-    const proof = treeProof.getProof([address]);
-    console.log(proof);
+    let proof = "";
+
+    try {
+        proof = treeProof.getProof([address]);
+    } catch {
+        proof = [];
+    }
+
     const { data, isError, isLoading, refetch, isRefetching } =
         useContractReads({
             contracts: [
                 {
                     address: contractAddress,
                     abi: defAbi,
-                    functionName: "balanceOf",
-                    args: [address],
-                },
-                {
-                    address: contractAddress,
-                    abi: defAbi,
-                    functionName: "totalSupply",
-                },
-                {
-                    address: contractAddress,
-                    abi: defAbi,
                     functionName: "calculateTotalMintPrice",
                     args: [address, mintAmountNum, proof],
+                },
+                {
+                    address: contractAddress,
+                    abi: defAbi,
+                    functionName: "getMintable",
+                    args: [address],
                 },
             ],
         });
@@ -41,14 +43,13 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
     }
 
     if (!isLoading) {
-        console.log("hereeee ", data);
-        if (data[0] === null) {
+        if (data[0] === null || data[1] === null) {
             refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
 
-        // parsedMintCost = parseInt(data[0]._hex);
-        parsedMintCost = mintAmountNum * 0.00001;
+        parsedMintCost = ethers.utils.formatEther(String(data[0]._hex));
+        maxMintAccBal = parseInt(data[1]._hex);
     }
 
     if (isRefetching) {
@@ -99,9 +100,7 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
                 <div className="flex h-1/2 w-full flex-row items-center">
                     <div className="w-[40%]">Total</div>
 
-                    <div className="w-[45%] text-center">
-                        {parsedMintCost.toFixed(5)}
-                    </div>
+                    <div className="w-[45%] text-center">{parsedMintCost}</div>
 
                     <div className="w-[12%] text-right">ETH</div>
                 </div>
@@ -109,6 +108,7 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
             <MintButton
                 mintAmountNum={mintAmountNum}
                 parsedMintCost={parsedMintCost}
+                proof={proof}
                 confirmingTransac={confirmingTransac}
                 setConfirmingTransac={setConfirmingTransac}
             />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Countdown = ({ timeEndInUnix }) => {
+const Countdown = ({ timeEndInUnix, setConfirmingTransac }) => {
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(timeEndInUnix));
 
     useEffect(() => {
@@ -10,7 +10,9 @@ const Countdown = ({ timeEndInUnix }) => {
             if (timeLeftObj !== -1) {
                 setTimeLeft(timeLeftObj);
             } else {
-                //Countdown complete, what to do next
+                console.log("Time out!!!");
+                setConfirmingTransac(0);
+                console.log("Time out!!!");
             }
         }, 1000);
     });
@@ -49,18 +51,22 @@ const Countdown = ({ timeEndInUnix }) => {
 const calculateTimeLeft = (datetime) => {
     const difference = +new Date(datetime * 1000) - +new Date();
 
-    let timeLeft = {};
+    if (difference < 0) {
+        return {
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+        };
+    }
 
-    timeLeft = {
+    let timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
     };
 
-    if (difference < 0) {
-        return -1;
-    }
     return timeLeft;
 };
 

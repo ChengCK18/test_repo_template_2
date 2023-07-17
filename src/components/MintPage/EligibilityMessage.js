@@ -1,39 +1,54 @@
-const EligibilityMessage = ({
-    phaseIndex,
-    accountTierIndex,
-    accountEligiblity,
-}) => {
+import { contractAddress, defAbi } from "../../utils";
+import { useContractReads } from "wagmi";
+
+const EligibilityMessage = ({ accountEligiblity, accountBalance }) => {
     let phaseRoman = "";
     let eligibleMessage = "";
     let accountTierString = "";
+    let phaseIndex = 0;
+    let accountTierIndex = 0;
+
+    const { data, isError, isLoading, refetch, isRefetching } =
+        useContractReads({
+            contracts: [
+                {
+                    address: contractAddress,
+                    abi: defAbi,
+                    functionName: "getCurrentPhase",
+                },
+            ],
+        });
+
+    if (isError) {
+        refetch();
+    }
+
+    if (!isLoading) {
+        if (data[0] === null) {
+            refetch();
+            return <div className="font-neueHaas text-white">Loading...</div>;
+        }
+        phaseIndex = data[0][0];
+    }
+
+    if (isRefetching) {
+        return <div>Loading...</div>;
+    }
+
     switch (phaseIndex) {
-        case 0:
-            phaseRoman = ""; // pre-mint stage, no message shown
-            break;
         case 1:
             phaseRoman = "I";
             eligibleMessage = `You're eligible for Phase ${phaseRoman}`;
+
             break;
         case 2:
             phaseRoman = "II";
             eligibleMessage = `You're eligible for Phase ${phaseRoman}`;
-
             break;
+
         case 3:
             phaseRoman = "III";
             eligibleMessage = `You're eligible for Phase ${phaseRoman}`;
-            break;
-        case 4:
-            phaseRoman = "IV";
-            eligibleMessage = `You're eligible for Phase ${phaseRoman}`;
-            break;
-        case 5:
-            phaseRoman = "Public"; // pre-mint stage, no message shown
-            eligibleMessage = `You're eligible for ${phaseRoman} Phase `;
-            break;
-
-        case 6:
-            phaseRoman = ""; // post-mint stage, no message shown
             break;
         default:
             phaseRoman = "Unknown";
@@ -41,20 +56,20 @@ const EligibilityMessage = ({
     }
 
     switch (accountTierIndex) {
+        case 0:
+            accountTierString = "OG_HONOURED";
+            break;
         case 1:
-            accountTierString = "Trillionaire";
+            accountTierString = "OG";
             break;
         case 2:
-            accountTierString = "Billionaire";
+            accountTierString = "WL";
             break;
         case 3:
-            accountTierString = "Millionaire";
-            break;
-        case 4:
-            accountTierString = "Other";
+            accountTierString = "ALLOWLIST";
             break;
         default:
-            accountTierString = "Public";
+            accountTierString = "PUBLIC";
             break;
     }
     return (
@@ -68,6 +83,11 @@ const EligibilityMessage = ({
                         ? `${eligibleMessage}`
                         : `Sorry, you're not eligible for Phase ${phaseRoman}`}
                 </p>
+
+                {phaseIndex === 0 && <p>Currently in pre-mint phase</p>}
+                {accountBalance <= 0 && (
+                    <p>You have already minted max amount</p>
+                )}
             </div>
         </div>
     );

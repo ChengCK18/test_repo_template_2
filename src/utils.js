@@ -20,7 +20,7 @@ export const wagmiClient = createClient({
 });
 export const ethereumClient = new EthereumClient(wagmiClient, chains);
 
-export const contractAddress = "0x87362421C5f8759504B8001e71e26e24E5c1fc48";
+export const contractAddress = "0x62cE60F234944398E2e638a645902479Ff3Ff800";
 export const treeProof = StandardMerkleTree.load(tree);
 
 export const defAbi = [
@@ -198,6 +198,25 @@ export const defAbi = [
             },
         ],
         name: "OwnershipTransferred",
+        type: "event",
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: false,
+                internalType: "enum NotSusProject.Roles",
+                name: "_roles",
+                type: "uint8",
+            },
+            {
+                indexed: false,
+                internalType: "bytes32",
+                name: "merkleRoot",
+                type: "bytes32",
+            },
+        ],
+        name: "SetMerkleRoot",
         type: "event",
     },
     {
@@ -412,6 +431,30 @@ export const defAbi = [
         inputs: [
             {
                 internalType: "address",
+                name: "user_",
+                type: "address",
+            },
+            {
+                internalType: "bytes32[]",
+                name: "proof_",
+                type: "bytes32[]",
+            },
+        ],
+        name: "getMintEligibilityAtCurrentPhase",
+        outputs: [
+            {
+                internalType: "bool",
+                name: "mintEligibility",
+                type: "bool",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
                 name: "_user",
                 type: "address",
             },
@@ -422,6 +465,19 @@ export const defAbi = [
                 internalType: "uint256",
                 name: "mintable",
                 type: "uint256",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "getRevealedBool",
+        outputs: [
+            {
+                internalType: "bool",
+                name: "",
+                type: "bool",
             },
         ],
         stateMutability: "view",
@@ -494,21 +550,21 @@ export const defAbi = [
         type: "function",
     },
     {
-        inputs: [],
-        name: "maxMintable",
-        outputs: [
+        inputs: [
             {
-                internalType: "uint32",
-                name: "",
-                type: "uint32",
+                internalType: "bool",
+                name: "isReveal_",
+                type: "bool",
             },
         ],
-        stateMutability: "view",
+        name: "isRevealed",
+        outputs: [],
+        stateMutability: "nonpayable",
         type: "function",
     },
     {
         inputs: [],
-        name: "maxPublicMintable",
+        name: "maxMintPerWallet",
         outputs: [
             {
                 internalType: "uint32",
@@ -611,6 +667,35 @@ export const defAbi = [
     {
         inputs: [
             {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+            {
+                internalType: "uint256",
+                name: "salePrice",
+                type: "uint256",
+            },
+        ],
+        name: "royaltyInfo",
+        outputs: [
+            {
+                internalType: "address",
+                name: "",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
                 internalType: "address",
                 name: "from",
                 type: "address",
@@ -706,6 +791,24 @@ export const defAbi = [
     {
         inputs: [
             {
+                internalType: "address",
+                name: "receiver",
+                type: "address",
+            },
+            {
+                internalType: "uint96",
+                name: "feeNumerator",
+                type: "uint96",
+            },
+        ],
+        name: "setDefaultRoyalty",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
                 internalType: "enum NotSusProject.Roles",
                 name: "role_",
                 type: "uint8",
@@ -740,6 +843,19 @@ export const defAbi = [
             },
         ],
         name: "setPhaseConfig",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "string",
+                name: "preRevealURI_",
+                type: "string",
+            },
+        ],
+        name: "setpreRevealURI",
         outputs: [],
         stateMutability: "nonpayable",
         type: "function",

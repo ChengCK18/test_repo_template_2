@@ -1,10 +1,9 @@
-import { useAccount, useContractReads } from "wagmi";
+import { useContractReads } from "wagmi";
 import { defAbi, contractAddress } from "../../utils";
 
 const TotalMinted = () => {
     let marketMinted = 999;
     let mintSupply = 999;
-    const { address } = useAccount();
     const { data, isError, isLoading, refetch, isRefetching } =
         useContractReads({
             contracts: [
