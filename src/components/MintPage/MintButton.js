@@ -37,7 +37,7 @@ const MintButton = ({
                     defAbi,
                     signer
                 );
-                let parsedMintCost = ethers.utils.formatEther(String(mintCost));
+                let parsedMintCost = mintCost;
 
                 let nftTxn = await nftcontract.mint(mintAmountNum, proof, {
                     value: ethers.utils.parseEther(parsedMintCost),
