@@ -1,21 +1,43 @@
 import { useState } from "react";
 import { useAccount, useContractReads } from "wagmi";
-import { defAbi, contractAddress } from "../../utils";
-import MintButton from "./MintButton";
-import { treeProof } from "../../utils";
-import { ethers } from "ethers";
+import { defAbi, contractAddress } from "../../utils/utils";
+import { treeProof1, treeProof2, treeProof3 } from "../../utils/utils";
 
-const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
+import MintButton from "./MintButton";
+import MintAmountCostCalculation from "./MintAmountCostCalculation";
+
+const MintAmount = ({
+    confirmingTransac,
+    setConfirmingTransac,
+    phaseIndex,
+}) => {
     // let { chain } = useNetwork();
     const [mintAmountNum, setMintAmountNum] = useState(1); // What number the user set to mint
+    const [mintCost, setMintCost] = useState(0);
     const { address } = useAccount();
-    let parsedMintCost = 0;
+    let accountEligiblity = false;
     let maxMintAccBal = 0;
 
+    //Load proof based on phase index
     let proof = "";
-
     try {
-        proof = treeProof.getProof([address]);
+        switch (phaseIndex) {
+            case 0:
+                proof = [];
+                break;
+            case 1:
+                proof = treeProof1.getProof([address]);
+                break;
+            case 2:
+                proof = treeProof2.getProof([address]);
+                break;
+            case 3:
+                proof = treeProof3.getProof([address]);
+                break;
+            default:
+                proof = [];
+                break;
+        }
     } catch {
         proof = [];
     }
@@ -26,8 +48,8 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
                 {
                     address: contractAddress,
                     abi: defAbi,
-                    functionName: "calculateTotalMintPrice",
-                    args: [address, mintAmountNum, proof],
+                    functionName: "getMintEligibilityAtCurrentPhase",
+                    args: [address, proof],
                 },
                 {
                     address: contractAddress,
@@ -48,12 +70,9 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
 
-        parsedMintCost = ethers.utils.formatEther(String(data[0]._hex));
+        // parsedMintCost = ethers.utils.formatEther(String(data[0]._hex));
+        accountEligiblity = data[0];
         maxMintAccBal = parseInt(data[1]._hex);
-    }
-
-    if (isRefetching) {
-        return <div>Loading...</div>;
     }
 
     return (
@@ -100,14 +119,25 @@ const MintAmount = ({ confirmingTransac, setConfirmingTransac }) => {
                 <div className="flex h-1/2 w-full flex-row items-center">
                     <div className="w-[40%]">Total</div>
 
-                    <div className="w-[45%] text-center">{parsedMintCost}</div>
+                    <div className="w-[45%] text-center">
+                        {accountEligiblity && (
+                            <MintAmountCostCalculation
+                                address={address}
+                                proof={proof}
+                                mintAmountNum={mintAmountNum}
+                                mintCost={mintCost}
+                                setMintCost={setMintCost}
+                            />
+                        )}
+                    </div>
 
                     <div className="w-[12%] text-right">ETH</div>
                 </div>
             </div>
             <MintButton
+                accountEligiblity={accountEligiblity}
                 mintAmountNum={mintAmountNum}
-                parsedMintCost={parsedMintCost}
+                mintCost={mintCost}
                 proof={proof}
                 confirmingTransac={confirmingTransac}
                 setConfirmingTransac={setConfirmingTransac}

@@ -73,7 +73,7 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
         if (confirmingTransac === 4) {
             let time1 = setTimeout(() => {
                 setConfirmingTransac(0);
-            }, 5000);
+            }, 6000);
             return () => {
                 clearInterval(time1.current);
             };

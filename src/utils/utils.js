@@ -5,7 +5,8 @@ import {
 } from "@web3modal/ethereum";
 import { configureChains, createClient } from "wagmi";
 import { arbitrum, goerli, polygon } from "wagmi/chains";
-import { tree } from "./tree";
+import { tree1, tree2, tree3 } from "./tree";
+
 const { StandardMerkleTree } = require("@openzeppelin/merkle-tree");
 
 const chains = [arbitrum, goerli, polygon];
@@ -21,7 +22,9 @@ export const wagmiClient = createClient({
 export const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 export const contractAddress = "0x62cE60F234944398E2e638a645902479Ff3Ff800";
-export const treeProof = StandardMerkleTree.load(tree);
+export const treeProof1 = StandardMerkleTree.load(tree1);
+export const treeProof2 = StandardMerkleTree.load(tree2);
+export const treeProof3 = StandardMerkleTree.load(tree3);
 
 export const defAbi = [
     {

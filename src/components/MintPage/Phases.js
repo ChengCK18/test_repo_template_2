@@ -1,5 +1,5 @@
 import { useContractReads } from "wagmi";
-import { contractAddress, defAbi } from "../../utils";
+import { contractAddress, defAbi } from "../../utils/utils";
 import Countdown from "./Countdown";
 const Phases = ({ setConfirmingTransac }) => {
     let phaseIndex = 0;

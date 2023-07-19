@@ -1,40 +1,44 @@
-import { useContractReads } from "wagmi";
 import { defAbi, contractAddress } from "../../utils/utils";
+import { useContractReads } from "wagmi";
 
-const TotalMinted = () => {
-    let marketMinted = 999;
-    let mintSupply = 999;
+const MintAmountCostCalculation = ({
+    address,
+    proof,
+    mintAmountNum,
+    mintCost,
+    setMintCost,
+}) => {
     const { data, isError, isLoading, refetch, isRefetching } =
         useContractReads({
             contracts: [
                 {
                     address: contractAddress,
                     abi: defAbi,
-                    functionName: "getSupplyInfo",
+                    functionName: "calculateTotalMintPrice",
+                    args: [address, mintAmountNum, proof],
                 },
             ],
         });
+
     if (isError) {
         refetch();
     }
+
     if (!isLoading) {
         if (data[0] === null) {
             refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
-
-        marketMinted = parseInt(data[0][1]._hex);
-        mintSupply = parseInt(data[0][0]._hex);
+        if (mintCost !== data[0]._hex) {
+            setMintCost(data[0]._hex);
+        }
     }
+
     if (isRefetching) {
-        return <div>Loading...</div>;
+        return <div>Calculating...</div>;
     }
 
-    return (
-        <div className="p-4 text-center font-neueHaas text-[36px] font-semibold tracking-wider text-[#01C99B]">
-            {marketMinted} / {mintSupply}
-        </div>
-    );
+    return <div>{mintCost}</div>;
 };
 
-export default TotalMinted;
+export default MintAmountCostCalculation;

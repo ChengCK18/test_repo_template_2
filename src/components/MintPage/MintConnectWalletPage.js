@@ -2,70 +2,96 @@ import { useAccount, useNetwork } from "wagmi";
 import { useState } from "react";
 import { switchNetwork } from "@wagmi/core";
 
-import Phases from "./Phases";
-import TotalMinted from "./TotalMinted";
 import ConnectWalletButton from "./ConnectWalletButton";
-import MintAmount from "./MintAmount";
 import TransactionConfirm from "./TransactionConfirm";
 import EligibilityMessage from "./EligibilityMessage";
+import ValidMintPage from "./ValidMintPage";
 
-import { useContractReads } from "wagmi";
-import { defAbi, contractAddress } from "../../utils";
-
-import { treeProof } from "../../utils";
-
-const MintPageMain = () => {
+const MintConnectWalletPage = () => {
+    //Page solely as landing page for user to connect their wallet.
+    //Once connected, it will render ValidMintPage which contains all the buttons and interface
     let { chain } = useNetwork();
-    const { address, isConnected } = useAccount();
+    const { isConnected } = useAccount();
     const [confirmingTransac, setConfirmingTransac] = useState(0);
     let accountEligiblity = false;
-    let accountBalance = 0;
 
-    let proof = "";
+    let phaseIndex = "";
 
-    try {
-        proof = treeProof.getProof([address]);
-    } catch {
-        proof = [];
-    }
+    // const { data, isError, isLoading, refetch, isRefetching } =
+    //     useContractReads({
+    //         contracts: [
+    //             {
+    //                 address: contractAddress,
+    //                 abi: defAbi,
+    //                 functionName: "getCurrentPhase",
+    //             },
+    //         ],
+    //     });
 
-    const { data, isError, isLoading, refetch, isRefetching } =
-        useContractReads({
-            contracts: [
-                {
-                    address: contractAddress,
-                    abi: defAbi,
-                    functionName: "getMintEligibilityAtCurrentPhase",
-                    args: [address, proof],
-                },
-                {
-                    address: contractAddress,
-                    abi: defAbi,
-                    functionName: "getMintable",
-                    args: [address],
-                },
-            ],
-        });
-    if (isError) {
-        refetch();
-    }
-    if (!isLoading) {
-        if (data[0] === null || data[1] === null) {
-            refetch();
-            return <div className="font-neueHaas text-white">Loading...</div>;
-        }
+    // if (isError) {
+    //     refetch();
+    // }
 
-        accountEligiblity = data[0];
-        accountBalance = parseInt(data[1]._hex);
-    }
-    if (isRefetching) {
-        return <div>Loading...</div>;
-    }
+    // if (!isLoading) {
+    //     if (data[0] === null) {
+    //         refetch();
+    //         return <div className="font-neueHaas text-white">Loading...</div>;
+    //     }
+    //     phaseIndex = data[0][0];
+    //     console.log("Index heree => ", phaseIndex);
+    // }
+
+    // if (isRefetching) {
+    //     return <div>Loading...</div>;
+    // }
+
+    // try {
+    //     proof = treeProof.getProof([address]);
+    // } catch {
+    //     proof = [];
+    // }
+
+    // const { data, isError, isLoading, refetch, isRefetching } =
+    //     useContractReads({
+    //         contracts: [
+    //             {
+    //                 address: contractAddress,
+    //                 abi: defAbi,
+    //                 functionName: "getMintEligibilityAtCurrentPhase",
+    //                 args: [address, proof],
+    //             },
+    //             {
+    //                 address: contractAddress,
+    //                 abi: defAbi,
+    //                 functionName: "getMintable",
+    //                 args: [address],
+    //             },
+    //         ],
+    //     });
+    // if (isError) {
+    //     refetch();
+    // }
+    // if (!isLoading) {
+    //     if (data[0] === null || data[1] === null) {
+    //         refetch();
+    //         return <div className="font-neueHaas text-white">Loading...</div>;
+    //     }
+
+    //     accountEligiblity = data[0];
+    //     accountBalance = parseInt(data[1]._hex);
+    // }
+    // if (isRefetching) {
+    //     return <div>Loading...</div>;
+    // }
 
     const handleSwitchNetworkButton = () => {
         const network = switchNetwork({ chainId: 5 });
         chain = network;
     };
+
+    // This is to ensure user is
+    // 1) Connected their wallet
+    // 2) On the right chain
 
     let mintAmountPanel = "";
     if (chain === undefined) {
@@ -73,20 +99,14 @@ const MintPageMain = () => {
     } else {
         if (isConnected && chain.name === "Goerli") {
             mintAmountPanel = (
-                <>
-                    <Phases setConfirmingTransac={setConfirmingTransac} />
-                    <TotalMinted />
-
-                    {accountEligiblity && accountBalance > 0 && (
-                        <MintAmount
-                            confirmingTransac={confirmingTransac}
-                            setConfirmingTransac={setConfirmingTransac}
-                        />
-                    )}
-                </>
+                <ValidMintPage
+                    confirmingTransac={confirmingTransac}
+                    setConfirmingTransac={setConfirmingTransac}
+                />
             );
         }
         if (chain.name !== "Goerli") {
+            //connected but chain is wrong
             mintAmountPanel = (
                 <div className="mt-10 flex h-[80px] w-full flex-col items-center justify-center text-center  font-neueHaas font-semibold leading-6 tracking-wider">
                     <span className="text-white">
@@ -121,10 +141,9 @@ const MintPageMain = () => {
                     {mintAmountPanel}
                     <ConnectWalletButton />
 
-                    {isConnected && (
+                    {isConnected && chain.name === "Goerli" && (
                         <EligibilityMessage
                             accountEligiblity={accountEligiblity}
-                            accountBalance={accountBalance}
                         />
                     )}
                 </div>
@@ -140,4 +159,4 @@ const MintPageMain = () => {
     );
 };
 
-export default MintPageMain;
+export default MintConnectWalletPage;

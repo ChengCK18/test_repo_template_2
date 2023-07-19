@@ -1,18 +1,20 @@
 import { switchNetwork } from "@wagmi/core";
 import { useNetwork } from "wagmi";
 import { ethers } from "ethers";
-import { defAbi, contractAddress } from "../../utils";
+import { defAbi, contractAddress } from "../../utils/utils";
 
 const MintButton = ({
+    accountEligiblity,
     mintAmountNum,
-    parsedMintCost,
+    mintCost,
     proof,
     confirmingTransac,
     setConfirmingTransac,
 }) => {
     let { chain } = useNetwork();
-    // const [mintAmount, setMintAmount] = useState(1);
-    // const [mintPrice, setMintPrice] = useState(0.00001);
+    let mintClickable = false;
+    accountEligiblity = true;
+    mintClickable = !(accountEligiblity && mintAmountNum > 0);
 
     const handleButton = async () => {
         try {
@@ -35,9 +37,8 @@ const MintButton = ({
                     defAbi,
                     signer
                 );
-                console.log("strParsedMintCost => ", parsedMintCost);
-                console.log("mintAmountNum => ", mintAmountNum);
-                console.log("Initialize payment");
+                let parsedMintCost = ethers.utils.formatEther(String(mintCost));
+
                 let nftTxn = await nftcontract.mint(mintAmountNum, proof, {
                     value: ethers.utils.parseEther(parsedMintCost),
                 });
@@ -53,13 +54,15 @@ const MintButton = ({
         }
     };
     console.log("confirmingTransac ", confirmingTransac);
+
     return (
         <div className="relative  flex h-[6%] w-full justify-center">
             <button
                 className={`${
-                    mintAmountNum <= 0 ? "opacity-70" : ""
+                    mintClickable ? "opacity-70" : ""
                 } h-full w-[35%] rounded-3xl bg-white font-neueHaas text-[1.9vh] font-semibold  leading-6 tracking-wider text-custom-theme-purple`}
                 onClick={handleButton}
+                disabled={mintClickable}
             >
                 Mint
             </button>

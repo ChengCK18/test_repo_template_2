@@ -1,7 +1,7 @@
-import { contractAddress, defAbi } from "../../utils";
+import { contractAddress, defAbi } from "../../utils/utils";
 import { useContractReads } from "wagmi";
 
-const EligibilityMessage = ({ accountEligiblity, accountBalance }) => {
+const EligibilityMessage = ({ accountEligiblity }) => {
     let phaseRoman = "";
     let eligibleMessage = "";
     let accountTierString = "";
@@ -77,17 +77,15 @@ const EligibilityMessage = ({ accountEligiblity, accountBalance }) => {
             <div>
                 <p>Welcome, {accountTierString}</p>
                 <p>
-                    {accountEligiblity |
-                    (phaseIndex === 0) | //Pre mint
-                    (phaseIndex === 6) //Post mint
+                    {accountEligiblity | (phaseIndex === 0) //Pre mint
                         ? `${eligibleMessage}`
                         : `Sorry, you're not eligible for Phase ${phaseRoman}`}
                 </p>
 
                 {phaseIndex === 0 && <p>Currently in pre-mint phase</p>}
-                {accountBalance <= 0 && (
+                {/* {accountBalance <= 0 && (
                     <p>You have already minted max amount</p>
-                )}
+                )} */}
             </div>
         </div>
     );
