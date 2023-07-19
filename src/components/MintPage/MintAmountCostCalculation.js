@@ -1,5 +1,6 @@
 import { defAbi, contractAddress } from "../../utils/utils";
 import { useContractReads } from "wagmi";
+import { ethers } from "ethers";
 
 const MintAmountCostCalculation = ({
     address,
@@ -30,8 +31,12 @@ const MintAmountCostCalculation = ({
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
         if (mintCost !== data[0]._hex) {
-            setMintCost(data[0]._hex);
+            const calculated = ethers.utils.formatEther(
+                String(parseInt(data[0]._hex, 16))
+            );
+            setMintCost(calculated);
         }
+        console.log("data => ", data);
     }
 
     if (isRefetching) {
