@@ -6,9 +6,40 @@ import { useContractReads } from "wagmi";
 import { contractAddress, defAbi } from "../../utils/utils";
 import { useAccount } from "wagmi";
 
+import {
+    treeProofOgHonoured,
+    treeProofOg,
+    treeProofWhitelist,
+    treeProofAllowlist,
+} from "../../utils/utils";
+
 const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
     let phaseIndex = 0;
+    let role = 4;
     const { address } = useAccount();
+
+    let proofList = [];
+    try {
+        proofList.push(treeProofOgHonoured.getProof([address]));
+    } catch {
+        proofList.push([]);
+    }
+    try {
+        proofList.push(treeProofOg.getProof([address]));
+    } catch {
+        proofList.push([]);
+    }
+    try {
+        proofList.push(treeProofWhitelist.getProof([address]));
+    } catch {
+        proofList.push([]);
+    }
+    try {
+        proofList.push(treeProofAllowlist.getProof([address]));
+    } catch {
+        proofList.push([]);
+    }
+
     const { data, isError, isLoading, refetch } = useContractReads({
         contracts: [
             {
@@ -16,8 +47,15 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
                 abi: defAbi,
                 functionName: "getCurrentPhase",
             },
+            {
+                address: contractAddress,
+                abi: defAbi,
+                functionName: "getRoleFromProofs",
+                args: [address, proofList],
+            },
         ],
     });
+
     if (isError) {
         refetch();
     }
@@ -28,6 +66,7 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
         }
 
         phaseIndex = data[0][0];
+        role = data[1];
     }
 
     return (
@@ -39,6 +78,7 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
                 confirmingTransac={confirmingTransac}
                 setConfirmingTransac={setConfirmingTransac}
                 phaseIndex={phaseIndex}
+                role={role}
             />
         </>
     );

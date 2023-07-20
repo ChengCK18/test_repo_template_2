@@ -1,38 +1,45 @@
 import { useState } from "react";
 import { useAccount, useContractReads } from "wagmi";
 import { defAbi, contractAddress } from "../../utils/utils";
-import { treeProof1, treeProof2, treeProof3 } from "../../utils/utils";
+import EligibilityMessage from "./EligibilityMessage";
+import {
+    treeProofOgHonoured,
+    treeProofOg,
+    treeProofWhitelist,
+    treeProofAllowlist,
+} from "../../utils/utils";
 
 import MintButton from "./MintButton";
 import MintAmountCostCalculation from "./MintAmountCostCalculation";
+import ConnectWalletButton from "./ConnectWalletButton";
 
 const MintAmount = ({
     confirmingTransac,
     setConfirmingTransac,
     phaseIndex,
+    role,
 }) => {
     // let { chain } = useNetwork();
-    const [mintAmountNum, setMintAmountNum] = useState(1); // What number the user set to mint
+    const [mintAmountNum, setMintAmountNum] = useState(0); // What number the user set to mint
     const [mintCost, setMintCost] = useState(0);
     const { address } = useAccount();
     let accountEligiblity = false;
     let maxMintAccBal = 0;
+    let proof = [];
 
-    //Load proof based on phase index
-    let proof = "";
     try {
-        switch (phaseIndex) {
+        switch (role) {
             case 0:
-                proof = [];
+                proof = treeProofOgHonoured.getProof([address]);
                 break;
             case 1:
-                proof = treeProof1.getProof([address]);
+                proof = treeProofOg.getProof([address]);
                 break;
             case 2:
-                proof = treeProof2.getProof([address]);
+                proof = treeProofWhitelist.getProof([address]);
                 break;
             case 3:
-                proof = treeProof3.getProof([address]);
+                proof = treeProofAllowlist.getProof([address]);
                 break;
             default:
                 proof = [];
@@ -42,23 +49,22 @@ const MintAmount = ({
         proof = [];
     }
 
-    const { data, isError, isLoading, refetch, isRefetching } =
-        useContractReads({
-            contracts: [
-                {
-                    address: contractAddress,
-                    abi: defAbi,
-                    functionName: "getMintEligibilityAtCurrentPhase",
-                    args: [address, proof],
-                },
-                {
-                    address: contractAddress,
-                    abi: defAbi,
-                    functionName: "getMintable",
-                    args: [address],
-                },
-            ],
-        });
+    const { data, isError, isLoading, refetch } = useContractReads({
+        contracts: [
+            {
+                address: contractAddress,
+                abi: defAbi,
+                functionName: "getMintable",
+                args: [address],
+            },
+            {
+                address: contractAddress,
+                abi: defAbi,
+                functionName: "getMintEligibilityAtCurrentPhase",
+                args: [address, proof],
+            },
+        ],
+    });
 
     if (isError) {
         refetch();
@@ -69,10 +75,10 @@ const MintAmount = ({
             refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
+        console.log("heyyyy ---- >", data);
 
-        // parsedMintCost = ethers.utils.formatEther(String(data[0]._hex));
-        accountEligiblity = data[0];
-        maxMintAccBal = parseInt(data[1]._hex);
+        maxMintAccBal = parseInt(data[0]._hex);
+        accountEligiblity = data[1];
     }
 
     return (
@@ -141,6 +147,14 @@ const MintAmount = ({
                 proof={proof}
                 confirmingTransac={confirmingTransac}
                 setConfirmingTransac={setConfirmingTransac}
+            />
+            <ConnectWalletButton />
+            <EligibilityMessage
+                accountEligiblity={accountEligiblity}
+                address={address}
+                proof={proof}
+                phaseIndex={phaseIndex}
+                role={role}
             />
         </>
     );

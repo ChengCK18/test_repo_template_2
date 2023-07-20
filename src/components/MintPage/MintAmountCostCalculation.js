@@ -27,7 +27,8 @@ const MintAmountCostCalculation = ({
 
     if (!isLoading) {
         if (data[0] === null) {
-            refetch();
+            console.log("dahhhhhhhhhh");
+            // refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
         if (mintCost !== data[0]._hex) {

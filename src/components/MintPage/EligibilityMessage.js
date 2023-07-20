@@ -1,12 +1,16 @@
 import { contractAddress, defAbi } from "../../utils/utils";
 import { useContractReads } from "wagmi";
 
-const EligibilityMessage = ({ accountEligiblity }) => {
+const EligibilityMessage = ({
+    accountEligiblity,
+    address,
+    proof,
+    phaseIndex,
+    role,
+}) => {
     let phaseRoman = "";
     let eligibleMessage = "";
     let accountTierString = "";
-    let phaseIndex = 0;
-    let accountTierIndex = 0;
 
     const { data, isError, isLoading, refetch, isRefetching } =
         useContractReads({
@@ -55,7 +59,7 @@ const EligibilityMessage = ({ accountEligiblity }) => {
             break;
     }
 
-    switch (accountTierIndex) {
+    switch (role) {
         case 0:
             accountTierString = "OG_HONOURED";
             break;

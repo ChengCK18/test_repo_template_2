@@ -13,9 +13,10 @@ const MintButton = ({
 }) => {
     let { chain } = useNetwork();
     let mintClickable = false;
-    accountEligiblity = true;
+
     mintClickable = !(accountEligiblity && mintAmountNum > 0);
 
+    console.log(accountEligiblity, "daaaa");
     const handleButton = async () => {
         try {
             if (mintAmountNum <= 0) {

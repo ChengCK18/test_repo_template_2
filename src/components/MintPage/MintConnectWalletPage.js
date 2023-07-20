@@ -14,7 +14,7 @@ const MintConnectWalletPage = () => {
     const { isConnected } = useAccount();
     const [confirmingTransac, setConfirmingTransac] = useState(0);
     let accountEligiblity = false;
-
+    console.log(chain);
     let phaseIndex = "";
 
     // const { data, isError, isLoading, refetch, isRefetching } =
@@ -139,13 +139,7 @@ const MintConnectWalletPage = () => {
                     }`}
                 >
                     {mintAmountPanel}
-                    <ConnectWalletButton />
-
-                    {isConnected && chain.name === "Goerli" && (
-                        <EligibilityMessage
-                            accountEligiblity={accountEligiblity}
-                        />
-                    )}
+                    {!isConnected && <ConnectWalletButton />}
                 </div>
             </div>
 

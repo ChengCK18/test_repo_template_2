@@ -5,7 +5,7 @@ import {
 } from "@web3modal/ethereum";
 import { configureChains, createClient } from "wagmi";
 import { arbitrum, goerli, polygon } from "wagmi/chains";
-import { tree1, tree2, tree3 } from "./tree";
+import { treeOgHonoured, treeOg, treeWhitelist, treeAllowlist } from "./tree";
 
 const { StandardMerkleTree } = require("@openzeppelin/merkle-tree");
 
@@ -21,10 +21,13 @@ export const wagmiClient = createClient({
 });
 export const ethereumClient = new EthereumClient(wagmiClient, chains);
 
-export const contractAddress = "0x62cE60F234944398E2e638a645902479Ff3Ff800";
-export const treeProof1 = StandardMerkleTree.load(tree1);
-export const treeProof2 = StandardMerkleTree.load(tree2);
-export const treeProof3 = StandardMerkleTree.load(tree3);
+// export const contractAddress = "0x62cE60F234944398E2e638a645902479Ff3Ff800";
+export const contractAddress = "0x982fbEfEF8C735703E383315F08C56AEB7bd92d6";
+
+export const treeProofOgHonoured = StandardMerkleTree.load(treeOgHonoured);
+export const treeProofOg = StandardMerkleTree.load(treeOg);
+export const treeProofWhitelist = StandardMerkleTree.load(treeWhitelist);
+export const treeProofAllowlist = StandardMerkleTree.load(treeAllowlist);
 
 export const defAbi = [
     {
@@ -307,6 +310,35 @@ export const defAbi = [
     {
         inputs: [
             {
+                internalType: "bytes32[]",
+                name: "proof_",
+                type: "bytes32[]",
+            },
+            {
+                internalType: "address",
+                name: "user_",
+                type: "address",
+            },
+            {
+                internalType: "bytes32",
+                name: "root_",
+                type: "bytes32",
+            },
+        ],
+        name: "_verify",
+        outputs: [
+            {
+                internalType: "bool",
+                name: "",
+                type: "bool",
+            },
+        ],
+        stateMutability: "pure",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
                 internalType: "address",
                 name: "to",
                 type: "address",
@@ -511,6 +543,30 @@ export const defAbi = [
         type: "function",
     },
     {
+        inputs: [
+            {
+                internalType: "address",
+                name: "user_",
+                type: "address",
+            },
+            {
+                internalType: "bytes32[][4]",
+                name: "proof_",
+                type: "bytes32[][4]",
+            },
+        ],
+        name: "getRoleFromProofs",
+        outputs: [
+            {
+                internalType: "enum NotSusProject.Roles",
+                name: "",
+                type: "uint8",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
         inputs: [],
         name: "getSupplyInfo",
         outputs: [
@@ -573,6 +629,25 @@ export const defAbi = [
                 internalType: "uint32",
                 name: "",
                 type: "uint32",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "enum NotSusProject.Roles",
+                name: "",
+                type: "uint8",
+            },
+        ],
+        name: "merkleRoot",
+        outputs: [
+            {
+                internalType: "bytes32",
+                name: "",
+                type: "bytes32",
             },
         ],
         stateMutability: "view",
