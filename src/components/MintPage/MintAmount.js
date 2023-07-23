@@ -75,15 +75,17 @@ const MintAmount = ({
             refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
-        console.log("heyyyy ---- >", data);
 
         maxMintAccBal = parseInt(data[0]._hex);
+        if (mintAmountNum > maxMintAccBal) {
+            setMintAmountNum(0);
+        }
         accountEligiblity = data[1];
     }
 
     return (
         <>
-            <div className="mb-16 flex h-[120px] w-[455px] flex-col justify-center rounded-2xl border-2 border-white px-4 py-1 font-neueHaas text-[21px] font-semibold text-red-50">
+            <div className="mb-16 flex flex-col  justify-center  rounded-2xl border-2 border-white px-4 py-1 font-neueHaas text-[21px] font-semibold text-red-50 mobile:h-[100px] mobile:w-5/6 tablet:h-[120px] tablet:w-[455px]">
                 <div className="flex h-1/2 w-full flex-row items-center border-b-2 ">
                     <div className="w-[40%]">Amount</div>
                     <div className="w-[15%] text-center">

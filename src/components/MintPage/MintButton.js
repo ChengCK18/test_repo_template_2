@@ -57,11 +57,11 @@ const MintButton = ({
     console.log("confirmingTransac ", confirmingTransac);
 
     return (
-        <div className="relative  flex h-[6%] w-full justify-center">
+        <div className="relative flex h-[6%] w-full justify-center">
             <button
                 className={`${
                     mintClickable ? "opacity-70" : ""
-                } h-full w-[35%] rounded-3xl bg-white font-neueHaas text-[1.9vh] font-semibold  leading-6 tracking-wider text-custom-theme-purple`}
+                } h-full rounded-3xl bg-white font-neueHaas text-[1.9vh] font-semibold leading-6 tracking-wider  text-custom-theme-purple mobile:w-3/4 tablet:w-[45%] laptop:w-[35%]`}
                 onClick={handleButton}
                 disabled={mintClickable}
             >

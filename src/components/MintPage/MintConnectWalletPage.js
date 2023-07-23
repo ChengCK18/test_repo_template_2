@@ -13,85 +13,11 @@ const MintConnectWalletPage = () => {
     let { chain } = useNetwork();
     const { isConnected } = useAccount();
     const [confirmingTransac, setConfirmingTransac] = useState(0);
-    let accountEligiblity = false;
-    console.log(chain);
-    let phaseIndex = "";
-
-    // const { data, isError, isLoading, refetch, isRefetching } =
-    //     useContractReads({
-    //         contracts: [
-    //             {
-    //                 address: contractAddress,
-    //                 abi: defAbi,
-    //                 functionName: "getCurrentPhase",
-    //             },
-    //         ],
-    //     });
-
-    // if (isError) {
-    //     refetch();
-    // }
-
-    // if (!isLoading) {
-    //     if (data[0] === null) {
-    //         refetch();
-    //         return <div className="font-neueHaas text-white">Loading...</div>;
-    //     }
-    //     phaseIndex = data[0][0];
-    //     console.log("Index heree => ", phaseIndex);
-    // }
-
-    // if (isRefetching) {
-    //     return <div>Loading...</div>;
-    // }
-
-    // try {
-    //     proof = treeProof.getProof([address]);
-    // } catch {
-    //     proof = [];
-    // }
-
-    // const { data, isError, isLoading, refetch, isRefetching } =
-    //     useContractReads({
-    //         contracts: [
-    //             {
-    //                 address: contractAddress,
-    //                 abi: defAbi,
-    //                 functionName: "getMintEligibilityAtCurrentPhase",
-    //                 args: [address, proof],
-    //             },
-    //             {
-    //                 address: contractAddress,
-    //                 abi: defAbi,
-    //                 functionName: "getMintable",
-    //                 args: [address],
-    //             },
-    //         ],
-    //     });
-    // if (isError) {
-    //     refetch();
-    // }
-    // if (!isLoading) {
-    //     if (data[0] === null || data[1] === null) {
-    //         refetch();
-    //         return <div className="font-neueHaas text-white">Loading...</div>;
-    //     }
-
-    //     accountEligiblity = data[0];
-    //     accountBalance = parseInt(data[1]._hex);
-    // }
-    // if (isRefetching) {
-    //     return <div>Loading...</div>;
-    // }
 
     const handleSwitchNetworkButton = () => {
         const network = switchNetwork({ chainId: 5 });
         chain = network;
     };
-
-    // This is to ensure user is
-    // 1) Connected their wallet
-    // 2) On the right chain
 
     let mintAmountPanel = "";
     if (chain === undefined) {
@@ -126,7 +52,7 @@ const MintConnectWalletPage = () => {
     return (
         <>
             <div
-                className={`relative flex h-screen w-full flex-col items-center justify-center bg-about_bg_img_laptop bg-cover bg-center `}
+                className={`relative flex h-screen w-full flex-col items-center justify-center bg-about_bg_img_laptop bg-cover bg-center mobile:overflow-scroll tablet:overflow-hidden laptop:overflow-hidden`}
             >
                 <div
                     className={`absolute top-0 h-10 w-full bg-black text-center font-anton text-[3.3vh] tracking-wider text-white`}

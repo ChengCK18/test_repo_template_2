@@ -34,7 +34,7 @@ const ConnectWalletButton = () => {
             <button
                 disabled={loading}
                 onClick={onClick}
-                className={`h-full w-[35%] truncate rounded-3xl border-2 border-white px-5 font-neueHaas font-semibold   leading-6 tracking-wider ${style}`}
+                className={`h-full  truncate rounded-3xl border-2 border-white px-5 font-neueHaas font-semibold leading-6 tracking-wider   mobile:w-3/4 tablet:w-[45%] laptop:w-[35%] ${style}`}
             >
                 {loading ? "Loading..." : label}
             </button>
