@@ -20,15 +20,12 @@ const Phases = ({ setConfirmingTransac }) => {
     }
 
     if (!isLoading) {
-        console.log("Time", data);
         if (data[0] === null) {
             refetch();
-
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
         phaseIndex = data[0][0];
         timeEndInUnix = data[0]["endTime"];
-        console.log("phaseIndex => ", phaseIndex);
     }
 
     if (isRefetching) {
@@ -107,12 +104,14 @@ const Phases = ({ setConfirmingTransac }) => {
                         key={`roman_${item.roman}`}
                         roman={item.roman}
                         phrase={item.phrase}
+                        phaseIndex={phaseIndex}
                     />
                 ))}
             </div>
             <Countdown
                 timeEndInUnix={timeEndInUnix}
                 setConfirmingTransac={setConfirmingTransac}
+                phaseIndex={phaseIndex}
             />
         </>
     );
@@ -120,11 +119,16 @@ const Phases = ({ setConfirmingTransac }) => {
 
 export default Phases;
 
-const Phase = ({ roman, phrase }) => {
+const Phase = ({ roman, phrase, phaseIndex }) => {
     return (
         <div
             key={`Key_${roman}`}
-            className="flex h-full w-[250px] flex-col items-center justify-center  text-center font-neueHaas text-4xl font-semibold leading-10 text-white"
+            className={`flex h-full w-[250px] flex-col items-center justify-center  text-center font-neueHaas text-4xl font-semibold leading-10 text-white ${
+                (phrase === "starts in" || phrase === "ended") &&
+                phaseIndex !== 0
+                    ? "opacity-50"
+                    : ""
+            }`}
         >
             {roman !== 999 && (
                 <>

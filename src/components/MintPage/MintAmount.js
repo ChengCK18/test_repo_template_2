@@ -12,7 +12,7 @@ import {
 import MintButton from "./MintButton";
 import MintAmountCostCalculation from "./MintAmountCostCalculation";
 import ConnectWalletButton from "./ConnectWalletButton";
-
+import RoleSpecificMessage from "./RoleSpecificMessage";
 const MintAmount = ({
     confirmingTransac,
     setConfirmingTransac,
@@ -85,7 +85,7 @@ const MintAmount = ({
 
     return (
         <>
-            <div className="mb-16 flex flex-col  justify-center  rounded-2xl border-2 border-white px-4 py-1 font-neueHaas text-[21px] font-semibold text-red-50 mobile:h-[100px] mobile:w-5/6 tablet:h-[120px] tablet:w-[455px]">
+            <div className=" flex flex-col  justify-center  rounded-2xl border-2 border-white px-4 py-1 font-neueHaas text-[21px] font-semibold text-red-50 mobile:h-[100px] mobile:w-5/6 tablet:h-[120px] tablet:w-[455px]">
                 <div className="flex h-1/2 w-full flex-row items-center border-b-2 ">
                     <div className="w-[40%]">Amount</div>
                     <div className="w-[15%] text-center">
@@ -96,6 +96,7 @@ const MintAmount = ({
                                     setMintAmountNum(newNum);
                                 }
                             }}
+                            disabled={!accountEligiblity}
                         >
                             -
                         </button>
@@ -109,6 +110,7 @@ const MintAmount = ({
                                     setMintAmountNum(newNum);
                                 }
                             }}
+                            disabled={!accountEligiblity}
                         >
                             +
                         </button>
@@ -119,6 +121,7 @@ const MintAmount = ({
                             onClick={() => {
                                 setMintAmountNum(maxMintAccBal);
                             }}
+                            disabled={!accountEligiblity}
                         >
                             Max
                         </button>
@@ -142,6 +145,8 @@ const MintAmount = ({
                     <div className="w-[12%] text-right">ETH</div>
                 </div>
             </div>
+            <RoleSpecificMessage role={role} phaseIndex={phaseIndex} />
+
             <MintButton
                 accountEligiblity={accountEligiblity}
                 mintAmountNum={mintAmountNum}

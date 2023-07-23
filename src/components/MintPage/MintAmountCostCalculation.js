@@ -27,17 +27,16 @@ const MintAmountCostCalculation = ({
 
     if (!isLoading) {
         if (data[0] === null) {
-            console.log("dahhhhhhhhhh");
-            // refetch();
+            refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
-        if (mintCost !== data[0]._hex) {
+
+        if (mintCost !== String(parseInt(data[0]._hex))) {
             const calculated = ethers.utils.formatEther(
                 String(parseInt(data[0]._hex, 16))
             );
             setMintCost(calculated);
         }
-        console.log("data => ", data);
     }
 
     if (isRefetching) {

@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 
-const Countdown = ({ timeEndInUnix, setConfirmingTransac }) => {
+const Countdown = ({ timeEndInUnix, setConfirmingTransac, phaseIndex }) => {
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(timeEndInUnix));
 
     useEffect(() => {
         setTimeout(() => {
             const timeLeftObj = calculateTimeLeft(timeEndInUnix);
 
-            if (timeLeftObj !== -1) {
-                setTimeLeft(timeLeftObj);
-            } else {
-                console.log("Time out!!!");
-                setConfirmingTransac(0);
-                console.log("Time out!!!");
+            setTimeLeft(timeLeftObj);
+
+            if (
+                timeLeftObj.days === 0 &&
+                timeLeftObj.hours === 0 &&
+                timeLeftObj.minutes === 0 &&
+                timeLeftObj.seconds === 0 &&
+                phaseIndex !== 3
+            ) {
+                window.location.reload();
             }
         }, 1000);
     });

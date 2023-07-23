@@ -4,10 +4,8 @@ import { TwitterShareButton } from "react-share";
 const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
     const [heading, setHeading] = useState();
     const [subtext, setSubtext] = useState();
-    console.log("confirmingTransac => ", confirmingTransac);
 
     useEffect(() => {
-        console.log("usefff confirmingTransac => ", confirmingTransac);
         if (confirmingTransac === 1) {
             setHeading(
                 <>
@@ -83,11 +81,19 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
     return (
         <div className="absolute top-0  flex  h-full w-full items-center justify-center">
             <div className="flex h-3/5 w-3/5 flex-col items-center justify-center rounded-2xl bg-white">
-                <div className="mt-10 w-full text-center font-neueHaas text-6xl font-semibold leading-[60px] text-custom-theme-purple">
+                <div className="mt-auto w-full text-center font-neueHaas text-6xl font-semibold leading-[60px] text-custom-theme-purple">
                     {heading}
                 </div>
                 <div className="mt-10 flex w-full items-center justify-center text-center font-neueHaas text-2xl font-semibold leading-[25px] text-custom-theme-purple">
                     {subtext}
+                </div>
+                <div
+                    className={`mt-auto flex w-full items-center justify-center text-center font-neueHaas text-lg font-semibold leading-[25px] text-gray-500 ${
+                        confirmingTransac === 4 ? "" : "invisible"
+                    }`}
+                >
+                    If you have multiple account, please make sure you are on
+                    the right account and it's connected
                 </div>
             </div>
         </div>

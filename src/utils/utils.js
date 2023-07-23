@@ -4,15 +4,21 @@ import {
     w3mProvider,
 } from "@web3modal/ethereum";
 import { configureChains, createClient } from "wagmi";
-import { arbitrum, goerli, polygon } from "wagmi/chains";
+import { mainnet, arbitrum, goerli, polygon } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 import { treeOgHonoured, treeOg, treeWhitelist, treeAllowlist } from "./tree";
 
 const { StandardMerkleTree } = require("@openzeppelin/merkle-tree");
 
-const chains = [arbitrum, goerli, polygon];
+const chains = [mainnet, arbitrum, goerli, polygon];
 export const projectId = "2d2ff768204bdfd16aaabeddd7b9e032";
 
 const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
+// const { provider } = configureChains(chains, [
+//     alchemyProvider({ apiKey: "Y_R8wgy4jrd5jKQfh-eVn6NzPbwzNc2P" }),
+//     publicProvider(),
+// ]);
 
 export const wagmiClient = createClient({
     autoConnect: true,
@@ -22,7 +28,7 @@ export const wagmiClient = createClient({
 export const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 // export const contractAddress = "0x62cE60F234944398E2e638a645902479Ff3Ff800";
-export const contractAddress = "0x982fbEfEF8C735703E383315F08C56AEB7bd92d6";
+export const contractAddress = "0x5Dc08e4E63c37b17c1de078d46F86Df0456C5351";
 
 export const treeProofOgHonoured = StandardMerkleTree.load(treeOgHonoured);
 export const treeProofOg = StandardMerkleTree.load(treeOg);

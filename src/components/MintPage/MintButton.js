@@ -16,7 +16,6 @@ const MintButton = ({
 
     mintClickable = !(accountEligiblity && mintAmountNum > 0);
 
-    console.log(accountEligiblity, "daaaa");
     const handleButton = async () => {
         try {
             if (mintAmountNum <= 0) {
@@ -24,6 +23,7 @@ const MintButton = ({
             }
 
             setConfirmingTransac(1);
+
             if (chain.name !== "Goerli") {
                 const network = await switchNetwork({ chainId: 5 });
                 chain = network;
@@ -54,7 +54,6 @@ const MintButton = ({
             setConfirmingTransac(4);
         }
     };
-    console.log("confirmingTransac ", confirmingTransac);
 
     return (
         <div className="relative flex h-[6%] w-full justify-center">
