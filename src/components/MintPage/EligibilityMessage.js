@@ -12,33 +12,6 @@ const EligibilityMessage = ({
     let eligibleMessage = "";
     let accountTierString = "";
 
-    const { data, isError, isLoading, refetch, isRefetching } =
-        useContractReads({
-            contracts: [
-                {
-                    address: contractAddress,
-                    abi: defAbi,
-                    functionName: "getCurrentPhase",
-                },
-            ],
-        });
-
-    if (isError) {
-        refetch();
-    }
-
-    if (!isLoading) {
-        if (data[0] === null) {
-            refetch();
-            return <div className="font-neueHaas text-white">Loading...</div>;
-        }
-        phaseIndex = data[0][0];
-    }
-
-    if (isRefetching) {
-        return <div>Loading...</div>;
-    }
-
     switch (phaseIndex) {
         case 1:
             phaseRoman = "I";
@@ -52,7 +25,7 @@ const EligibilityMessage = ({
 
         case 3:
             phaseRoman = "III";
-            eligibleMessage = `You're eligible for Phase ${phaseRoman}`;
+            eligibleMessage = `You're eligible for Phase ${phaseRoman}, Public Phase`;
             break;
         default:
             phaseRoman = "Unknown";
@@ -61,21 +34,26 @@ const EligibilityMessage = ({
 
     switch (role) {
         case 0:
-            accountTierString = "OG_HONOURED";
+            accountTierString = "Trillionaire Honored (Super OG).";
             break;
         case 1:
-            accountTierString = "OG";
+            accountTierString = "Trillionaire (OG).";
             break;
         case 2:
-            accountTierString = "WL";
+            accountTierString = "Billionaire (WL).";
             break;
         case 3:
-            accountTierString = "ALLOWLIST";
+            accountTierString = "Millionaire (AL).";
             break;
         default:
-            accountTierString = "PUBLIC";
+            accountTierString = "";
             break;
     }
+
+    if (phaseIndex === 3) {
+        accountTierString = "";
+    }
+
     return (
         <div className="mt-6 text-center font-neueHaas font-semibold tracking-wider text-white">
             <div>
@@ -86,7 +64,7 @@ const EligibilityMessage = ({
                         : `Sorry, you're not eligible for Phase ${phaseRoman}`}
                 </p>
 
-                {phaseIndex === 0 && <p>Currently in pre-mint phase</p>}
+                {phaseIndex === 0 && <p>Please wait for the mint to start.</p>}
                 {/* {accountBalance <= 0 && (
                     <p>You have already minted max amount</p>
                 )} */}
