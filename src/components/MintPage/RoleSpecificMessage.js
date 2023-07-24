@@ -1,23 +1,32 @@
-const RoleSpecificMessage = ({ role, phaseIndex }) => {
+const RoleSpecificMessage = ({
+    role,
+    phaseIndex,
+    maxMintAccBal,
+    mintAmountNum,
+}) => {
     let role_message = "";
     switch (role) {
-        case 0:
-            role_message = "OG_HONORED asdasdas asdasd sadasd";
+        case 0: // Og Honored
+            role_message = "";
             break;
-        case 1:
-            role_message = "OG";
+        case 1: // Og
+            if (maxMintAccBal - mintAmountNum === 1 && phaseIndex === 1) {
+                role_message = "Add 1 more for free!";
+            }
             break;
-        case 2:
-            role_message = "WL";
+        case 2: // WL
+            if (maxMintAccBal - mintAmountNum === 1 && phaseIndex === 2) {
+                role_message = "Add 1 more for free!";
+            }
             break;
-        case 3:
-            role_message = "PUBLICLIST";
+        case 3: // Allowlist
+            role_message = "";
             break;
         default:
             role_message = "";
             break;
     }
-    if (phaseIndex === 3) {
+    if (phaseIndex === 3 || phaseIndex === 0) {
         role_message = "";
     }
 

@@ -96,7 +96,7 @@ const MintAmount = ({
                                     setMintAmountNum(newNum);
                                 }
                             }}
-                            disabled={!accountEligiblity}
+                            disabled={!accountEligiblity || phaseIndex === 0}
                         >
                             -
                         </button>
@@ -110,7 +110,7 @@ const MintAmount = ({
                                     setMintAmountNum(newNum);
                                 }
                             }}
-                            disabled={!accountEligiblity}
+                            disabled={!accountEligiblity || phaseIndex === 0}
                         >
                             +
                         </button>
@@ -121,7 +121,7 @@ const MintAmount = ({
                             onClick={() => {
                                 setMintAmountNum(maxMintAccBal);
                             }}
-                            disabled={!accountEligiblity}
+                            disabled={!accountEligiblity || phaseIndex === 0}
                         >
                             Max
                         </button>
@@ -145,7 +145,12 @@ const MintAmount = ({
                     <div className="w-[12%] text-right">ETH</div>
                 </div>
             </div>
-            <RoleSpecificMessage role={role} phaseIndex={phaseIndex} />
+            <RoleSpecificMessage
+                role={role}
+                phaseIndex={phaseIndex}
+                maxMintAccBal={maxMintAccBal}
+                mintAmountNum={mintAmountNum}
+            />
 
             <MintButton
                 accountEligiblity={accountEligiblity}
@@ -154,6 +159,7 @@ const MintAmount = ({
                 proof={proof}
                 confirmingTransac={confirmingTransac}
                 setConfirmingTransac={setConfirmingTransac}
+                phaseIndex={phaseIndex}
             />
             <ConnectWalletButton />
             <EligibilityMessage

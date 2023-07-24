@@ -10,11 +10,16 @@ const MintButton = ({
     proof,
     confirmingTransac,
     setConfirmingTransac,
+    phaseIndex,
 }) => {
     let { chain } = useNetwork();
-    let mintClickable = false;
-
-    mintClickable = !(accountEligiblity && mintAmountNum > 0);
+    let mintEnableButton = false;
+    console.log(accountEligiblity);
+    mintEnableButton = !(
+        accountEligiblity &&
+        mintAmountNum > 0 &&
+        phaseIndex !== 0
+    );
 
     const handleButton = async () => {
         try {
@@ -59,10 +64,10 @@ const MintButton = ({
         <div className="relative flex h-[6%] w-full justify-center">
             <button
                 className={`${
-                    mintClickable ? "opacity-70" : ""
+                    mintEnableButton ? "opacity-70" : ""
                 } h-full rounded-3xl bg-white font-neueHaas text-[1.9vh] font-semibold leading-6 tracking-wider  text-custom-theme-purple mobile:w-3/4 tablet:w-[45%] laptop:w-[35%]`}
                 onClick={handleButton}
-                disabled={mintClickable}
+                disabled={mintEnableButton}
             >
                 Mint
             </button>

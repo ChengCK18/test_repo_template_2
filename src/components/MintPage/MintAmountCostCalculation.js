@@ -31,7 +31,13 @@ const MintAmountCostCalculation = ({
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
 
-        if (mintCost !== String(parseInt(data[0]._hex))) {
+        const intMintCost = parseInt(mintCost);
+        const intDataHex = parseInt(data[0]._hex, 16);
+        console.log(intMintCost);
+        console.log(intDataHex);
+        console.log(intMintCost !== intDataHex);
+        console.log("-------------");
+        if (intMintCost !== intDataHex) {
             const calculated = ethers.utils.formatEther(
                 String(parseInt(data[0]._hex, 16))
             );
