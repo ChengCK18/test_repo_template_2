@@ -1,37 +1,5 @@
-import { useContractReads } from "wagmi";
-import { contractAddress, defAbi } from "../../utils/utils";
 import Countdown from "./Countdown";
-const Phases = ({ setConfirmingTransac }) => {
-    let phaseIndex = 0;
-    let timeEndInUnix = 0;
-    const { data, isError, isLoading, refetch, isRefetching } =
-        useContractReads({
-            contracts: [
-                {
-                    address: contractAddress,
-                    abi: defAbi,
-                    functionName: "getCurrentPhase",
-                },
-            ],
-        });
-
-    if (isError) {
-        refetch();
-    }
-
-    if (!isLoading) {
-        if (data[0] === null) {
-            refetch();
-            return <div className="font-neueHaas text-white">Loading...</div>;
-        }
-        phaseIndex = data[0][0];
-        timeEndInUnix = data[0]["endTime"];
-    }
-
-    if (isRefetching) {
-        return <div>Loading...</div>;
-    }
-
+const Phases = ({ setConfirmingTransac, phaseIndex, timeEndInUnix }) => {
     const phasesRomanIndex = ["PRE", "I", "II", "III"];
     const phrases = ["ended", "ends in", "starts in"];
     let threePhases = [];

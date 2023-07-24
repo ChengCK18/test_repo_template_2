@@ -28,7 +28,7 @@ export const wagmiClient = createClient({
 export const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 // export const contractAddress = "0x62cE60F234944398E2e638a645902479Ff3Ff800";
-export const contractAddress = "0x5Dc08e4E63c37b17c1de078d46F86Df0456C5351";
+export const contractAddress = "0xE57d3707F8b11cDb9406B969ecc268eDf99a2e7c";
 
 export const treeProofOgHonoured = StandardMerkleTree.load(treeOgHonoured);
 export const treeProofOg = StandardMerkleTree.load(treeOg);

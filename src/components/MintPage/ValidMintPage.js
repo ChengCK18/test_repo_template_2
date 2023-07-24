@@ -15,6 +15,7 @@ import {
 
 const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
     let phaseIndex = 0;
+    let timeEndInUnix = 0;
     let role = 4;
     const { address } = useAccount();
 
@@ -66,12 +67,17 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
         }
 
         phaseIndex = data[0][0];
+        timeEndInUnix = data[0]["endTime"];
         role = data[1];
     }
 
     return (
         <>
-            <Phases setConfirmingTransac={setConfirmingTransac} />
+            <Phases
+                setConfirmingTransac={setConfirmingTransac}
+                phaseIndex={phaseIndex}
+                timeEndInUnix={timeEndInUnix}
+            />
             <TotalMinted />
 
             <MintAmount
