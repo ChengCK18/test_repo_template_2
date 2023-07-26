@@ -7,13 +7,20 @@ const NavItem = ({ text, textLink, userDevice }) => {
         mintGrayed = "opacity-50";
         layout = (
             <div
-                className={`font-neueHaas font-semibold tracking-widest text-white laptop:text-[1.9vh]`}
+                className={`font-neueHaas font-semibold tracking-widest text-white laptop:text-[1.9vh] ${mintGrayed}`}
             >
-                <Link to="/mint">MINT</Link>
+                {/* <Link to="/mint">MINT</Link> */}
+                <a href={`#${textLink}`}>{text}</a>
             </div>
         );
         return layout;
     }
+
+    if (text === "MINT" && userDevice === "mobile") {
+        layout = <></>;
+        return layout;
+    }
+
     if (userDevice === "laptop" || userDevice === "tablet") {
         layout = (
             <div

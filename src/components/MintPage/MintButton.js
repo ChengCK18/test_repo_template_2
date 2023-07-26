@@ -14,7 +14,7 @@ const MintButton = ({
 }) => {
     let { chain } = useNetwork();
     let mintEnableButton = false;
-    console.log(accountEligiblity);
+
     mintEnableButton = !(
         accountEligiblity &&
         mintAmountNum > 0 &&

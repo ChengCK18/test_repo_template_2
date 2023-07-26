@@ -1,6 +1,7 @@
 import { defAbi, contractAddress } from "../../utils/utils";
 import { useContractReads } from "wagmi";
 import { ethers } from "ethers";
+import { useEffect, useState } from "react";
 
 const MintAmountCostCalculation = ({
     address,
@@ -9,6 +10,14 @@ const MintAmountCostCalculation = ({
     mintCost,
     setMintCost,
 }) => {
+    const [priceData, setPriceData] = useState();
+
+    useEffect(() => {
+        if (mintCost !== priceData) {
+            setMintCost(priceData);
+        }
+    }, [priceData]);
+
     const { data, isError, isLoading, refetch, isRefetching } =
         useContractReads({
             contracts: [
@@ -31,17 +40,12 @@ const MintAmountCostCalculation = ({
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
 
-        const intMintCost = parseInt(mintCost);
-        const intDataHex = parseInt(data[0]._hex, 16);
-        console.log(intMintCost);
-        console.log(intDataHex);
-        console.log(intMintCost !== intDataHex);
-        console.log("-------------");
-        if (intMintCost !== intDataHex) {
-            const calculated = ethers.utils.formatEther(
-                String(parseInt(data[0]._hex, 16))
-            );
-            setMintCost(calculated);
+        const newPrice = ethers.utils.formatEther(
+            String(parseInt(data[0]._hex, 16))
+        );
+
+        if (newPrice !== priceData) {
+            setPriceData(newPrice);
         }
     }
 
