@@ -16,6 +16,7 @@ const MintAmountCostCalculation = ({
         if (mintCost !== priceData) {
             setMintCost(priceData);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [priceData]);
 
     const { data, isError, isLoading, refetch, isRefetching } =
