@@ -19,8 +19,7 @@ const MintAmount = ({
     phaseIndex,
     role,
 }) => {
-    // let { chain } = useNetwork();
-    const [mintAmountNum, setMintAmountNum] = useState(0); // What number the user set to mint
+    const [mintAmountNum, setMintAmountNum] = useState(0);
     const [mintCost, setMintCost] = useState(0);
     const { address } = useAccount();
     let accountEligiblity = false;

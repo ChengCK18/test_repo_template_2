@@ -16,7 +16,7 @@ const Countdown = ({ timeEndInUnix, setConfirmingTransac, phaseIndex }) => {
                 timeLeftObj.seconds === 0 &&
                 phaseIndex !== 3
             ) {
-                // window.location.reload();
+                window.location.reload();
             }
         }, 1000);
     });
