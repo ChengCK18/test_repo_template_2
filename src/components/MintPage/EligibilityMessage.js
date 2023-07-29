@@ -1,6 +1,3 @@
-import { contractAddress, defAbi } from "../../utils/utils";
-import { useContractReads } from "wagmi";
-
 const EligibilityMessage = ({
     accountEligiblity,
     address,
@@ -57,7 +54,12 @@ const EligibilityMessage = ({
     return (
         <div className="mt-6 text-center font-neueHaas font-semibold tracking-wider text-white">
             <div>
-                <p>Welcome, {accountTierString}</p>
+                <p>
+                    {accountEligiblity || phaseIndex === 0
+                        ? "Welcome"
+                        : "Sorry"}
+                    , {accountTierString}
+                </p>
                 <p>
                     {accountEligiblity | (phaseIndex === 0) //Pre mint
                         ? `${eligibleMessage}`

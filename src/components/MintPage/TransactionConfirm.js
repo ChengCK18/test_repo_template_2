@@ -45,7 +45,10 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
                         </Link>
                         <TwitterShareButton
                             url={"https://www.lazynaire.com/"}
-                            title={"I just minted from Lazynaire project!"}
+                            title={
+                                "Come and join me to mint Ladynaire from @lazynaire_club! Let's grow rich together."
+                            }
+                            hashtags={["lazynaireclub", "NFTs", "NFTcommunity"]}
                             className="flex-1"
                         >
                             <div className="rounded-full border-2 bg-custom-theme-purple p-3 text-white">
@@ -88,12 +91,12 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
                     {subtext}
                 </div>
                 <div
-                    className={`mt-auto flex w-full items-center justify-center text-center font-neueHaas text-lg font-semibold leading-[25px] text-gray-500 ${
+                    className={`mt-auto mb-3 flex w-full items-center justify-center text-center font-neueHaas text-lg font-semibold leading-[25px] text-gray-500 ${
                         confirmingTransac === 4 ? "" : "invisible"
                     }`}
                 >
-                    If you have multiple account, please make sure you are on
-                    the right account and it's connected
+                    Please ensure you have sufficient balance in your wallet and
+                    the right account connected.
                 </div>
             </div>
         </div>

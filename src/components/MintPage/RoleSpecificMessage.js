@@ -3,6 +3,7 @@ const RoleSpecificMessage = ({
     phaseIndex,
     maxMintAccBal,
     mintAmountNum,
+    accountEligiblity,
 }) => {
     let role_message = "";
     switch (role) {
@@ -11,12 +12,12 @@ const RoleSpecificMessage = ({
             break;
         case 1: // Og
             if (maxMintAccBal - mintAmountNum === 1 && phaseIndex === 1) {
-                role_message = "Add 1 more for free!";
+                role_message = "Opps, don't forget to add 1 more for free!";
             }
             break;
         case 2: // WL
             if (maxMintAccBal - mintAmountNum === 1 && phaseIndex === 2) {
-                role_message = "Add 1 more for free!";
+                role_message = "Opps, don't forget to add 1 more for free!";
             }
             break;
         case 3: // Allowlist
@@ -27,7 +28,13 @@ const RoleSpecificMessage = ({
             break;
     }
     if (phaseIndex === 3 || phaseIndex === 0) {
+        // No role specific message for pre-mint and public minting process.
         role_message = "";
+    }
+
+    if (maxMintAccBal <= 0 && accountEligiblity) {
+        // When user is eligible but they have minted all available mint for their account
+        role_message = "Sorry, you have no mint left.";
     }
 
     return (

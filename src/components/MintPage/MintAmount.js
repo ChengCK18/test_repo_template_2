@@ -149,6 +149,7 @@ const MintAmount = ({
                 phaseIndex={phaseIndex}
                 maxMintAccBal={maxMintAccBal}
                 mintAmountNum={mintAmountNum}
+                accountEligiblity={accountEligiblity}
             />
 
             <MintButton
