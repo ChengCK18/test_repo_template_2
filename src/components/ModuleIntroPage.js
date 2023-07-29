@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BsArrowRight } from "react-icons/bs";
 
 const ModuleIntroPage = ({ userDevice }) => {
     const [introSegment, setIntroSegment] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [lazyverseToggle, setLazyverseToggle] = useState(false);
+    const lazyverseVidRef = useRef(null);
 
     // const easeInCss = "opacity-100 transition-opacity duration-1000 ease-in";
     // const easeOutCss = "opacity-0 transition-opacity duration-1000 ease-out";
@@ -184,7 +186,13 @@ const ModuleIntroPage = ({ userDevice }) => {
                             <div className="rounded-lg border border-white p-1 px-4 mobile:text-[14px] tablet:text-[1.6vh] laptop:text-[1.7vh]">
                                 <button
                                     className="relative z-30 flex items-center"
-                                    onClick={() => console.log("hey")}
+                                    onClick={() => {
+                                        if (lazyverseVidRef.current) {
+                                            lazyverseVidRef.current.src =
+                                                lazyverseVidRef.current.src; // Reload the iframe source to start the video
+                                        }
+                                        setLazyverseToggle(true);
+                                    }}
                                 >
                                     <span className="font-neueHaas">
                                         {" "}
@@ -193,6 +201,41 @@ const ModuleIntroPage = ({ userDevice }) => {
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div
+                    className={` z-30 ${
+                        lazyverseToggle ? "absolute" : "hidden"
+                    } top-0 flex justify-start`}
+                >
+                    <iframe
+                        ref={lazyverseVidRef}
+                        width="795"
+                        height="447"
+                        src="https://www.youtube.com/embed/V9_ZpqfqHFI?autoplay=1&enablejsapi=1&controls=0"
+                        title="【Ado】Tot Musica（UTA from ONE PIECE FILM RED）"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
+                    <div className="ml-3">
+                        <button
+                            onClick={() => {
+                                const iframe = lazyverseVidRef.current;
+                                iframe.contentWindow.postMessage(
+                                    JSON.stringify({
+                                        event: "command",
+                                        func: "stopVideo",
+                                    }),
+                                    "*"
+                                );
+
+                                setLazyverseToggle(false);
+                            }}
+                            className="rounded-xl border-2 border-white p-2 font-extrabold text-white"
+                        >
+                            X
+                        </button>
                     </div>
                 </div>
             </div>
