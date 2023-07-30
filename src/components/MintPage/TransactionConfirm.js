@@ -91,7 +91,7 @@ const TransactionConfirm = ({
             setSubtext(
                 <>
                     Thank you for your participation. <br />
-                    Check out our collection from our secondary market
+                    Check out the full collection from our secondary market
                     <br />
                     <a
                         className="underline"
