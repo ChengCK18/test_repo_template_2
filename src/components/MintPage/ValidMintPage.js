@@ -17,6 +17,8 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
     let phaseIndex = 0;
     let timeEndInUnix = 0;
     let role = 4;
+    let marketMinted = 999;
+    let mintSupply = 999;
     const { address } = useAccount();
 
     let proofList = [];
@@ -54,6 +56,11 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
                 functionName: "getRoleFromProofs",
                 args: [address, proofList],
             },
+            {
+                address: contractAddress,
+                abi: defAbi,
+                functionName: "getSupplyInfo",
+            },
         ],
     });
 
@@ -61,7 +68,7 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
         refetch();
     }
     if (!isLoading) {
-        if (data[0] === null || data[1] === null) {
+        if (data[0] === null || data[1] === null || data[2] === null) {
             refetch();
             return <div className="font-neueHaas text-white">Loading...</div>;
         }
@@ -69,6 +76,8 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
         phaseIndex = data[0][0];
         timeEndInUnix = data[0]["endTime"];
         role = data[1];
+        marketMinted = parseInt(data[2][1]._hex);
+        mintSupply = parseInt(data[2][0]._hex);
     }
 
     return (
@@ -78,7 +87,7 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
                 phaseIndex={phaseIndex}
                 timeEndInUnix={timeEndInUnix}
             />
-            <TotalMinted />
+            <TotalMinted marketMinted={marketMinted} mintSupply={mintSupply} />
 
             <MintAmount
                 confirmingTransac={confirmingTransac}
