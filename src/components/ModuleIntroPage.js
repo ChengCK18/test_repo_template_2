@@ -189,14 +189,14 @@ const ModuleIntroPage = ({ userDevice }) => {
                                     onClick={() => {
                                         if (lazyverseVidRef.current) {
                                             lazyverseVidRef.current.src =
+                                                // eslint-disable-next-line no-self-assign
                                                 lazyverseVidRef.current.src; // Reload the iframe source to start the video
                                         }
                                         setLazyverseToggle(true);
                                     }}
                                 >
                                     <span className="font-neueHaas">
-                                        {" "}
-                                        COMING SOON{" "}
+                                        WATCH FULL VIDEO
                                     </span>
                                 </button>
                             </div>
@@ -210,14 +210,15 @@ const ModuleIntroPage = ({ userDevice }) => {
                 >
                     <iframe
                         ref={lazyverseVidRef}
-                        width="795"
-                        height="447"
-                        src="https://www.youtube.com/embed/V9_ZpqfqHFI?autoplay=1&enablejsapi=1&controls=0"
-                        title="【Ado】Tot Musica（UTA from ONE PIECE FILM RED）"
+                        width={window.innerWidth * 0.8}
+                        height={window.innerHeight * 0.8}
+                        src="https://www.youtube.com/embed/yA_fKvPhQYg?autoplay=1&enablejsapi=1&controls=0"
+                        title="Lazyverse by Lazynaire"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
                     ></iframe>
+
                     <div className="ml-3">
                         <button
                             onClick={() => {

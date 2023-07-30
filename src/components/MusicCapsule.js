@@ -4,9 +4,9 @@ import {
     BsFillPauseFill,
     BsFillSkipEndFill,
     BsFillSkipStartFill,
+    BsHeadphones,
 } from "react-icons/bs";
 
-import { CgLoadbarSound } from "react-icons/cg";
 import { MusicContext } from "..";
 
 const songsList = [
@@ -138,8 +138,8 @@ const MusicCapsule = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex grow-0 items-center justify-center p-1 pr-[0.4rem]">
-                    <CgLoadbarSound size={54} color={"black"} />
+                <div className="flex grow-0 items-center justify-center p-1 pr-[9px]">
+                    <BsHeadphones size={44} color={"black"} />
                 </div>
             </div>
         </div>
