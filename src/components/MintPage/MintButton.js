@@ -29,8 +29,8 @@ const MintButton = ({
 
             setConfirmingTransac(1);
 
-            if (chain.name !== "Goerli") {
-                const network = await switchNetwork({ chainId: 5 });
+            if (chain.name !== "Ethereum") {
+                const network = await switchNetwork({ chainId: 1 });
                 chain = network;
             }
 

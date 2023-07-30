@@ -22,7 +22,7 @@ const MintConnectWalletPage = () => {
     if (chain === undefined) {
         mintAmountPanel = "";
     } else {
-        if (isConnected && chain.name === "Goerli") {
+        if (isConnected && chain.name === "Ethereum") {
             mintAmountPanel = (
                 <ValidMintPage
                     confirmingTransac={confirmingTransac}
@@ -30,12 +30,13 @@ const MintConnectWalletPage = () => {
                 />
             );
         }
-        if (chain.name !== "Goerli") {
+        if (chain.name !== "Ethereum") {
             //connected but chain is wrong
             mintAmountPanel = (
                 <div className="mt-10 flex h-[80px] w-full flex-col items-center justify-center text-center  font-neueHaas font-semibold leading-6 tracking-wider">
                     <span className="text-white">
-                        You need to be in Goerli Network. Please switch to mint
+                        You need to be in Ethereum Network. Please switch to
+                        mint
                     </span>
                     <button
                         className=" h-[50px] w-[35%] rounded-3xl  bg-white text-[1.9vh] text-custom-theme-purple"
