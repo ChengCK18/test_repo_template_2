@@ -63,7 +63,7 @@ const EligibilityMessage = ({
                 <p>
                     {accountEligiblity | (phaseIndex === 0) //Pre mint
                         ? `${eligibleMessage}`
-                        : `Sorry, you're not eligible for Phase ${phaseRoman}`}
+                        : `You're not eligible for Phase ${phaseRoman}`}
                 </p>
 
                 {phaseIndex === 0 && <p>Please wait for the mint to start.</p>}
