@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { TwitterShareButton } from "react-share";
-const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
+const TransactionConfirm = ({
+    confirmingTransac,
+    setConfirmingTransac,
+    mintedOut,
+}) => {
     const [heading, setHeading] = useState();
     const [subtext, setSubtext] = useState();
 
@@ -81,7 +85,24 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
                 clearInterval(time1.current);
             };
         }
-    }, [confirmingTransac, setConfirmingTransac]);
+
+        if (mintedOut) {
+            setHeading("Ladynaires are fully taken!");
+            setSubtext(
+                <>
+                    Thank you for your participation. <br />
+                    Check out our collection from our secondary market
+                    <br />
+                    <a
+                        className="underline"
+                        href={"https://linktr.ee/lazynaire"}
+                    >
+                        linktree/lazynaire
+                    </a>
+                </>
+            );
+        }
+    }, [confirmingTransac, setConfirmingTransac, mintedOut]);
 
     return (
         <div className="absolute top-0  flex  h-full w-full items-center justify-center">
@@ -89,7 +110,7 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
                 <div className="mt-auto w-full text-center font-neueHaas text-6xl font-semibold leading-[60px] text-custom-theme-purple">
                     {heading}
                 </div>
-                <div className="mt-10 flex w-full items-center justify-center text-center font-neueHaas text-2xl font-semibold leading-[25px] text-custom-theme-purple">
+                <div className="mt-10 flex w-full flex-col items-center justify-center text-center font-neueHaas text-2xl font-semibold leading-[25px] text-custom-theme-purple">
                     {subtext}
                 </div>
                 <div
@@ -98,7 +119,7 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
                     }`}
                 >
                     Please ensure you have sufficient balance in your wallet and
-                    the right account connected.
+                    the right account connected.
                 </div>
             </div>
         </div>

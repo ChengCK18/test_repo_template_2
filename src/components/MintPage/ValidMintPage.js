@@ -13,11 +13,13 @@ import {
     treeProofAllowlist,
 } from "../../utils/utils";
 
+import TransactionConfirm from "./TransactionConfirm";
+
 const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
     let phaseIndex = 0;
     let timeEndInUnix = 0;
     let role = 4;
-    let marketMinted = 999;
+    let marketMinted = 0;
     let mintSupply = 999;
     const { address } = useAccount();
 
@@ -80,6 +82,15 @@ const ValidMintPage = ({ confirmingTransac, setConfirmingTransac }) => {
         mintSupply = parseInt(data[2][0]._hex);
     }
 
+    if (marketMinted >= mintSupply) {
+        return (
+            <TransactionConfirm
+                confirmingTransac={confirmingTransac}
+                setConfirmingTransac={setConfirmingTransac}
+                mintedOut={true}
+            />
+        );
+    }
     return (
         <>
             <Phases

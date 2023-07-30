@@ -5,8 +5,8 @@ import {
 } from "@web3modal/ethereum";
 import { configureChains, createClient } from "wagmi";
 import { mainnet, arbitrum, goerli, polygon } from "wagmi/chains";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
+// import { alchemyProvider } from "wagmi/providers/alchemy";
+// import { publicProvider } from "wagmi/providers/public";
 import { treeOgHonoured, treeOg, treeWhitelist, treeAllowlist } from "./tree";
 
 const { StandardMerkleTree } = require("@openzeppelin/merkle-tree");

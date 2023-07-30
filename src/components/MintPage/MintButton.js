@@ -49,7 +49,7 @@ const MintButton = ({
                     value: ethers.utils.parseEther(parsedMintCost),
                 });
                 setConfirmingTransac(2);
-                console.log("Mining...please wait");
+                console.log("Minting...please wait");
                 await nftTxn.wait();
                 console.log(`Done, hash => ${nftTxn.hash}`);
                 setConfirmingTransac(3);

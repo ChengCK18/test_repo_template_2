@@ -4,7 +4,6 @@ import { switchNetwork } from "@wagmi/core";
 
 import ConnectWalletButton from "./ConnectWalletButton";
 import TransactionConfirm from "./TransactionConfirm";
-import EligibilityMessage from "./EligibilityMessage";
 import ValidMintPage from "./ValidMintPage";
 
 const MintConnectWalletPage = () => {
