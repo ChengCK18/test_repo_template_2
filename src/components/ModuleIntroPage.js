@@ -212,11 +212,10 @@ const ModuleIntroPage = ({ userDevice }) => {
                         ref={lazyverseVidRef}
                         width={window.innerWidth * 0.8}
                         height={window.innerHeight * 0.8}
-                        src="https://www.youtube.com/embed/yA_fKvPhQYg?autoplay=1&enablejsapi=1&controls=0"
+                        src="https://www.youtube.com/embed/yA_fKvPhQYg?enablejsapi=1&controls=0"
                         title="Lazyverse by Lazynaire"
-                        frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
+                        allowFullScreen
                     ></iframe>
 
                     <div className="ml-3">
