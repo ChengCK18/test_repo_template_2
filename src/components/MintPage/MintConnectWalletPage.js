@@ -14,7 +14,7 @@ const MintConnectWalletPage = () => {
     const [confirmingTransac, setConfirmingTransac] = useState(0);
 
     const handleSwitchNetworkButton = () => {
-        const network = switchNetwork({ chainId: 5 });
+        const network = switchNetwork({ chainId: 1 });
         chain = network;
     };
 
