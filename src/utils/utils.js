@@ -11,7 +11,7 @@ import { treeOgHonoured, treeOg, treeWhitelist, treeAllowlist } from "./tree";
 
 const { StandardMerkleTree } = require("@openzeppelin/merkle-tree");
 
-const chains = [mainnet, arbitrum, goerli, polygon];
+const chains = [mainnet];
 export const projectId = "2d2ff768204bdfd16aaabeddd7b9e032";
 
 const { provider } = configureChains(chains, [w3mProvider({ projectId })]);

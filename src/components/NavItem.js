@@ -9,8 +9,8 @@ const NavItem = ({ text, textLink, userDevice }) => {
             <div
                 className={`font-neueHaas font-semibold tracking-widest text-white laptop:text-[1.9vh] ${mintGrayed}`}
             >
-                {/* <Link to="/mint">MINT</Link> */}
-                <a href={`#${textLink}`}>{text}</a>
+                <Link to="/mint">MINT</Link>
+                {/* <a href={`#${textLink}`}>{text}</a> */}
             </div>
         );
         return layout;
