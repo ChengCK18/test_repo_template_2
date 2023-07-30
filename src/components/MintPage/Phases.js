@@ -66,7 +66,7 @@ const Phases = ({ setConfirmingTransac, phaseIndex, timeEndInUnix }) => {
 
     return (
         <>
-            <div className=" mb-8 flex h-[80px] w-full flex-row justify-center ">
+            <div className="flex h-[80px] w-full flex-row justify-center mobile:mb-2 tablet:mb-8 ">
                 {threePhases.map((item) => (
                     <Phase
                         key={`roman_${item.roman}`}

@@ -30,7 +30,7 @@ const ConnectWalletButton = () => {
     }
 
     return (
-        <div className="relative  mt-6 flex h-[6%] w-full justify-center">
+        <div className="relative  mt-6 flex  w-full justify-center mobile:h-[40px] tablet:h-[55px] ">
             <button
                 disabled={loading}
                 onClick={onClick}

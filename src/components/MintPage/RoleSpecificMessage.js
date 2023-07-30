@@ -38,7 +38,7 @@ const RoleSpecificMessage = ({
     }
 
     return (
-        <div className="mt-1 mb-16 w-full text-center font-neueHaas text-[12px] font-semibold tracking-wide text-white">
+        <div className="mt-1 w-full text-center font-neueHaas text-[12px] font-semibold tracking-wide text-white mobile:mb-5 tablet:mb-16">
             {role_message}
         </div>
     );

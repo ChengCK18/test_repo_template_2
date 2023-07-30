@@ -61,7 +61,7 @@ const MintButton = ({
     };
 
     return (
-        <div className="relative flex h-[6%] w-full justify-center">
+        <div className="relative flex w-full justify-center mobile:h-[35px] tablet:h-[55px] ">
             <button
                 className={`${
                     mintEnableButton ? "opacity-70" : ""
