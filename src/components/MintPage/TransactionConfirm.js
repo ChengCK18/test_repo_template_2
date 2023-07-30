@@ -45,10 +45,10 @@ const TransactionConfirm = ({ confirmingTransac, setConfirmingTransac }) => {
                         </Link>
                         <TwitterShareButton
                             url={
-                                "https://twitter.com/lazynaire_club/status/1684929199222444032?s=20"
+                                "https://twitter.com/lazynaire_club/status/1684929199222444032?s=20 \n\n"
                             }
                             title={
-                                "Just got my Ladynaire from @lazynaire_club! Let's grow rich together. 🦩"
+                                "Just got my Ladynaire from @lazynaire_club! Let's grow rich together. 🦩\n"
                             }
                             hashtags={["lazynaireclub", "NFTs", "NFTcommunity"]}
                             className="flex-1"
