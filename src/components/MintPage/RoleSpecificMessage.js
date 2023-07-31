@@ -12,12 +12,12 @@ const RoleSpecificMessage = ({
             break;
         case 1: // Og
             if (maxMintAccBal - mintAmountNum === 1 && phaseIndex === 1) {
-                role_message = "Opps, don't forget to add 1 more for free!";
+                role_message = "";
             }
             break;
         case 2: // WL
             if (maxMintAccBal - mintAmountNum === 1 && phaseIndex === 2) {
-                role_message = "Opps, don't forget to add 1 more for free!";
+                role_message = "";
             }
             break;
         case 3: // Allowlist
